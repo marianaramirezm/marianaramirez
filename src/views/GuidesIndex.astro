@@ -1,0 +1,101 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Base from '../layouts/Base.astro';
+import type { Locale, UiKey } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { neighborhoodPath, pathFor, residencePath, type NavKey } from '../lib/routes';
+import { breadcrumbNode, graph } from '../lib/schema';
+import type { GuideEntry } from '../lib/types';
+
+interface Props {
+  locale: Locale;
+  kind: 'neighborhoods' | 'residences';
+  guides: GuideEntry[];
+}
+
+const { locale, kind, guides } = Astro.props;
+const site = Astro.site ?? new URL('https://example.com');
+const current: NavKey = kind;
+const path = pathFor(kind, locale);
+const alternate = pathFor(kind, locale === 'en' ? 'es' : 'en');
+const titleKey: UiKey = kind === 'neighborhoods' ? 'meta.neighborhoods.title' : 'meta.residences.title';
+const descriptionKey: UiKey =
+  kind === 'neighborhoods' ? 'meta.neighborhoods.description' : 'meta.residences.description';
+const eyebrowKey: UiKey =
+  kind === 'neighborhoods' ? 'guides.neighborhoodsEyebrow' : 'guides.residencesEyebrow';
+const headingKey: UiKey = kind === 'neighborhoods' ? 'guides.neighborhoodsTitle' : 'guides.residencesTitle';
+const leadKey: UiKey = kind === 'neighborhoods' ? 'guides.neighborhoodsLead' : 'guides.residencesLead';
+const navLabel: UiKey = kind === 'neighborhoods' ? 'nav.neighborhoods' : 'nav.residences';
+const hrefFor = kind === 'neighborhoods' ? neighborhoodPath : residencePath;
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, navLabel), path },
+];
+const miami = guides.filter((item) => item.data.group !== 'beyond');
+const beyond = guides.filter((item) => item.data.group === 'beyond');
+
+function rows(items: GuideEntry[]) {
+  return items;
+}
+---
+
+<Base
+  locale={locale}
+  title={t(locale, titleKey)}
+  description={t(locale, descriptionKey)}
+  path={path}
+  alternatePath={alternate}
+  current={current}
+  jsonLd={graph(breadcrumbNode(site, crumbs))}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{t(locale, eyebrowKey)}</p>
+    <h1>{t(locale, headingKey)}</h1>
+    <p class="lead">{t(locale, leadKey)}</p>
+  </div>
+  <div class="wrap page-body">
+    {
+      kind === 'neighborhoods' && (
+        <>
+          <p class="group-label">{t(locale, 'home.neighborhoodsMiami')}</p>
+          <ul class="name-grid">
+            {miami.map((item) => (
+              <li>
+                <a class="with-summary" href={hrefFor(item.id, locale)}>
+                  <span class="n">{item.data.name[locale]}</span>
+                  <span class="where">{item.data.summary[locale]}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p class="group-label">{t(locale, 'home.neighborhoodsBeyond')}</p>
+          <ul class="name-grid">
+            {beyond.map((item) => (
+              <li>
+                <a class="with-summary" href={hrefFor(item.id, locale)}>
+                  <span class="n">{item.data.name[locale]}</span>
+                  <span class="where">{item.data.summary[locale]}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+    {
+      kind === 'residences' && (
+        <ul class="name-grid">
+          {rows(guides).map((item) => (
+            <li>
+              <a href={hrefFor(item.id, locale)}>
+                <span class="n">{item.data.name[locale]}</span>
+                <span class="where">{item.data.regionLabel[locale]}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</Base>

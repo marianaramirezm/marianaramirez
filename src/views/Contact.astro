@@ -1,0 +1,48 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Base from '../layouts/Base.astro';
+import { getNeighborhoods } from '../lib/content';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { pathFor } from '../lib/routes';
+import { breadcrumbNode, graph } from '../lib/schema';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const site = Astro.site ?? new URL('https://example.com');
+const neighborhoods = await getNeighborhoods();
+const path = pathFor('contact', locale);
+const alternate = pathFor('contact', locale === 'en' ? 'es' : 'en');
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, 'nav.contact'), path },
+];
+---
+
+<Base
+  locale={locale}
+  title={t(locale, 'meta.contact.title')}
+  description={t(locale, 'meta.contact.description')}
+  path={path}
+  alternatePath={alternate}
+  current="contact"
+  jsonLd={graph(breadcrumbNode(site, crumbs))}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+  </div>
+  <div class="wrap page-body">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">{t(locale, 'contact.eyebrow')}</p>
+        <h1>{t(locale, 'contact.title')}</h1>
+        <p class="lead">{t(locale, 'contact.lead')}</p>
+      </div>
+      <ContactForm locale={locale} neighborhoods={neighborhoods} />
+    </div>
+  </div>
+</Base>

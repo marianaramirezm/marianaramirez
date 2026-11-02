@@ -1,0 +1,55 @@
+---
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { absolute } from '../lib/routes';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  path: string;
+  alternatePath: string;
+  jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
+}
+
+const { locale, title, description, path, alternatePath, jsonLd, noindex = false } = Astro.props;
+const site = Astro.site ?? new URL('https://example.com');
+const canonical = absolute(site, path);
+const alternate = absolute(site, alternatePath);
+const enUrl = locale === 'en' ? canonical : alternate;
+const esUrl = locale === 'es' ? canonical : alternate;
+const image = absolute(site, '/og.jpg');
+const ogLocale = locale === 'es' ? 'es_ES' : 'en_US';
+const ogAlternate = locale === 'es' ? 'en_US' : 'es_ES';
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="es" href={esUrl} />
+<link rel="alternate" hreflang="x-default" href={enUrl} />
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+<meta name="theme-color" content="#ffffff" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Mariana Ramírez" />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={ogAlternate} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={t(locale, 'meta.ogAlt')} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:image:alt" content={t(locale, 'meta.ogAlt')} />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

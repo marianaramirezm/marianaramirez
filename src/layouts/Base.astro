@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Seo from '../components/Seo.astro';
+import type { Locale } from '../i18n/ui';
+import type { NavKey } from '../lib/routes';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  path: string;
+  alternatePath: string;
+  current?: NavKey;
+  jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
+  overlay?: boolean;
+}
+
+const { locale, title, description, path, alternatePath, current, jsonLd, noindex, overlay = false } =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <Seo
+      locale={locale}
+      title={title}
+      description={description}
+      path={path}
+      alternatePath={alternatePath}
+      jsonLd={jsonLd}
+      noindex={noindex}
+    />
+  </head>
+  <body class:list={{ overlay }}>
+    <Header locale={locale} current={current} alternatePath={alternatePath} />
+    <main id="content">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

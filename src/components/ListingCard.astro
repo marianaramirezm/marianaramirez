@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { listingPath } from '../lib/routes';
+import type { GuideEntry, ListingEntry } from '../lib/types';
+
+interface Props {
+  locale: Locale;
+  listing: ListingEntry;
+  neighborhoods: GuideEntry[];
+}
+
+const { locale, listing, neighborhoods } = Astro.props;
+const area = neighborhoods.find((item) => item.id === listing.data.neighborhood);
+const href = listingPath(listing.id, locale);
+const photo = listing.data.photos[0];
+const status =
+  listing.data.status === 'sold' ? t(locale, 'listings.statusSold') : t(locale, 'listings.statusActive');
+---
+
+<article>
+  <a class="card" href={href}>
+    <div class="card-media">
+      {
+        photo && (
+          <Image
+            src={photo}
+            alt={t(locale, 'listings.photoAlt')}
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 800px) 36rem, 100vw"
+            quality={70}
+          />
+        )
+      }
+      {listing.data.example && <span class="flag">{t(locale, 'listings.example')}</span>}
+    </div>
+    <h3>{listing.data.title[locale]}</h3>
+    <p class="where">
+      {area ? area.data.name[locale] : listing.data.neighborhood}
+      <span aria-hidden="true"> · </span>
+      {status}
+    </p>
+    <dl class="specs">
+      <div>
+        <dt>{t(locale, 'listings.price')}</dt>
+        <dd>{listing.data.price[locale]}</dd>
+      </div>
+      <div>
+        <dt>{t(locale, 'listings.beds')}</dt>
+        <dd>{listing.data.beds[locale]}</dd>
+      </div>
+      <div>
+        <dt>{t(locale, 'listings.baths')}</dt>
+        <dd>{listing.data.baths[locale]}</dd>
+      </div>
+      <div>
+        <dt>{t(locale, 'listings.sqft')}</dt>
+        <dd>{listing.data.sqft[locale]}</dd>
+      </div>
+    </dl>
+  </a>
+</article>

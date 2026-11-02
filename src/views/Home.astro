@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+import hero from '../assets/placeholders/hero.jpg';
+import ListingCard from '../components/ListingCard.astro';
+import Base from '../layouts/Base.astro';
+import { getListings, getNeighborhoods } from '../lib/content';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { neighborhoodPath, pathFor } from '../lib/routes';
+import { agentNode, breadcrumbNode, graph } from '../lib/schema';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const site = Astro.site ?? new URL('https://example.com');
+const listings = await getListings();
+const neighborhoods = await getNeighborhoods();
+const featured = listings.slice(0, 2);
+const miami = neighborhoods.filter((item) => item.data.group !== 'beyond');
+const beyond = neighborhoods.filter((item) => item.data.group === 'beyond');
+const path = pathFor('home', locale);
+const alternate = pathFor('home', locale === 'en' ? 'es' : 'en');
+const crumbs = [{ name: t(locale, 'nav.home'), path }];
+---
+
+<Base
+  locale={locale}
+  title={t(locale, 'meta.home.title')}
+  description={t(locale, 'meta.home.description')}
+  path={path}
+  alternatePath={alternate}
+  current="home"
+  overlay
+  jsonLd={graph(agentNode(site, locale), breadcrumbNode(site, crumbs))}
+>
+  <section class="hero">
+    <div class="hero-media">
+      <Image
+        src={hero}
+        alt={t(locale, 'home.heroAlt')}
+        widths={[640, 960, 1280, 1600, 2000]}
+        sizes="100vw"
+        quality={68}
+        priority
+      />
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-copy wrap">
+      <p class="caption">{t(locale, 'home.heroCaption')}</p>
+      <h1>Mariana Ramírez</h1>
+      <p class="line">{t(locale, 'home.heroLine')}</p>
+      <a class="button" href={pathFor('contact', locale)}>{t(locale, 'home.cta')}</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">{t(locale, 'home.introEyebrow')}</p>
+        <h2 class="display">{t(locale, 'home.introTitle')}</h2>
+        <ul class="meta-list">
+          <li>SERHANT.</li>
+          <li>{t(locale, 'home.team')}</li>
+          <li>{t(locale, 'home.city')}</li>
+        </ul>
+      </div>
+      <p class="lead">{t(locale, 'home.introBody')}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">{t(locale, 'home.listingsEyebrow')}</p>
+          <h2 class="display">{t(locale, 'home.listingsTitle')}</h2>
+        </div>
+        <a class="link" href={pathFor('listings', locale)}>{t(locale, 'home.listingsAll')}</a>
+      </div>
+      <p class="note">{t(locale, 'home.listingsNote')}</p>
+      <div class="cards">
+        {featured.map((listing) => <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <p class="eyebrow">{t(locale, 'home.neighborhoodsEyebrow')}</p>
+      <h2 class="display">{t(locale, 'home.neighborhoodsTitle')}</h2>
+      <p class="group-label">{t(locale, 'home.neighborhoodsMiami')}</p>
+      <ul class="name-grid">
+        {
+          miami.map((item) => (
+            <li>
+              <a href={neighborhoodPath(item.id, locale)}>
+                <span class="n">{item.data.name[locale]}</span>
+                <span class="where">{item.data.regionLabel[locale]}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="group-label">{t(locale, 'home.neighborhoodsBeyond')}</p>
+      <ul class="name-grid">
+        {
+          beyond.map((item) => (
+            <li>
+              <a href={neighborhoodPath(item.id, locale)}>
+                <span class="n">{item.data.name[locale]}</span>
+                <span class="where">{item.data.regionLabel[locale]}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="stack-links">
+        <a class="link" href={pathFor('residences', locale)}>{t(locale, 'home.residencesLink')}</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">{t(locale, 'home.contactEyebrow')}</p>
+      <h2 class="display">{t(locale, 'home.contactTitle')}</h2>
+      <p>{t(locale, 'home.contactBody')}</p>
+      <a class="button" href={pathFor('contact', locale)}>{t(locale, 'home.cta')}</a>
+    </div>
+  </section>
+</Base>

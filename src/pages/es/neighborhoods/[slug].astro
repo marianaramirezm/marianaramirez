@@ -1,0 +1,21 @@
+---
+import GuideDetail from '../../../views/GuideDetail.astro';
+import { getNeighborhoods } from '../../../lib/content';
+import type { GuideEntry } from '../../../lib/types';
+
+export async function getStaticPaths() {
+  const guides = await getNeighborhoods();
+  return guides.map((guide) => ({
+    params: { slug: guide.id },
+    props: { guide },
+  }));
+}
+
+interface Props {
+  guide: GuideEntry;
+}
+
+const { guide } = Astro.props;
+---
+
+<GuideDetail locale="es" kind="neighborhoods" guide={guide} />
