@@ -1,0 +1,88 @@
+---
+import ProfileLinks from './ProfileLinks.astro';
+import { site } from '../data/site';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { mainNav, pathFor, type NavKey } from '../lib/routes';
+
+interface Props {
+  locale: Locale;
+  current?: NavKey;
+  alternatePath: string;
+}
+
+const { locale, current, alternatePath } = Astro.props;
+const home = pathFor('home', locale);
+const labelKey = {
+  about: 'nav.about',
+  listings: 'nav.listings',
+  neighborhoods: 'nav.neighborhoods',
+  residences: 'nav.residences',
+  contact: 'nav.contact',
+} as const;
+---
+
+<a class="skip" href="#content">{t(locale, 'a11y.skip')}</a>
+<header class="site-header">
+  <div class="header-bar wrap">
+    <a class="brand" href={home} aria-current={current === 'home' ? 'page' : undefined}>
+      Mariana Ramírez
+    </a>
+    <nav class="desk-nav" aria-label={t(locale, 'a11y.primaryNav')}>
+      {
+        mainNav.map((page) => (
+          <a href={pathFor(page, locale)} aria-current={current === page ? 'page' : undefined}>
+            {t(locale, labelKey[page])}
+          </a>
+        ))
+      }
+      <a href={site.profiles[0].href} rel="noopener noreferrer" target="_blank">
+        {t(locale, 'link.serhant')}
+        <span class="visually-hidden"> ({t(locale, 'a11y.newTab')})</span>
+      </a>
+    </nav>
+    <div class="header-end">
+      <nav class="langs" aria-label={t(locale, 'a11y.language')}>
+        {
+          locale === 'en' ? (
+            <span aria-current="true" lang="en">
+              EN
+            </span>
+          ) : (
+            <a href={alternatePath} hreflang="en" lang="en">
+              EN
+            </a>
+          )
+        }
+        <span aria-hidden="true">/</span>
+        {
+          locale === 'es' ? (
+            <span aria-current="true" lang="es">
+              ES
+            </span>
+          ) : (
+            <a href={alternatePath} hreflang="es" lang="es">
+              ES
+            </a>
+          )
+        }
+      </nav>
+      <details class="drawer">
+        <summary>
+          <span class="when-closed">{t(locale, 'nav.menu')}</span>
+          <span class="when-open">{t(locale, 'nav.close')}</span>
+        </summary>
+        <nav class="drawer-nav" aria-label={t(locale, 'a11y.primaryNav')}>
+          {
+            mainNav.map((page) => (
+              <a href={pathFor(page, locale)} aria-current={current === page ? 'page' : undefined}>
+                {t(locale, labelKey[page])}
+              </a>
+            ))
+          }
+        </nav>
+        <ProfileLinks locale={locale} />
+      </details>
+    </div>
+  </div>
+</header>

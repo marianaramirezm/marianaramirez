@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { pathFor } from '../lib/routes';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const other = locale === 'en' ? 'es' : 'en';
+---
+
+<Base
+  locale={locale}
+  title={t(locale, 'meta.notFound.title')}
+  description={t(locale, 'meta.notFound.description')}
+  path={locale === 'es' ? '/es/404/' : '/404/'}
+  alternatePath={other === 'es' ? '/es/404/' : '/404/'}
+  noindex
+>
+  <div class="wrap page-intro">
+    <h1>{t(locale, 'notFound.title')}</h1>
+    <p class="lead">{t(locale, 'notFound.body')}</p>
+    <p class="stack-links">
+      <a class="button" href={pathFor('home', locale)}>{t(locale, 'notFound.home')}</a>
+    </p>
+    <p class="lead" lang={other} style="margin-top: 2rem;">
+      {t(other, 'notFound.title')}. {t(other, 'notFound.body')}
+    </p>
+    <p>
+      <a class="link" href={pathFor('home', other)} lang={other} hreflang={other}>{t(other, 'notFound.home')}</a>
+    </p>
+  </div>
+  <div class="page-body"></div>
+</Base>

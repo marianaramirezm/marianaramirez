@@ -1,0 +1,78 @@
+---
+import ProfileLinks from './ProfileLinks.astro';
+import { site } from '../data/site';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { mainNav, pathFor, type NavKey } from '../lib/routes';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const year = new Date().getFullYear();
+const labelKey = {
+  about: 'nav.about',
+  listings: 'nav.listings',
+  neighborhoods: 'nav.neighborhoods',
+  residences: 'nav.residences',
+  contact: 'nav.contact',
+  home: 'nav.home',
+} as const;
+const footerNav: NavKey[] = ['home', ...mainNav];
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-name">{site.name}</p>
+        <p>{t(locale, 'footer.role')}</p>
+        <p>{t(locale, 'footer.city')}</p>
+        {site.publicPhone && <p><a href={`tel:${site.publicPhone}`}>{site.publicPhone}</a></p>}
+        {site.publicEmail && <p><a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a></p>}
+        {site.officeAddress && <p>{site.officeAddress}</p>}
+      </div>
+      <nav aria-label={t(locale, 'a11y.footerNav')}>
+        <h2>{t(locale, 'footer.navigate')}</h2>
+        <ul>
+          {
+            footerNav.map((page) => (
+              <li>
+                <a href={pathFor(page, locale)}>{t(locale, labelKey[page])}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div>
+        <h2 id="social-label">{t(locale, 'footer.connect')}</h2>
+        <ProfileLinks locale={locale} />
+      </div>
+    </div>
+    <div class="fineprint">
+      <div class="eho-slot">
+        {
+          site.equalHousingLogo ? (
+            <img src={site.equalHousingLogo} alt={t(locale, 'footer.eho')} width="48" height="48" />
+          ) : (
+            <span class="eho" aria-hidden="true">
+              EHO
+            </span>
+          )
+        }
+        <p>
+          {t(locale, 'footer.eho')}. {t(locale, 'footer.ehoTodo')}
+        </p>
+      </div>
+      <p>
+        <strong>{t(locale, 'footer.brand')}</strong>
+        {' '}
+        {t(locale, 'footer.brandTodo')}
+      </p>
+      <p>{site.brokerageName || t(locale, 'footer.brokerageTodo')}</p>
+      <p>{site.license[locale]}</p>
+      <p>{t(locale, 'footer.rights', { year: String(year) })}</p>
+    </div>
+  </div>
+</footer>

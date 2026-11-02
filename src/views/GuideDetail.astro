@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Base from '../layouts/Base.astro';
+import type { Locale } from '../i18n/ui';
+import { paragraphs, t } from '../i18n/utils';
+import { neighborhoodPath, pathFor, residencePath, type NavKey } from '../lib/routes';
+import { breadcrumbNode, graph, placeNode } from '../lib/schema';
+import type { GuideEntry } from '../lib/types';
+
+interface Props {
+  locale: Locale;
+  kind: 'neighborhoods' | 'residences';
+  guide: GuideEntry;
+}
+
+const { locale, kind, guide } = Astro.props;
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const current: NavKey = kind;
+const path = (kind === 'neighborhoods' ? neighborhoodPath : residencePath)(guide.id, locale);
+const alternate = (kind === 'neighborhoods' ? neighborhoodPath : residencePath)(
+  guide.id,
+  locale === 'en' ? 'es' : 'en',
+);
+const indexPath = pathFor(kind, locale);
+const navLabel = kind === 'neighborhoods' ? 'nav.neighborhoods' : 'nav.residences';
+const kindLabel = kind === 'neighborhoods' ? 'guides.neighborhoodKind' : 'guides.residenceKind';
+const name = guide.data.name[locale];
+const title =
+  locale === 'es' ? `${name} | Guía | Mariana Ramírez` : `${name} | Guide | Mariana Ramírez`;
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, navLabel), path: indexPath },
+  { name, path },
+];
+const jsonLd = graph(
+  placeNode({
+    site,
+    path,
+    name: guide.data.name.en,
+    description: guide.data.description[locale],
+    address: guide.data.place,
+  }),
+  breadcrumbNode(site, crumbs),
+);
+---
+
+<Base
+  locale={locale}
+  title={title}
+  description={guide.data.description[locale]}
+  path={path}
+  alternatePath={alternate}
+  current={current}
+  jsonLd={jsonLd}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{t(locale, kindLabel)}</p>
+    <h1>{name}</h1>
+    <p class="lead">{guide.data.summary[locale]}</p>
+  </div>
+  <div class="wrap page-body">
+    <figure class="guide-figure">
+      <Image
+        src={guide.data.image}
+        alt={guide.data.imageAlt[locale]}
+        widths={[640, 1024, 1600]}
+        sizes="(min-width: 1100px) 1120px, 100vw"
+        quality={70}
+      />
+      <figcaption class="credit">
+        {guide.data.imageNote && <span class="credit-note">{guide.data.imageNote[locale]}</span>}
+        <span>
+          {t(locale, 'guides.photoCredit')} {guide.data.credit.author},{' '}
+          <a href={guide.data.credit.licenseUrl}>{guide.data.credit.license}</a>, {t(locale, 'guides.photoVia')}{' '}
+          <a href={guide.data.credit.source}>Wikimedia Commons</a>
+        </span>
+      </figcaption>
+    </figure>
+    <div class="prose">
+      {paragraphs(guide.data.intro[locale]).map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <section class="verify">
+      <h2>{t(locale, 'guides.verifiedTitle')}</h2>
+      <p>
+        {
+          guide.data.officialUrl ? (
+            <a class="link" href={guide.data.officialUrl} rel="noopener noreferrer">
+              {t(locale, 'guides.officialLabel')}
+            </a>
+          ) : (
+            <>
+              <span class="todo-tag">TODO</span>
+              {t(locale, 'guides.officialMissing')}
+            </>
+          )
+        }
+      </p>
+      {
+        guide.data.facts.length > 0 ? (
+          <ul class="fact-list">
+            {guide.data.facts.map((fact) => (
+              <li>
+                <strong>{fact.label[locale]}:</strong> {fact.value[locale]}{' '}
+                <a class="link" href={fact.source} rel="noopener noreferrer">
+                  {t(locale, 'guides.source')}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>
+            <span class="todo-tag">TODO</span>
+            {t(locale, 'guides.factsMissing')}
+          </p>
+        )
+      }
+    </section>
+  </div>
+</Base>

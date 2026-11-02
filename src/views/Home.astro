@@ -1,0 +1,232 @@
+---
+import { Picture } from 'astro:assets';
+import { site } from '../data/site';
+import hero from '../assets/photos/mariana-balcony.jpg';
+import skyline from '../assets/guides/downtown-skyline.jpg';
+import intro from '../assets/photos/mariana-kitchen.jpg';
+import contactPhoto from '../assets/photos/mariana-bar.jpg';
+import ContactForm from '../components/ContactForm.astro';
+import ListingCard from '../components/ListingCard.astro';
+import Base from '../layouts/Base.astro';
+import { getListings, getNeighborhoods, getResidences } from '../lib/content';
+import type { Locale, UiKey } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { neighborhoodPath, pathFor, residencePath } from '../lib/routes';
+import { agentNode, breadcrumbNode, faqNode, graph } from '../lib/schema';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const listings = await getListings();
+const neighborhoods = await getNeighborhoods();
+const residences = await getResidences();
+const featured = listings.slice(0, 2);
+const miami = neighborhoods.filter((item) => item.data.group !== 'beyond');
+const beyond = neighborhoods.filter((item) => item.data.group === 'beyond');
+const path = pathFor('home', locale);
+const alternate = pathFor('home', locale === 'en' ? 'es' : 'en');
+const crumbs = [{ name: t(locale, 'nav.home'), path }];
+const faqs = [1, 2, 3, 4, 5, 6] as const;
+const stats = [
+  ['home.statSaleValue', 'home.statSaleLabel'],
+  ['home.statRookieValue', 'home.statRookieLabel'],
+  ['home.statTeamValue', 'home.statTeamLabel'],
+  ['home.statLangValue', 'home.statLangLabel'],
+] as const;
+---
+
+<Base
+  locale={locale}
+  title={t(locale, 'meta.home.title')}
+  description={t(locale, 'meta.home.description')}
+  path={path}
+  alternatePath={alternate}
+  current="home"
+  overlay
+  jsonLd={graph(agentNode(origin, locale), faqNode(locale), breadcrumbNode(origin, crumbs))}
+>
+  <section class="hero">
+    <div class="hero-media">
+      <Picture
+        src={hero}
+        alt={t(locale, 'home.heroAlt')}
+        formats={['avif', 'webp']}
+        widths={[480, 768, 1100, 1320]}
+        sizes="100vw"
+        quality={72}
+        priority
+      />
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-copy wrap">
+      <h1>Mariana Ramírez</h1>
+      <p class="markets">{t(locale, 'home.markets')}</p>
+      <a class="button" href="#contact">{t(locale, 'home.cta')}</a>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap intro-grid">
+      <figure class="intro-photo">
+        <Picture
+          src={intro}
+          alt={t(locale, 'home.introAlt')}
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200]}
+          sizes="(min-width: 900px) 34rem, 100vw"
+          quality={72}
+        />
+      </figure>
+      <div>
+        <p class="eyebrow">{t(locale, 'home.introEyebrow')}</p>
+        <p class="lead intro-lead">{t(locale, 'home.introBody')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal style="padding-top: 0;">
+    <div class="wrap">
+      <ul class="stats">
+        {
+          stats.map(([value, label]) => (
+            <li>
+              <strong>{t(locale, value as UiKey)}</strong>
+              <span>{t(locale, label as UiKey)}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <figure class="skyline" data-reveal>
+    <Picture
+      src={skyline}
+      alt={locale === 'es'
+        ? 'El skyline del centro de Miami, con One Thousand Museum en el centro.'
+        : 'Downtown Miami skyline, with One Thousand Museum at the center.'}
+      formats={['avif', 'webp']}
+      widths={[640, 1100, 1600, 2000]}
+      sizes="100vw"
+      quality={70}
+    />
+    <figcaption class="credit wrap">
+      <span>
+        {t(locale, 'guides.photoCredit')} Phillip Pessar,{' '}
+        <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>, {t(locale, 'guides.photoVia')}{' '}
+        <a href="https://commons.wikimedia.org/wiki/File:One_Thousand_Museum_Tower_Downtown_Miami_-_Tower.jpg">Wikimedia Commons</a>
+      </span>
+    </figcaption>
+  </figure>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">{t(locale, 'home.listingsEyebrow')}</p>
+          <h2 class="display">{t(locale, 'home.listingsTitle')}</h2>
+        </div>
+        <p class="stack-links">
+          <a class="link" href={pathFor('listings', locale)}>{t(locale, 'home.listingsAll')}</a>
+          <a class="link" href={site.profiles[0].href} rel="noopener noreferrer">{t(locale, 'home.liveListings')}</a>
+        </p>
+      </div>
+      <p class="note">{t(locale, 'home.listingsNote')}</p>
+      <div class="cards">
+        {
+          featured.map((listing) => (
+            <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} variant="address" />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal style="padding-top: 0;">
+    <div class="wrap guides-split">
+      <div>
+        <p class="eyebrow">{t(locale, 'home.neighborhoodsEyebrow')}</p>
+        <h2 class="display">{t(locale, 'home.neighborhoodsTitle')}</h2>
+        <p class="group-label">{t(locale, 'home.neighborhoodsMiami')}</p>
+        <ul class="name-grid">
+          {
+            miami.map((item) => (
+              <li>
+                <a href={neighborhoodPath(item.id, locale)}>
+                  <span class="n">{item.data.name[locale]}</span>
+                  <span class="where">{item.data.regionLabel[locale]}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="group-label">{t(locale, 'home.neighborhoodsBeyond')}</p>
+        <ul class="name-grid">
+          {
+            beyond.map((item) => (
+              <li>
+                <a href={neighborhoodPath(item.id, locale)}>
+                  <span class="n">{item.data.name[locale]}</span>
+                  <span class="where">{item.data.regionLabel[locale]}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="display residences-title">{t(locale, 'home.residencesTitle')}</h2>
+        <ul class="name-grid">
+          {
+            residences.map((item) => (
+              <li>
+                <a href={residencePath(item.id, locale)}>
+                  <span class="n">{item.data.name[locale]}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" data-reveal style="padding-top: 0;">
+    <div class="wrap faq-wrap">
+      <p class="eyebrow">{t(locale, 'home.faqEyebrow')}</p>
+      <h2 class="display">{t(locale, 'home.faqTitle')}</h2>
+      {
+        faqs.map((index) => (
+          <details>
+            <summary>{t(locale, `faq.q${index}` as UiKey)}</summary>
+            <p>{t(locale, `faq.a${index}` as UiKey)}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section contact-band" id="contact" data-reveal>
+    <div class="wrap contact-grid">
+      <div>
+        <figure class="contact-photo">
+          <Picture
+            src={contactPhoto}
+            alt={t(locale, 'home.contactPhotoAlt')}
+            formats={['avif', 'webp']}
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 900px) 32rem, 100vw"
+            quality={70}
+          />
+        </figure>
+        <p class="eyebrow">{t(locale, 'home.contactEyebrow')}</p>
+        <h2 class="display">{t(locale, 'home.contactTitle')}</h2>
+        <p class="lead">{t(locale, 'home.contactBody')}</p>
+      </div>
+      <ContactForm locale={locale} neighborhoods={neighborhoods} />
+    </div>
+  </section>
+</Base>

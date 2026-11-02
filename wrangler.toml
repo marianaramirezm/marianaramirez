@@ -1,0 +1,4 @@
+# Cloudflare Pages. Do not deploy from this file until the form endpoint is set.
+name = "mariana-ramirez-realestate"
+compatibility_date = "2026-11-02"
+pages_build_output_dir = "./dist"

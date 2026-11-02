@@ -1,0 +1,484 @@
+const en = {
+  'nav.about': 'About',
+  'nav.listings': 'Listings',
+  'nav.neighborhoods': 'Neighborhoods',
+  'nav.residences': 'Residences',
+  'nav.contact': 'Contact',
+  'link.serhant': 'SERHANT. profile',
+  'link.instagram': 'Instagram',
+  'link.tiktok': 'TikTok',
+  'nav.menu': 'Menu',
+  'nav.close': 'Close',
+  'nav.home': 'Home',
+
+  'a11y.skip': 'Skip to content',
+  'a11y.language': 'Language',
+  'a11y.breadcrumb': 'Breadcrumb',
+  'a11y.primaryNav': 'Primary',
+  'a11y.footerNav': 'Footer',
+  'a11y.social': 'Social',
+  'a11y.newTab': 'opens in a new tab',
+
+  'home.heroAlt':
+    'Mariana Ramírez on a high-rise balcony in Brickell, with the Miami skyline and Biscayne Bay behind her.',
+  'home.markets':
+    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · West Palm Beach · New York',
+  'home.cta': 'Start a conversation',
+  'home.introEyebrow': 'The practice',
+  'home.introAlt':
+    'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
+  'home.introBody':
+    'I’m a luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. I represent people buying, selling, renting, and investing across Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach, and New York. I’m Colombian, from Barranquilla, and I work in English and Spanish.',
+  'home.statSaleValue': '$2.4M',
+  'home.statSaleLabel': 'Record sale',
+  'home.statRookieValue': 'Nominee',
+  'home.statRookieLabel': 'Rookie of the Year',
+  'home.statTeamValue': 'SERHANT.',
+  'home.statTeamLabel': 'Nile Lundgren’s team',
+  'home.statLangValue': 'EN · ES',
+  'home.statLangLabel': 'Bilingual',
+  'home.listingsEyebrow': 'Selected',
+  'home.listingsTitle': 'Listings and past sales',
+  'home.listingsNote':
+    'Figures are as published on my SERHANT. profile. The photographs show the surrounding city, not the residence.',
+  'home.listingsAll': 'All listings',
+  'home.liveListings': 'View my live listings',
+  'home.neighborhoodsEyebrow': 'Guides',
+  'home.neighborhoodsTitle': 'Neighborhoods',
+  'home.neighborhoodsMiami': 'Miami',
+  'home.neighborhoodsBeyond': 'Also',
+  'home.residencesTitle': 'Branded residences',
+  'home.faqEyebrow': 'Questions',
+  'home.faqTitle': 'Mariana Ramírez, answered',
+  'home.contactEyebrow': 'Contact',
+  'home.contactTitle': 'Tell me what you want and when.',
+  'home.contactBody': 'I will reply with a plan and a time to talk.',
+  'home.contactPhotoAlt':
+    'Mariana Ramírez on the phone at a marble bar, a drink on the counter beside her.',
+
+  'faq.q1': 'Who is Mariana Ramírez?',
+  'faq.a1':
+    'A luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. She is Colombian, from Barranquilla.',
+  'faq.q2': 'Where does she work?',
+  'faq.a2':
+    'Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach, and New York.',
+  'faq.q3': 'What languages does she work in?',
+  'faq.a3': 'English, Spanish, and German, as listed on her SERHANT. profile.',
+  'faq.q4': 'What is on her record so far?',
+  'faq.a4': 'A record sale of $2.4 million, and a nomination for Rookie of the Year.',
+  'faq.q5': 'Where do the listing figures come from?',
+  'faq.a5':
+    'From her public SERHANT. profile. If a number changes, that page is the live record.',
+  'faq.q6': 'How do I reach her?',
+  'faq.a6':
+    'Call (561) 825-7355, email mariana_ramirez@serhant.com, or use the form on this site. She replies personally.',
+
+  'about.eyebrow': 'About',
+  'about.title': 'Mariana Ramírez',
+  'about.lead': 'A young Colombian advisor from Barranquilla, based in Miami.',
+  'about.p1':
+    'I’m a luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. I was born in Barranquilla, Colombia, and I work in a city I chose — international buyers, branded towers, and established neighborhoods a short drive apart.',
+  'about.p2':
+    'I work with people who want a clear process: a defined search or a sale plan, a price said plainly, and someone who stays close to the transaction.',
+  'about.p3': 'In this first chapter I recorded a sale of $2.4 million and was nominated for Rookie of the Year.',
+  'about.profileNote':
+    'My SERHANT. profile lists me as a Licensed Real Estate Salesperson in Florida, license SL3625059, and notes that I also work in German.',
+  'about.photoAlt':
+    'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
+  'about.factsTitle': 'On the record',
+  'about.factTeam': 'Advisor at SERHANT., on Nile Lundgren’s team in Miami.',
+  'about.factSale': 'Record sale of $2.4 million.',
+  'about.factRookie': 'Nominated for Rookie of the Year.',
+
+  'listings.eyebrow': 'Inventory',
+  'listings.title': 'Listings and past sales',
+  'listings.lead':
+    'Taken from my SERHANT. profile. Photographs show the surrounding city, not the residence.',
+  'listings.example': 'Example',
+  'listings.active': 'Active',
+  'listings.sold': 'Past sales',
+  'listings.leased': 'Past rentals',
+  'listings.source': 'SERHANT. profile',
+  'listings.view': 'View example',
+  'listings.price': 'Price',
+  'listings.beds': 'Beds',
+  'listings.baths': 'Baths',
+  'listings.sqft': 'Sq ft',
+  'listings.status': 'Status',
+  'listings.address': 'Address',
+  'listings.neighborhood': 'Neighborhood',
+  'listings.official': 'Official listing',
+  'listings.officialMissing': 'Official listing URL',
+  'listings.back': 'All listings',
+  'listings.photoAlt': 'Placeholder photograph for this example listing. Replace before publishing.',
+  'listings.statusActive': 'Active',
+  'listings.statusSold': 'Sold',
+  'listings.metaDescription':
+    'Sample entry on Mariana Ramírez’s site. Not a live property. Replace before publishing.',
+
+  'guides.neighborhoodsEyebrow': 'Guides',
+  'guides.neighborhoodsTitle': 'Neighborhoods',
+  'guides.neighborhoodsLead':
+    'Short notes on the places Mariana works. They are written to orient a search, not to stand in for a tour.',
+  'guides.residencesEyebrow': 'Guides',
+  'guides.residencesTitle': 'Branded residences',
+  'guides.residencesLead':
+    'Introductions only. Specs, prices, unit counts, dates, and amenities stay off these pages until they are confirmed on an official site and the source is saved with the note.',
+  'guides.neighborhoodKind': 'Neighborhood',
+  'guides.residenceKind': 'Branded residence',
+  'guides.photoAlt': 'Placeholder photograph for {name}. Replace with a licensed image.',
+  'guides.photoCredit': 'Photo:',
+  'guides.photoVia': 'via',
+  'guides.verifiedTitle': 'Verified details',
+  'guides.officialLabel': 'Official website',
+  'guides.officialMissing': 'Official website URL',
+  'guides.factsMissing':
+    'Add verified facts in this guide’s content file, each with a source URL. Do not add specs, prices, unit counts, completion dates, or amenities without that source.',
+  'guides.source': 'Source',
+
+  'contact.eyebrow': 'Contact',
+  'contact.title': 'Tell me what you want and when.',
+  'contact.lead':
+    'Buy, sell, rent, or invest. Name the neighborhood if you have one, and a budget if you are ready to share it. I reply personally.',
+  'contact.name': 'Name',
+  'contact.email': 'Email',
+  'contact.phone': 'Phone',
+  'contact.phoneOptional': 'optional',
+  'contact.language': 'Preferred language',
+  'contact.interest': 'I am looking to',
+  'contact.neighborhood': 'Neighborhood',
+  'contact.budget': 'Budget',
+  'contact.message': 'Message',
+  'contact.consent': 'I agree to be contacted about this inquiry.',
+  'contact.submit': 'Send',
+  'contact.sending': 'Sending',
+  'contact.honeypot': 'Company website',
+  'contact.choose': 'Select',
+  'contact.previewNote':
+    'Inbox not connected. A valid form opens the thank-you page and is not emailed until Netlify Forms or PUBLIC_FORM_ENDPOINT is set.',
+  'contact.sendError': 'The form could not be sent. Please try again in a moment.',
+  'contact.errorSummary': 'Please correct the following:',
+
+  'err.name': 'Enter your name.',
+  'err.email': 'Enter a valid email address.',
+  'err.phone': 'Enter a phone number with at least 7 digits, or leave the field blank.',
+  'err.language': 'Choose a language.',
+  'err.interest': 'Choose what you want to do.',
+  'err.neighborhood': 'Choose a neighborhood.',
+  'err.budget': 'Choose a budget range.',
+  'err.message': 'Write a short message, at least 10 characters.',
+  'err.consent': 'Confirm that you agree to be contacted.',
+
+  'opt.buy': 'Buy',
+  'opt.sell': 'Sell',
+  'opt.rent': 'Rent',
+  'opt.invest': 'Invest',
+  'opt.lang.en': 'English',
+  'opt.lang.es': 'Spanish',
+  'opt.budget.discuss': 'Prefer to discuss',
+  'opt.budget.u1': 'Under $1 million',
+  'opt.budget.1_2': '$1–2 million',
+  'opt.budget.2_5': '$2–5 million',
+  'opt.budget.5_10': '$5–10 million',
+  'opt.budget.10p': '$10 million and above',
+  'opt.other': 'Other',
+  'opt.unsure': 'Not sure yet',
+
+  'thanks.eyebrow': 'Contact',
+  'thanks.title': 'Thank you.',
+  'thanks.bodyLive': 'Mariana has your note and will reply personally.',
+  'thanks.bodyPreview':
+    'The form is valid. Nothing was emailed — delivery is not connected yet.',
+  'thanks.home': 'Back to home',
+  'thanks.again': 'Send another note',
+
+  'footer.role': 'Luxury real estate advisor',
+  'footer.city': 'Miami',
+  'footer.navigate': 'Navigate',
+  'footer.connect': 'Connect',
+  'footer.socialPending': 'TODO — add URL',
+  'footer.brand': 'SERHANT.',
+  'footer.brandTodo': 'TODO — Wordmark shown as text, pending compliance review.',
+  'footer.brokerageTodo': 'TODO — Brokerage legal name, pending compliance review.',
+  'footer.licenseTodo': 'TODO — License number and state, pending compliance review.',
+  'footer.eho': 'Equal Housing Opportunity',
+  'footer.ehoTodo': 'TODO — Logo file, pending compliance review.',
+  'footer.rights': '© {year} Mariana Ramírez. All rights reserved.',
+
+  'meta.home.title': 'Mariana Ramírez | Luxury Real Estate Advisor, Miami',
+  'meta.home.description':
+    'Mariana Ramírez advises on residential property in Miami, Palm Beach, and New York with SERHANT., on Nile Lundgren’s team.',
+  'meta.about.title': 'About Mariana Ramírez | Miami Real Estate Advisor',
+  'meta.about.description':
+    'Colombian advisor from Barranquilla, based in Miami with SERHANT. on Nile Lundgren’s team. Record sale of $2.4 million and a Rookie of the Year nomination.',
+  'meta.listings.title': 'Listings and Past Sales | Mariana Ramírez',
+  'meta.listings.description':
+    'Current listings and past sales from Mariana Ramírez. Sample entries are labeled until live inventory replaces them.',
+  'meta.neighborhoods.title': 'Neighborhood Guides | Mariana Ramírez',
+  'meta.neighborhoods.description':
+    'Neighborhood guides for Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach, and New York City.',
+  'meta.residences.title': 'Branded Residences | Mariana Ramírez',
+  'meta.residences.description':
+    'Introductions to branded residences Mariana Ramírez advises on. Verified facts are added only from official sources.',
+  'meta.contact.title': 'Contact Mariana Ramírez | Miami Real Estate',
+  'meta.contact.description':
+    'Contact Mariana Ramírez about buying, selling, renting, or investing in Miami, Palm Beach, or New York.',
+  'meta.thanks.title': 'Thank you | Mariana Ramírez',
+  'meta.thanks.description': 'Your inquiry to Mariana Ramírez.',
+  'meta.notFound.title': 'Page not found | Mariana Ramírez',
+  'meta.notFound.description': 'This page is not on Mariana Ramírez’s site.',
+  'meta.ogAlt':
+    'Mariana Ramírez on a Brickell balcony, with the Miami skyline and the bay behind her.',
+
+  'schema.jobTitle': 'Luxury Real Estate Advisor',
+
+  'notFound.title': 'Page not found',
+  'notFound.body': 'The page you requested is not on this site.',
+  'notFound.home': 'Back to home',
+};
+
+const es: typeof en = {
+  'nav.about': 'Sobre mí',
+  'nav.listings': 'Propiedades',
+  'nav.neighborhoods': 'Barrios',
+  'nav.residences': 'Residencias',
+  'nav.contact': 'Contacto',
+  'link.serhant': 'Perfil en SERHANT.',
+  'link.instagram': 'Instagram',
+  'link.tiktok': 'TikTok',
+  'nav.menu': 'Menú',
+  'nav.close': 'Cerrar',
+  'nav.home': 'Inicio',
+
+  'a11y.skip': 'Saltar al contenido',
+  'a11y.language': 'Idioma',
+  'a11y.breadcrumb': 'Ruta de navegación',
+  'a11y.primaryNav': 'Principal',
+  'a11y.footerNav': 'Pie de página',
+  'a11y.social': 'Redes',
+  'a11y.newTab': 'se abre en una pestaña nueva',
+
+  'home.heroAlt':
+    'Mariana Ramírez en un balcón alto de Brickell, con el skyline de Miami y Biscayne Bay detrás.',
+  'home.markets':
+    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · West Palm Beach · Nueva York',
+  'home.cta': 'Empezar una conversación',
+  'home.introEyebrow': 'La práctica',
+  'home.introAlt':
+    'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
+  'home.introBody':
+    'Soy asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Represento a quien compra, vende, alquila o invierte en Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach y Nueva York. Soy colombiana, de Barranquilla, y trabajo en español y en inglés.',
+  'home.statSaleValue': '2,4 M',
+  'home.statSaleLabel': 'Venta récord',
+  'home.statRookieValue': 'Nominada',
+  'home.statRookieLabel': 'Rookie of the Year',
+  'home.statTeamValue': 'SERHANT.',
+  'home.statTeamLabel': 'Equipo de Nile Lundgren',
+  'home.statLangValue': 'ES · EN',
+  'home.statLangLabel': 'Bilingüe',
+  'home.listingsEyebrow': 'Selección',
+  'home.listingsTitle': 'Propiedades y ventas',
+  'home.listingsNote':
+    'Las cifras están como aparecen en mi perfil de SERHANT. Las fotografías muestran la ciudad alrededor, no la residencia.',
+  'home.listingsAll': 'Todas las propiedades',
+  'home.liveListings': 'Ver mis propiedades en vivo',
+  'home.neighborhoodsEyebrow': 'Guías',
+  'home.neighborhoodsTitle': 'Barrios',
+  'home.neighborhoodsMiami': 'Miami',
+  'home.neighborhoodsBeyond': 'También',
+  'home.residencesTitle': 'Residencias de marca',
+  'home.faqEyebrow': 'Preguntas',
+  'home.faqTitle': 'Mariana Ramírez, respondida',
+  'home.contactEyebrow': 'Contacto',
+  'home.contactTitle': 'Dime qué quieres y para cuándo.',
+  'home.contactBody': 'Respondo con un plan y un momento para hablar.',
+  'home.contactPhotoAlt':
+    'Mariana Ramírez al teléfono en una barra de mármol, con una copa sobre el mostrador.',
+
+  'faq.q1': '¿Quién es Mariana Ramírez?',
+  'faq.a1':
+    'Asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Es colombiana, de Barranquilla.',
+  'faq.q2': '¿Dónde trabaja?',
+  'faq.a2':
+    'En Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach y Nueva York.',
+  'faq.q3': '¿En qué idiomas trabaja?',
+  'faq.a3': 'En inglés, español y alemán, según su perfil en SERHANT.',
+  'faq.q4': '¿Qué hay en su registro hasta ahora?',
+  'faq.a4': 'Una venta récord de 2,4 millones de dólares y una nominación a Rookie of the Year.',
+  'faq.q5': '¿De dónde salen las cifras de las propiedades?',
+  'faq.a5':
+    'De su perfil público en SERHANT. Si un número cambia, esa página es el registro vigente.',
+  'faq.q6': '¿Cómo la contacto?',
+  'faq.a6':
+    'Al (561) 825-7355, a mariana_ramirez@serhant.com, o con el formulario de este sitio. Responde en persona.',
+
+  'about.eyebrow': 'Sobre mí',
+  'about.title': 'Mariana Ramírez',
+  'about.lead': 'Asesora colombiana, joven, de Barranquilla y establecida en Miami.',
+  'about.p1':
+    'Soy asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Nací en Barranquilla, Colombia, y trabajo en una ciudad que elegí: compradores internacionales, torres de marca y barrios consolidados quedan a pocos minutos.',
+  'about.p2':
+    'Trabajo con quien quiere un proceso claro: una búsqueda definida o un plan de venta, un precio dicho con franqueza y alguien que se queda cerca de la transacción.',
+  'about.p3':
+    'En esta primera etapa registré una venta de 2,4 millones de dólares y fui nominada a Rookie of the Year.',
+  'about.profileNote':
+    'Mi perfil en SERHANT. me registra como Licensed Real Estate Salesperson en Florida, licencia SL3625059, y señala que también trabajo en alemán.',
+  'about.photoAlt':
+    'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
+  'about.factsTitle': 'En el registro',
+  'about.factTeam': 'Asesora en SERHANT., en el equipo de Nile Lundgren en Miami.',
+  'about.factSale': 'Venta récord de 2,4 millones de dólares.',
+  'about.factRookie': 'Nominada a Rookie of the Year.',
+
+  'listings.eyebrow': 'Inventario',
+  'listings.title': 'Propiedades y ventas',
+  'listings.lead':
+    'Tomadas de mi perfil en SERHANT. Las fotografías muestran la ciudad alrededor, no la residencia.',
+  'listings.example': 'Ejemplo',
+  'listings.active': 'Activas',
+  'listings.sold': 'Ventas',
+  'listings.leased': 'Alquileres anteriores',
+  'listings.source': 'Perfil en SERHANT.',
+  'listings.view': 'Ver ejemplo',
+  'listings.price': 'Precio',
+  'listings.beds': 'Habitaciones',
+  'listings.baths': 'Baños',
+  'listings.sqft': 'Pies cuadrados',
+  'listings.status': 'Estado',
+  'listings.address': 'Dirección',
+  'listings.neighborhood': 'Barrio',
+  'listings.official': 'Anuncio oficial',
+  'listings.officialMissing': 'URL del anuncio oficial',
+  'listings.back': 'Todas las propiedades',
+  'listings.photoAlt':
+    'Fotografía provisional de este ejemplo. Reemplazar antes de publicar.',
+  'listings.statusActive': 'Activa',
+  'listings.statusSold': 'Vendida',
+  'listings.metaDescription':
+    'Ficha de ejemplo en el sitio de Mariana Ramírez. No es una propiedad real. Reemplazar antes de publicar.',
+
+  'guides.neighborhoodsEyebrow': 'Guías',
+  'guides.neighborhoodsTitle': 'Barrios',
+  'guides.neighborhoodsLead':
+    'Notas breves sobre los lugares donde trabaja Mariana. Sirven para orientar una búsqueda, no para reemplazar una visita.',
+  'guides.residencesEyebrow': 'Guías',
+  'guides.residencesTitle': 'Residencias de marca',
+  'guides.residencesLead':
+    'Solo introducciones. Especificaciones, precios, número de unidades, fechas y comodidades no entran en estas páginas hasta confirmarse en un sitio oficial y guardar la fuente junto a la nota.',
+  'guides.neighborhoodKind': 'Barrio',
+  'guides.residenceKind': 'Residencia de marca',
+  'guides.photoAlt': 'Fotografía provisional de {name}. Reemplazar con una imagen con licencia.',
+  'guides.photoCredit': 'Foto:',
+  'guides.photoVia': 'vía',
+  'guides.verifiedTitle': 'Datos verificados',
+  'guides.officialLabel': 'Sitio oficial',
+  'guides.officialMissing': 'URL del sitio oficial',
+  'guides.factsMissing':
+    'Agrega datos verificados en el archivo de esta guía, cada uno con un URL de fuente. No añadas especificaciones, precios, número de unidades, fechas de entrega ni comodidades sin esa fuente.',
+  'guides.source': 'Fuente',
+
+  'contact.eyebrow': 'Contacto',
+  'contact.title': 'Dime qué quieres y para cuándo.',
+  'contact.lead':
+    'Comprar, vender, alquilar o invertir. Indica el barrio si ya lo tienes, y un presupuesto si quieres compartirlo. Respondo en persona.',
+  'contact.name': 'Nombre',
+  'contact.email': 'Correo',
+  'contact.phone': 'Teléfono',
+  'contact.phoneOptional': 'opcional',
+  'contact.language': 'Idioma de preferencia',
+  'contact.interest': 'Quiero',
+  'contact.neighborhood': 'Barrio',
+  'contact.budget': 'Presupuesto',
+  'contact.message': 'Mensaje',
+  'contact.consent': 'Acepto que me contacten sobre esta consulta.',
+  'contact.submit': 'Enviar',
+  'contact.sending': 'Enviando',
+  'contact.honeypot': 'Sitio web de la empresa',
+  'contact.choose': 'Elegir',
+  'contact.previewNote':
+    'El buzón no está conectado. Un formulario válido abre la página de gracias y no se envía por correo hasta configurar Netlify Forms o PUBLIC_FORM_ENDPOINT.',
+  'contact.sendError': 'No se pudo enviar el formulario. Inténtalo de nuevo en un momento.',
+  'contact.errorSummary': 'Corrige lo siguiente:',
+
+  'err.name': 'Escribe tu nombre.',
+  'err.email': 'Escribe un correo válido.',
+  'err.phone': 'Escribe un teléfono de al menos 7 dígitos, o deja el campo en blanco.',
+  'err.language': 'Elige un idioma.',
+  'err.interest': 'Elige qué quieres hacer.',
+  'err.neighborhood': 'Elige un barrio.',
+  'err.budget': 'Elige un rango de presupuesto.',
+  'err.message': 'Escribe un mensaje breve, de al menos 10 caracteres.',
+  'err.consent': 'Confirma que aceptas que te contacten.',
+
+  'opt.buy': 'Comprar',
+  'opt.sell': 'Vender',
+  'opt.rent': 'Alquilar',
+  'opt.invest': 'Invertir',
+  'opt.lang.en': 'Inglés',
+  'opt.lang.es': 'Español',
+  'opt.budget.discuss': 'Prefiero conversarlo',
+  'opt.budget.u1': 'Menos de 1 millón de dólares',
+  'opt.budget.1_2': '1–2 millones de dólares',
+  'opt.budget.2_5': '2–5 millones de dólares',
+  'opt.budget.5_10': '5–10 millones de dólares',
+  'opt.budget.10p': '10 millones de dólares o más',
+  'opt.other': 'Otro',
+  'opt.unsure': 'Aún no lo sé',
+
+  'thanks.eyebrow': 'Contacto',
+  'thanks.title': 'Gracias.',
+  'thanks.bodyLive': 'Mariana ya tiene tu mensaje y responderá en persona.',
+  'thanks.bodyPreview':
+    'El formulario es válido. No se envió ningún correo: el envío todavía no está conectado.',
+  'thanks.home': 'Volver al inicio',
+  'thanks.again': 'Enviar otra nota',
+
+  'footer.role': 'Asesora de bienes raíces de lujo',
+  'footer.city': 'Miami',
+  'footer.navigate': 'Navegar',
+  'footer.connect': 'Conectar',
+  'footer.socialPending': 'TODO — agregar URL',
+  'footer.brand': 'SERHANT.',
+  'footer.brandTodo': 'TODO — El nombre va en texto, pendiente de revisión de cumplimiento.',
+  'footer.brokerageTodo': 'TODO — Razón social de la correduría, pendiente de revisión de cumplimiento.',
+  'footer.licenseTodo': 'TODO — Número de licencia y estado, pendiente de revisión de cumplimiento.',
+  'footer.eho': 'Equal Housing Opportunity',
+  'footer.ehoTodo': 'TODO — Archivo del logo, pendiente de revisión de cumplimiento.',
+  'footer.rights': '© {year} Mariana Ramírez. Todos los derechos reservados.',
+
+  'meta.home.title': 'Mariana Ramírez | Asesora de bienes raíces de lujo en Miami',
+  'meta.home.description':
+    'Mariana Ramírez asesora en propiedad residencial en Miami, Palm Beach y Nueva York, con SERHANT., en el equipo de Nile Lundgren.',
+  'meta.about.title': 'Sobre Mariana Ramírez | Asesora inmobiliaria en Miami',
+  'meta.about.description':
+    'Asesora colombiana de Barranquilla, establecida en Miami con SERHANT. en el equipo de Nile Lundgren. Venta récord de 2,4 millones de dólares y nominación a Rookie of the Year.',
+  'meta.listings.title': 'Propiedades y ventas | Mariana Ramírez',
+  'meta.listings.description':
+    'Propiedades actuales y ventas anteriores de Mariana Ramírez. Los ejemplos están marcados hasta que los reemplace el inventario real.',
+  'meta.neighborhoods.title': 'Guías de barrios | Mariana Ramírez',
+  'meta.neighborhoods.description':
+    'Guías de Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach y Nueva York.',
+  'meta.residences.title': 'Residencias de marca | Mariana Ramírez',
+  'meta.residences.description':
+    'Introducción a las residencias de marca sobre las que asesora Mariana Ramírez. Los datos verificados se agregan solo desde fuentes oficiales.',
+  'meta.contact.title': 'Contacto | Mariana Ramírez',
+  'meta.contact.description':
+    'Contacta a Mariana Ramírez para comprar, vender, alquilar o invertir en Miami, Palm Beach o Nueva York.',
+  'meta.thanks.title': 'Gracias | Mariana Ramírez',
+  'meta.thanks.description': 'Tu consulta para Mariana Ramírez.',
+  'meta.notFound.title': 'Página no encontrada | Mariana Ramírez',
+  'meta.notFound.description': 'Esta página no está en el sitio de Mariana Ramírez.',
+  'meta.ogAlt':
+    'Mariana Ramírez en un balcón de Brickell, con el skyline de Miami y la bahía detrás.',
+
+  'schema.jobTitle': 'Asesora de bienes raíces de lujo',
+
+  'notFound.title': 'Página no encontrada',
+  'notFound.body': 'La página que buscas no está en este sitio.',
+  'notFound.home': 'Volver al inicio',
+};
+
+export const ui = { en, es };
+
+export type Locale = keyof typeof ui;
+export type UiKey = keyof typeof en;

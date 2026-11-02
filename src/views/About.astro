@@ -1,0 +1,75 @@
+---
+import { Picture } from 'astro:assets';
+import portrait from '../assets/photos/mariana-kitchen.jpg';
+import ProfileLinks from '../components/ProfileLinks.astro';
+import { site } from '../data/site';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Base from '../layouts/Base.astro';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { pathFor } from '../lib/routes';
+import { agentNode, breadcrumbNode, graph } from '../lib/schema';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const path = pathFor('about', locale);
+const alternate = pathFor('about', locale === 'en' ? 'es' : 'en');
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, 'nav.about'), path },
+];
+---
+
+<Base
+  locale={locale}
+  title={t(locale, 'meta.about.title')}
+  description={t(locale, 'meta.about.description')}
+  path={path}
+  alternatePath={alternate}
+  current="about"
+  jsonLd={graph(agentNode(origin, locale), breadcrumbNode(origin, crumbs))}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{t(locale, 'about.eyebrow')}</p>
+    <h1>{t(locale, 'about.title')}</h1>
+    <p class="lead">{t(locale, 'about.lead')}</p>
+  </div>
+  <div class="wrap page-body">
+    <div class="about-grid">
+      <figure class="portrait">
+        <Picture
+          src={portrait}
+          alt={t(locale, 'about.photoAlt')}
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200]}
+          sizes="(min-width: 900px) 28rem, 100vw"
+          quality={72}
+        />
+      </figure>
+      <div class="prose">
+        <p>{t(locale, 'about.p1')}</p>
+        <p>{t(locale, 'about.p2')}</p>
+        <p>{t(locale, 'about.p3')}</p>
+        <p>{t(locale, 'about.profileNote')}</p>
+        <p>
+          <a href={`tel:${site.publicPhone.replace(/[^\d+]/g, '')}`}>{site.publicPhone}</a><br />
+          <a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a>
+        </p>
+        <ProfileLinks locale={locale} />
+      </div>
+    </div>
+    <section class="facts">
+      <h2>{t(locale, 'about.factsTitle')}</h2>
+      <ol>
+        <li>{t(locale, 'about.factTeam')}</li>
+        <li>{t(locale, 'about.factSale')}</li>
+        <li>{t(locale, 'about.factRookie')}</li>
+      </ol>
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,31 @@
+---
+import { site, type ProfileId } from '../data/site';
+import type { Locale, UiKey } from '../i18n/ui';
+import { t } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  ids?: ProfileId[];
+}
+
+const { locale, ids } = Astro.props;
+const label: Record<ProfileId, UiKey> = {
+  serhant: 'link.serhant',
+  instagram: 'link.instagram',
+  tiktok: 'link.tiktok',
+};
+const links = ids ? site.profiles.filter((item) => ids.includes(item.id)) : site.profiles;
+---
+
+<ul class="profile-links">
+  {
+    links.map((item) => (
+      <li>
+        <a href={item.href} rel="noopener noreferrer" target="_blank">
+          {t(locale, label[item.id])}
+          <span class="visually-hidden"> ({t(locale, 'a11y.newTab')})</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

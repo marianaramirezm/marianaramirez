@@ -1,0 +1,46 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Base from '../layouts/Base.astro';
+import { formMode } from '../lib/form-mode';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { pathFor } from '../lib/routes';
+import { breadcrumbNode, graph } from '../lib/schema';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const path = pathFor('thanks', locale);
+const alternate = pathFor('thanks', locale === 'en' ? 'es' : 'en');
+const live = formMode() !== 'preview';
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, 'nav.contact'), path: pathFor('contact', locale) },
+  { name: t(locale, 'thanks.title'), path },
+];
+---
+
+<Base
+  locale={locale}
+  title={t(locale, 'meta.thanks.title')}
+  description={t(locale, 'meta.thanks.description')}
+  path={path}
+  alternatePath={alternate}
+  noindex
+  jsonLd={graph(breadcrumbNode(site, crumbs))}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{t(locale, 'thanks.eyebrow')}</p>
+    <h1>{t(locale, 'thanks.title')}</h1>
+    <p class="lead">{live ? t(locale, 'thanks.bodyLive') : t(locale, 'thanks.bodyPreview')}</p>
+    <p class="stack-links">
+      <a class="link" href={pathFor('home', locale)}>{t(locale, 'thanks.home')}</a>
+      <a class="link" href={pathFor('contact', locale)}>{t(locale, 'thanks.again')}</a>
+    </p>
+  </div>
+  <div class="page-body"></div>
+</Base>
