@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { locale, kind, guides } = Astro.props;
-const site = Astro.site ?? new URL('https://example.com');
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const current: NavKey = kind;
 const path = pathFor(kind, locale);
 const alternate = pathFor(kind, locale === 'en' ? 'es' : 'en');

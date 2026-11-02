@@ -30,6 +30,7 @@ const footerNav: NavKey[] = ['home', ...mainNav];
         <p>{t(locale, 'footer.city')}</p>
         {site.publicPhone && <p><a href={`tel:${site.publicPhone}`}>{site.publicPhone}</a></p>}
         {site.publicEmail && <p><a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a></p>}
+        {site.officeAddress && <p>{site.officeAddress}</p>}
       </div>
       <nav aria-label={t(locale, 'a11y.footerNav')}>
         <h2>{t(locale, 'footer.navigate')}</h2>

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import { loadEnv } from 'vite';
 
 const env = loadEnv(process.env.NODE_ENV ?? '', process.cwd(), '');
-const site = process.env.SITE_URL || env.SITE_URL || 'https://example.com';
+const site = process.env.SITE_URL || env.SITE_URL || 'https://marianaramirezrealestate.com';
 
 // https://astro.build/config
 export default defineConfig({

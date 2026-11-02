@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { locale, listing } = Astro.props;
-const site = Astro.site ?? new URL('https://example.com');
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const neighborhoods = await getNeighborhoods();
 const area = neighborhoods.find((item) => item.id === listing.data.neighborhood);
 const path = listingPath(listing.id, locale);

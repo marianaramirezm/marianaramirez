@@ -1,5 +1,4 @@
-import type { Locale } from '../i18n/ui';
-import { ui } from '../i18n/ui';
+import { ui, type Locale, type UiKey } from '../i18n/ui';
 import { absolute, pathFor } from './routes';
 
 export type Crumb = { name: string; path: string };
@@ -57,6 +56,21 @@ export function agentNode(site: URL, locale: Locale): Record<string, unknown> {
     ],
     image: absolute(site, '/og.jpg'),
     description: ui[locale]['meta.home.description'],
+  };
+}
+
+export function faqNode(locale: Locale): Record<string, unknown> {
+  const questions = [1, 2, 3, 4, 5, 6].map((index) => ({
+    '@type': 'Question',
+    name: ui[locale][`faq.q${index}` as UiKey],
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: ui[locale][`faq.a${index}` as UiKey],
+    },
+  }));
+  return {
+    '@type': 'FAQPage',
+    mainEntity: questions,
   };
 }
 

@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const site = Astro.site ?? new URL('https://example.com');
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const path = pathFor('thanks', locale);
 const alternate = pathFor('thanks', locale === 'en' ? 'es' : 'en');
 const live = formMode() !== 'preview';

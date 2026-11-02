@@ -2,7 +2,7 @@
 
 Personal site for Mariana Ramírez, a luxury real estate advisor with SERHANT. on Nile Lundgren’s team in Miami. English is the default (`/`). Spanish is under `/es/`.
 
-The site is a static Astro build. It can be hosted on Netlify or Vercel. Nothing here is deployed.
+The site is a static Astro build prepared for Cloudflare Pages at `https://marianaramirezrealestate.com`. Nothing here is deployed. Netlify and Vercel configs remain if you ever need them.
 
 ## Run it locally
 
@@ -26,11 +26,13 @@ Set these in the host’s environment, not in the repo:
 
 | Variable | Purpose |
 | --- | --- |
-| `SITE_URL` | Canonical origin, no path. Example: `https://www.example.com`. Used for the sitemap, canonical URLs, Open Graph, and JSON-LD. The fallback is `https://example.com`. |
+| `SITE_URL` | Canonical origin, no path. Production value: `https://marianaramirezrealestate.com`. Used for the sitemap, canonical URLs, Open Graph, and JSON-LD. |
 | `PUBLIC_FORM_MODE` | `preview` (local only), `netlify`, or `endpoint`. |
 | `PUBLIC_FORM_ENDPOINT` | Formspree-style URL. Leave empty until a provider is chosen. This is not an email address. |
 
-See `.env.example`. `netlify.toml` sets `PUBLIC_FORM_MODE=netlify` for Netlify builds. On Vercel, set `PUBLIC_FORM_ENDPOINT` (Vercel does not receive Netlify Forms). The notification address is configured in Netlify or at the form provider. Do not put a recipient in this repository.
+See `.env.example`. On Cloudflare Pages, set `PUBLIC_FORM_ENDPOINT` (Cloudflare does not capture Netlify Forms) and keep `SITE_URL` as `https://marianaramirezrealestate.com`. Build command: `npm run build`. Output directory: `dist`. `wrangler.toml` names that directory. `public/_headers` sets caching and security headers. Do not put a recipient address in this repository.
+
+`netlify.toml` sets `PUBLIC_FORM_MODE=netlify` only if you build on Netlify instead. On Vercel, set `PUBLIC_FORM_ENDPOINT` as well.
 
 ## Edit the words
 

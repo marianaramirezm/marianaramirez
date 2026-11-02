@@ -20,6 +20,11 @@ export const site = {
    * TODO: add a public email only if it should appear on the page.
    */
   publicEmail: '',
+  /**
+   * Shown on the site if set. Leave empty until a real office address should be published.
+   * TODO: add only the address compliance requires.
+   */
+  officeAddress: '',
   social: [
     { label: 'Instagram', href: '' },
     { label: 'LinkedIn', href: '' },

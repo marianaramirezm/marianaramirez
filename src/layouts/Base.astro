@@ -25,6 +25,9 @@ const { locale, title, description, path, alternatePath, current, jsonLd, noinde
 <!doctype html>
 <html lang={locale}>
   <head>
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     <Seo
       locale={locale}
       title={title}
@@ -41,5 +44,24 @@ const { locale, title, description, path, alternatePath, current, jsonLd, noinde
       <slot />
     </main>
     <Footer locale={locale} />
+    <script>
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const nodes = document.querySelectorAll('[data-reveal]');
+      if (reduce || !('IntersectionObserver' in window)) {
+        nodes.forEach((node) => node.classList.add('is-in'));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.classList.add('is-in');
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+        );
+        nodes.forEach((node) => observer.observe(node));
+      }
+    </script>
   </body>
 </html>
