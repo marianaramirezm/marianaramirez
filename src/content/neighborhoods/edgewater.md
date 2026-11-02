@@ -23,6 +23,14 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/edgewater.jpg
+image: ../../assets/guides/edgewater.jpg
+imageAlt:
+  en: "Margaret Pace Park on the Edgewater waterfront in Miami."
+  es: "Margaret Pace Park, en el frente de agua de Edgewater, Miami."
+credit:
+  author: Phillip Pessar
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Public_escape_to_Miami_Margaret_Pace_Park.jpg
 order: 2
 ---

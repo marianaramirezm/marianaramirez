@@ -64,12 +64,19 @@ const jsonLd = graph(
     <figure class="guide-figure">
       <Image
         src={guide.data.image}
-        alt={t(locale, 'guides.photoAlt', { name })}
+        alt={guide.data.imageAlt[locale]}
         widths={[640, 1024, 1600]}
         sizes="(min-width: 1100px) 1120px, 100vw"
         quality={70}
       />
-      <figcaption>{t(locale, 'guides.photoCaption')}</figcaption>
+      <figcaption class="credit">
+        {guide.data.imageNote && <span class="credit-note">{guide.data.imageNote[locale]}</span>}
+        <span>
+          {t(locale, 'guides.photoCredit')} {guide.data.credit.author},{' '}
+          <a href={guide.data.credit.licenseUrl}>{guide.data.credit.license}</a>, {t(locale, 'guides.photoVia')}{' '}
+          <a href={guide.data.credit.source}>Wikimedia Commons</a>
+        </span>
+      </figcaption>
     </figure>
     <div class="prose">
       {paragraphs(guide.data.intro[locale]).map((paragraph) => <p>{paragraph}</p>)}

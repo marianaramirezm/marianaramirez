@@ -22,6 +22,17 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/residence-cipriani.jpg
+image: ../../assets/guides/miami-city.jpg
+imageAlt:
+  en: "The Miami skyline. Cipriani Residences Miami is not shown."
+  es: "El skyline de Miami. Cipriani Residences Miami no aparece."
+imageNote:
+  en: "Miami. Cipriani Residences is not in this photograph."
+  es: "Miami. Cipriani Residences no está en esta fotografía."
+credit:
+  author: Rob Olivera
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:City_of_Miami,_FL._USA_(50751668348).jpg
 order: 4
 ---

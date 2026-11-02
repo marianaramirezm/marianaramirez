@@ -1,4 +1,6 @@
 ---
+import ProfileLinks from './ProfileLinks.astro';
+import { site } from '../data/site';
 import type { Locale } from '../i18n/ui';
 import { t } from '../i18n/utils';
 import { mainNav, pathFor, type NavKey } from '../lib/routes';
@@ -34,6 +36,10 @@ const labelKey = {
           </a>
         ))
       }
+      <a href={site.profiles[0].href} rel="noopener noreferrer" target="_blank">
+        {t(locale, 'link.serhant')}
+        <span class="visually-hidden"> ({t(locale, 'a11y.newTab')})</span>
+      </a>
     </nav>
     <div class="header-end">
       <nav class="langs" aria-label={t(locale, 'a11y.language')}>
@@ -75,6 +81,7 @@ const labelKey = {
             ))
           }
         </nav>
+        <ProfileLinks locale={locale} />
       </details>
     </div>
   </div>

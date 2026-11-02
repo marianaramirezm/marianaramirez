@@ -1,4 +1,5 @@
 ---
+import { site } from '../data/site';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ListingCard from '../components/ListingCard.astro';
 import Base from '../layouts/Base.astro';
@@ -13,11 +14,12 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const listings = await getListings();
 const neighborhoods = await getNeighborhoods();
 const active = listings.filter((item) => item.data.status === 'active');
 const sold = listings.filter((item) => item.data.status === 'sold');
+const leased = listings.filter((item) => item.data.status === 'leased');
 const path = pathFor('listings', locale);
 const alternate = pathFor('listings', locale === 'en' ? 'es' : 'en');
 const crumbs = [
@@ -33,13 +35,16 @@ const crumbs = [
   path={path}
   alternatePath={alternate}
   current="listings"
-  jsonLd={graph(breadcrumbNode(site, crumbs))}
+  jsonLd={graph(breadcrumbNode(origin, crumbs))}
 >
   <div class="wrap page-intro">
     <Breadcrumbs locale={locale} items={crumbs} />
     <p class="eyebrow">{t(locale, 'listings.eyebrow')}</p>
     <h1>{t(locale, 'listings.title')}</h1>
     <p class="lead">{t(locale, 'listings.lead')}</p>
+    <p class="stack-links">
+      <a class="link" href={site.profiles[0].href} rel="noopener noreferrer">{t(locale, 'home.liveListings')}</a>
+    </p>
   </div>
   <div class="wrap page-body">
     {
@@ -48,6 +53,18 @@ const crumbs = [
           <h2 class="display">{t(locale, 'listings.active')}</h2>
           <div class="cards">
             {active.map((listing) => (
+              <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+    {
+      leased.length > 0 && (
+        <section style="margin-top: 3.5rem;">
+          <h2 class="display">{t(locale, 'listings.leased')}</h2>
+          <div class="cards">
+            {leased.map((listing) => (
               <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />
             ))}
           </div>

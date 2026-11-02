@@ -1201,6 +1201,70 @@ textarea {
   margin: 0 0 1.75rem;
 }
 
+.skyline {
+  margin: 0;
+}
+
+.skyline img {
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  object-fit: cover;
+  aspect-ratio: 16 / 8;
+}
+
+.credit {
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+}
+
+.credit a {
+  color: inherit;
+}
+
+.credit-note {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.skyline .credit {
+  padding-top: 0.55rem;
+  padding-bottom: 0.2rem;
+}
+
+.profile-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+}
+
+.profile-links a {
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.profile-links a:hover {
+  color: var(--blue);
+}
+
+.drawer .profile-links {
+  padding: 0.8rem 1.25rem 1.2rem;
+}
+
+.drawer .profile-links a {
+  color: #fff;
+  letter-spacing: 0.08em;
+}
+
 .contact-photo img {
   aspect-ratio: 4 / 5;
   object-position: center 18%;

@@ -18,6 +18,17 @@ regionLabel:
   es: Residencia de marca
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/residence-mercedes.jpg
+image: ../../assets/guides/brickell-key.jpg
+imageAlt:
+  en: "Miami skyline from Brickell Key. Mercedes-Benz Places is not shown."
+  es: "El skyline de Miami desde Brickell Key. Mercedes-Benz Places no aparece."
+imageNote:
+  en: "A view from Brickell Key. Mercedes-Benz Places is not in this photograph."
+  es: "Una vista desde Brickell Key. Mercedes-Benz Places no está en esta fotografía."
+credit:
+  author: Bohao Zhao
+  license: CC BY 3.0
+  licenseUrl: https://creativecommons.org/licenses/by/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Miami_Skyline_from_Brickell_Key_-_panoramio.jpg
 order: 1
 ---

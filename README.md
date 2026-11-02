@@ -92,7 +92,7 @@ The SERHANT. name is set in type, not as a logo file. Do not add the logo until 
 
 ## Photos
 
-Placeholder images are in `src/assets/placeholders/`. They are neutral color fields, not photographs of properties or of Mariana. Replace the files, or point the content frontmatter at new files under `src/assets/`. The site optimizes them with `astro:assets`.
+Neighborhood and residence photographs are licensed files in `src/assets/guides/`. Each guide’s frontmatter stores `credit.author`, `credit.license`, `credit.licenseUrl`, and `credit.source`. The page prints that credit. If a building has no licensed photograph, the file uses a neighborhood or skyline image and says so in `imageNote`. Do not drop in a developer, listing, or press photo.
 
 `public/og.jpg` is the social share image. `public/favicon.svg`, `public/favicon.ico`, and `public/apple-touch-icon.png` are the icons.
 

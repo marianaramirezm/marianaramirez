@@ -17,7 +17,11 @@ const area = neighborhoods.find((item) => item.id === listing.data.neighborhood)
 const href = listingPath(listing.id, locale);
 const photo = listing.data.photos[0];
 const status =
-  listing.data.status === 'sold' ? t(locale, 'listings.statusSold') : t(locale, 'listings.statusActive');
+  listing.data.status === 'sold'
+    ? t(locale, 'listings.statusSold')
+    : listing.data.status === 'leased'
+      ? t(locale, 'listings.leased')
+      : t(locale, 'listings.statusActive');
 ---
 
 <article>
@@ -37,6 +41,7 @@ const status =
       {listing.data.example && <span class="flag">{t(locale, 'listings.example')}</span>}
     </div>
     <h3>{listing.data.title[locale]}</h3>
+    {listing.data.imageNote && <p class="where">{listing.data.imageNote[locale]}</p>}
     {
       variant === 'address' ? (
         <p class="where">{listing.data.address[locale]}</p>

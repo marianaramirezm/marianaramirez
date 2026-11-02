@@ -23,6 +23,14 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/sunny-isles.jpg
+image: ../../assets/guides/sunny-isles.jpg
+imageAlt:
+  en: "Sunny Isles Beach oceanfront skyline, seen from the south."
+  es: "El skyline frente al mar de Sunny Isles Beach, visto desde el sur."
+credit:
+  author: Rusty Clark
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Sunny_Isles_Beach_skyline_from_the_south.jpg
 order: 4
 ---

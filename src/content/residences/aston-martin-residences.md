@@ -18,6 +18,17 @@ regionLabel:
   es: Residencia de marca
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/residence-aston.jpg
+image: ../../assets/guides/aston-martin.jpg
+imageAlt:
+  en: "Aston Martin Residences beside the Miami River during construction, October 2023."
+  es: "Aston Martin Residences junto al Miami River, en construcción, octubre de 2023."
+imageNote:
+  en: "The tower during construction in October 2023, not a finished view."
+  es: "La torre en construcción en octubre de 2023, no una vista terminada."
+credit:
+  author: Phillip Pessar
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Aston_Martin_Residences_Construction_-_Downtown_Miami_FL,_Oct_2023_-_3.jpg
 order: 3
 ---

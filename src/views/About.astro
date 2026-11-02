@@ -1,6 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
 import portrait from '../assets/photos/mariana-kitchen.jpg';
+import ProfileLinks from '../components/ProfileLinks.astro';
+import { site } from '../data/site';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Base from '../layouts/Base.astro';
 import type { Locale } from '../i18n/ui';
@@ -13,7 +15,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const path = pathFor('about', locale);
 const alternate = pathFor('about', locale === 'en' ? 'es' : 'en');
 const crumbs = [
@@ -29,7 +31,7 @@ const crumbs = [
   path={path}
   alternatePath={alternate}
   current="about"
-  jsonLd={graph(agentNode(site, locale), breadcrumbNode(site, crumbs))}
+  jsonLd={graph(agentNode(origin, locale), breadcrumbNode(origin, crumbs))}
 >
   <div class="wrap page-intro">
     <Breadcrumbs locale={locale} items={crumbs} />
@@ -53,6 +55,12 @@ const crumbs = [
         <p>{t(locale, 'about.p1')}</p>
         <p>{t(locale, 'about.p2')}</p>
         <p>{t(locale, 'about.p3')}</p>
+        <p>{t(locale, 'about.profileNote')}</p>
+        <p>
+          <a href={`tel:${site.publicPhone.replace(/[^\d+]/g, '')}`}>{site.publicPhone}</a><br />
+          <a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a>
+        </p>
+        <ProfileLinks locale={locale} />
       </div>
     </div>
     <section class="facts">

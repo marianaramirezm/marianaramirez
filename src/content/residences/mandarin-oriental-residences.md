@@ -18,6 +18,17 @@ regionLabel:
   es: Residencia de marca
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/residence-mandarin.jpg
+image: ../../assets/guides/miami-river.jpg
+imageAlt:
+  en: "The Miami River and downtown skyline. A specific Mandarin Oriental residence is not shown."
+  es: "El Miami River y el skyline del centro. No aparece una residencia específica de Mandarin Oriental."
+imageNote:
+  en: "Downtown Miami and the river. This is not a confirmed photograph of a Mandarin Oriental residence."
+  es: "El centro de Miami y el río. No es una fotografía confirmada de una residencia Mandarin Oriental."
+credit:
+  author: DXR
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:North_View_of_Miami_and_Miami_River_from_1st_St_20160709_1.jpg
 order: 5
 ---

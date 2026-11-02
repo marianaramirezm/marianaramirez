@@ -1,3 +1,4 @@
+import { site as siteConfig } from '../data/site';
 import { ui, type Locale, type UiKey } from '../i18n/ui';
 import { absolute, pathFor } from './routes';
 
@@ -48,7 +49,11 @@ export function agentNode(site: URL, locale: Locale): Record<string, unknown> {
       '@type': 'Country',
       name: 'Colombia',
     },
-    knowsLanguage: ['en', 'es'],
+    knowsLanguage: ['en', 'es', 'de'],
+    telephone: siteConfig.publicPhone,
+    email: siteConfig.publicEmail,
+    sameAs: siteConfig.profiles.map((item) => item.href),
+    identifier: 'SL3625059',
     areaServed: [
       { '@type': 'City', name: 'Miami' },
       { '@type': 'City', name: 'West Palm Beach' },

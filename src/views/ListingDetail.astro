@@ -23,7 +23,11 @@ const alternate = listingPath(listing.id, locale === 'en' ? 'es' : 'en');
 const areaName = area ? area.data.name[locale] : listing.data.neighborhood;
 const title = `${listing.data.title[locale]} — ${areaName} | Mariana Ramírez`;
 const status =
-  listing.data.status === 'sold' ? t(locale, 'listings.statusSold') : t(locale, 'listings.statusActive');
+  listing.data.status === 'sold'
+    ? t(locale, 'listings.statusSold')
+    : listing.data.status === 'leased'
+      ? t(locale, 'listings.leased')
+      : t(locale, 'listings.statusActive');
 const crumbs = [
   { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
   { name: t(locale, 'nav.listings'), path: pathFor('listings', locale) },
@@ -58,7 +62,14 @@ const crumbs = [
             quality={70}
             priority={index === 0}
           />
-          <figcaption>{t(locale, 'guides.photoCaption')}</figcaption>
+          <figcaption class="credit">
+            <span class="credit-note">{listing.data.imageNote[locale]}</span>
+            <span>
+              {t(locale, 'guides.photoCredit')} {listing.data.credit.author},{' '}
+              <a href={listing.data.credit.licenseUrl}>{listing.data.credit.license}</a>, {t(locale, 'guides.photoVia')}{' '}
+              <a href={listing.data.credit.source}>Wikimedia Commons</a>
+            </span>
+          </figcaption>
         </figure>
       ))
     }
@@ -102,6 +113,9 @@ const crumbs = [
         <dd>{listing.data.address[locale]}</dd>
       </div>
     </dl>
+    <p>
+      <a class="link" href={listing.data.source} rel="noopener noreferrer">{t(locale, 'listings.source')}</a>
+    </p>
     <p>
       {
         listing.data.officialUrl ? (

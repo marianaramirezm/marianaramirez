@@ -1,4 +1,5 @@
 ---
+import ProfileLinks from './ProfileLinks.astro';
 import { site } from '../data/site';
 import type { Locale } from '../i18n/ui';
 import { t } from '../i18n/utils';
@@ -46,24 +47,7 @@ const footerNav: NavKey[] = ['home', ...mainNav];
       </nav>
       <div>
         <h2 id="social-label">{t(locale, 'footer.connect')}</h2>
-        <ul aria-labelledby="social-label">
-          {
-            site.social.map((item) => (
-              <li>
-                {item.href ? (
-                  <a href={item.href} rel="noopener noreferrer" target="_blank">
-                    {item.label}
-                    <span class="visually-hidden"> ({t(locale, 'a11y.newTab')})</span>
-                  </a>
-                ) : (
-                  <span class="social-pending">
-                    {item.label} <span class="todo-tag">TODO</span>
-                  </span>
-                )}
-              </li>
-            ))
-          }
-        </ul>
+        <ProfileLinks locale={locale} />
       </div>
     </div>
     <div class="fineprint">
@@ -87,7 +71,7 @@ const footerNav: NavKey[] = ['home', ...mainNav];
         {t(locale, 'footer.brandTodo')}
       </p>
       <p>{site.brokerageName || t(locale, 'footer.brokerageTodo')}</p>
-      <p>{site.licenseLine || t(locale, 'footer.licenseTodo')}</p>
+      <p>{site.license[locale]}</p>
       <p>{t(locale, 'footer.rights', { year: String(year) })}</p>
     </div>
   </div>

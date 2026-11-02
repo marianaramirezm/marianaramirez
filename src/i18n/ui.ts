@@ -4,6 +4,9 @@ const en = {
   'nav.neighborhoods': 'Neighborhoods',
   'nav.residences': 'Residences',
   'nav.contact': 'Contact',
+  'link.serhant': 'SERHANT. profile',
+  'link.instagram': 'Instagram',
+  'link.tiktok': 'TikTok',
   'nav.menu': 'Menu',
   'nav.close': 'Close',
   'nav.home': 'Home',
@@ -37,8 +40,9 @@ const en = {
   'home.listingsEyebrow': 'Selected',
   'home.listingsTitle': 'Listings and past sales',
   'home.listingsNote':
-    'The cards below are examples, not homes for sale. A photograph and an address only. The current price stays on the official listing.',
+    'Figures are as published on my SERHANT. profile. The photographs show the surrounding city, not the residence.',
   'home.listingsAll': 'All listings',
+  'home.liveListings': 'View my live listings',
   'home.neighborhoodsEyebrow': 'Guides',
   'home.neighborhoodsTitle': 'Neighborhoods',
   'home.neighborhoodsMiami': 'Miami',
@@ -59,15 +63,15 @@ const en = {
   'faq.a2':
     'Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach, and New York.',
   'faq.q3': 'What languages does she work in?',
-  'faq.a3': 'English and Spanish.',
+  'faq.a3': 'English, Spanish, and German, as listed on her SERHANT. profile.',
   'faq.q4': 'What is on her record so far?',
   'faq.a4': 'A record sale of $2.4 million, and a nomination for Rookie of the Year.',
-  'faq.q5': 'Why is there no price on a listing card?',
+  'faq.q5': 'Where do the listing figures come from?',
   'faq.a5':
-    'Prices move. This site shows a photograph and an address. The current price belongs on the official listing.',
+    'From her public SERHANT. profile. If a number changes, that page is the live record.',
   'faq.q6': 'How do I reach her?',
   'faq.a6':
-    'Use the form on this site. Say what you want and when. She replies personally. A phone number and an email will be added here when she publishes them.',
+    'Call (561) 825-7355, email mariana_ramirez@serhant.com, or use the form on this site. She replies personally.',
 
   'about.eyebrow': 'About',
   'about.title': 'Mariana Ramírez',
@@ -77,6 +81,8 @@ const en = {
   'about.p2':
     'I work with people who want a clear process: a defined search or a sale plan, a price said plainly, and someone who stays close to the transaction.',
   'about.p3': 'In this first chapter I recorded a sale of $2.4 million and was nominated for Rookie of the Year.',
+  'about.profileNote':
+    'My SERHANT. profile lists me as a Licensed Real Estate Salesperson in Florida, license SL3625059, and notes that I also work in German.',
   'about.photoAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'about.factsTitle': 'On the record',
@@ -87,10 +93,12 @@ const en = {
   'listings.eyebrow': 'Inventory',
   'listings.title': 'Listings and past sales',
   'listings.lead':
-    'The entries below are examples, marked until real listings replace them. They are not offered for sale.',
+    'Taken from my SERHANT. profile. Photographs show the surrounding city, not the residence.',
   'listings.example': 'Example',
   'listings.active': 'Active',
   'listings.sold': 'Past sales',
+  'listings.leased': 'Past rentals',
+  'listings.source': 'SERHANT. profile',
   'listings.view': 'View example',
   'listings.price': 'Price',
   'listings.beds': 'Beds',
@@ -119,7 +127,8 @@ const en = {
   'guides.neighborhoodKind': 'Neighborhood',
   'guides.residenceKind': 'Branded residence',
   'guides.photoAlt': 'Placeholder photograph for {name}. Replace with a licensed image.',
-  'guides.photoCaption': 'Placeholder photograph — replace',
+  'guides.photoCredit': 'Photo:',
+  'guides.photoVia': 'via',
   'guides.verifiedTitle': 'Verified details',
   'guides.officialLabel': 'Official website',
   'guides.officialMissing': 'Official website URL',
@@ -234,6 +243,9 @@ const es: typeof en = {
   'nav.neighborhoods': 'Barrios',
   'nav.residences': 'Residencias',
   'nav.contact': 'Contacto',
+  'link.serhant': 'Perfil en SERHANT.',
+  'link.instagram': 'Instagram',
+  'link.tiktok': 'TikTok',
   'nav.menu': 'Menú',
   'nav.close': 'Cerrar',
   'nav.home': 'Inicio',
@@ -267,8 +279,9 @@ const es: typeof en = {
   'home.listingsEyebrow': 'Selección',
   'home.listingsTitle': 'Propiedades y ventas',
   'home.listingsNote':
-    'Las fichas de abajo son ejemplos, no casas a la venta. Solo una fotografía y una dirección. El precio vigente queda en el anuncio oficial.',
+    'Las cifras están como aparecen en mi perfil de SERHANT. Las fotografías muestran la ciudad alrededor, no la residencia.',
   'home.listingsAll': 'Todas las propiedades',
+  'home.liveListings': 'Ver mis propiedades en vivo',
   'home.neighborhoodsEyebrow': 'Guías',
   'home.neighborhoodsTitle': 'Barrios',
   'home.neighborhoodsMiami': 'Miami',
@@ -289,15 +302,15 @@ const es: typeof en = {
   'faq.a2':
     'En Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach y Nueva York.',
   'faq.q3': '¿En qué idiomas trabaja?',
-  'faq.a3': 'En español y en inglés.',
+  'faq.a3': 'En inglés, español y alemán, según su perfil en SERHANT.',
   'faq.q4': '¿Qué hay en su registro hasta ahora?',
   'faq.a4': 'Una venta récord de 2,4 millones de dólares y una nominación a Rookie of the Year.',
-  'faq.q5': '¿Por qué la ficha no muestra el precio?',
+  'faq.q5': '¿De dónde salen las cifras de las propiedades?',
   'faq.a5':
-    'Los precios se mueven. Este sitio muestra una fotografía y una dirección. El precio vigente corresponde al anuncio oficial.',
+    'De su perfil público en SERHANT. Si un número cambia, esa página es el registro vigente.',
   'faq.q6': '¿Cómo la contacto?',
   'faq.a6':
-    'Con el formulario de este sitio. Di qué quieres y para cuándo. Responde en persona. El teléfono y el correo se publican aquí cuando ella los agregue.',
+    'Al (561) 825-7355, a mariana_ramirez@serhant.com, o con el formulario de este sitio. Responde en persona.',
 
   'about.eyebrow': 'Sobre mí',
   'about.title': 'Mariana Ramírez',
@@ -308,6 +321,8 @@ const es: typeof en = {
     'Trabajo con quien quiere un proceso claro: una búsqueda definida o un plan de venta, un precio dicho con franqueza y alguien que se queda cerca de la transacción.',
   'about.p3':
     'En esta primera etapa registré una venta de 2,4 millones de dólares y fui nominada a Rookie of the Year.',
+  'about.profileNote':
+    'Mi perfil en SERHANT. me registra como Licensed Real Estate Salesperson en Florida, licencia SL3625059, y señala que también trabajo en alemán.',
   'about.photoAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'about.factsTitle': 'En el registro',
@@ -318,10 +333,12 @@ const es: typeof en = {
   'listings.eyebrow': 'Inventario',
   'listings.title': 'Propiedades y ventas',
   'listings.lead':
-    'Las fichas de abajo son ejemplos, marcados hasta que los reemplacen propiedades reales. No están a la venta.',
+    'Tomadas de mi perfil en SERHANT. Las fotografías muestran la ciudad alrededor, no la residencia.',
   'listings.example': 'Ejemplo',
   'listings.active': 'Activas',
   'listings.sold': 'Ventas',
+  'listings.leased': 'Alquileres anteriores',
+  'listings.source': 'Perfil en SERHANT.',
   'listings.view': 'Ver ejemplo',
   'listings.price': 'Precio',
   'listings.beds': 'Habitaciones',
@@ -351,7 +368,8 @@ const es: typeof en = {
   'guides.neighborhoodKind': 'Barrio',
   'guides.residenceKind': 'Residencia de marca',
   'guides.photoAlt': 'Fotografía provisional de {name}. Reemplazar con una imagen con licencia.',
-  'guides.photoCaption': 'Fotografía provisional — reemplazar',
+  'guides.photoCredit': 'Foto:',
+  'guides.photoVia': 'vía',
   'guides.verifiedTitle': 'Datos verificados',
   'guides.officialLabel': 'Sitio oficial',
   'guides.officialMissing': 'URL del sitio oficial',

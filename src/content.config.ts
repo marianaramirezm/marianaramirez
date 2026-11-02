@@ -22,15 +22,23 @@ const listings = defineCollection({
       title: text,
       address: text,
       neighborhood: z.string(),
-      status: z.enum(['active', 'sold']),
+      status: z.enum(['active', 'sold', 'leased']),
       price: text,
       beds: text,
       baths: text,
       sqft: text,
       photos: z.array(image()).min(1),
       officialUrl: urlOrEmpty,
+      source: z.url(),
       example: z.boolean(),
       order: z.number(),
+      credit: z.object({
+        author: z.string(),
+        license: z.string(),
+        licenseUrl: z.url(),
+        source: z.url(),
+      }),
+      imageNote: text,
     }),
 });
 
@@ -52,6 +60,14 @@ function guideSchema({ image }: SchemaContext) {
     officialUrl: urlOrEmpty,
     facts: z.array(fact).default([]),
     image: image(),
+    imageAlt: text,
+    imageNote: text.optional(),
+    credit: z.object({
+      author: z.string(),
+      license: z.string(),
+      licenseUrl: z.url(),
+      source: z.url(),
+    }),
     order: z.number(),
   });
 }

@@ -1,44 +1,42 @@
-export type SocialLink = {
-  /** Visible label. */
-  label: string;
-  /**
-   * Full profile URL. Leave empty until the real profile exists.
-   * TODO: replace each href. Do not point these at a placeholder account.
-   */
+export type ProfileId = 'serhant' | 'instagram' | 'tiktok';
+
+export type ProfileLink = {
+  id: ProfileId;
   href: string;
 };
 
 export const site = {
   name: 'Mariana Ramírez',
   /**
-   * Shown on the site if set. This is not the form recipient.
-   * TODO: add a public phone only if it should appear on the page.
+   * Public phone from her SERHANT. profile. Not the form recipient.
+   * Source: https://serhant.com/agents/mariana-ramirez
    */
-  publicPhone: '',
+  publicPhone: '(561) 825-7355',
   /**
-   * Shown on the site if set. This is not the form recipient.
-   * TODO: add a public email only if it should appear on the page.
+   * Public email from her SERHANT. profile. Not the form recipient.
+   * Source: https://serhant.com/agents/mariana-ramirez
    */
-  publicEmail: '',
+  publicEmail: 'mariana_ramirez@serhant.com',
   /**
    * Shown on the site if set. Leave empty until a real office address should be published.
-   * TODO: add only the address compliance requires.
+   * TODO: add only the address compliance requires. The SERHANT. profile does not list a street address.
    */
   officeAddress: '',
-  social: [
-    { label: 'Instagram', href: '' },
-    { label: 'LinkedIn', href: '' },
-    { label: 'YouTube', href: '' },
-    { label: 'TikTok', href: '' },
-  ] satisfies SocialLink[],
+  profiles: [
+    { id: 'serhant', href: 'https://serhant.com/agents/mariana-ramirez' },
+    { id: 'instagram', href: 'https://www.instagram.com/marianar.serhantmiami/' },
+    { id: 'tiktok', href: 'https://www.tiktok.com/@marianar.serhantmiami' },
+  ] satisfies ProfileLink[],
+  /** Handle shared by the Instagram and TikTok accounts above. */
+  handle: '@marianar.serhantmiami',
+  license: {
+    en: 'Licensed Real Estate Salesperson · Florida SL3625059',
+    es: 'Licensed Real Estate Salesperson · Florida SL3625059',
+  },
   /**
    * TODO compliance: legal brokerage name, exactly as it must appear in advertising.
    */
   brokerageName: '',
-  /**
-   * TODO compliance: license number(s) and state(s), exactly as required.
-   */
-  licenseLine: '',
   /**
    * TODO compliance: path in /public to an approved Equal Housing Opportunity logo.
    * Example: "/equal-housing.svg". Leave empty to keep the text placeholder.

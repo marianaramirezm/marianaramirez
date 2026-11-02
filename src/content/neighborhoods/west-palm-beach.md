@@ -23,6 +23,14 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/west-palm-beach.jpg
+image: ../../assets/guides/west-palm-beach.jpg
+imageAlt:
+  en: "The West Palm Beach waterfront and downtown skyline along the Intracoastal."
+  es: "El frente de agua de West Palm Beach y el skyline del downtown, sobre el Intracoastal."
+credit:
+  author: Jared
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:West_Palm_Beach_-_Waterfront_-_Intracoastal_Waterway_%26_Downtown_Skyline_-_Panorama_(15300572403).jpg
 order: 6
 ---

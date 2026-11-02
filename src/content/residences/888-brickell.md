@@ -22,6 +22,17 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/residence-888.jpg
+image: ../../assets/guides/brickell-2012.jpg
+imageAlt:
+  en: "Brickell skyline from the Rickenbacker Causeway in 2012. The Dolce & Gabbana building is not shown."
+  es: "El skyline de Brickell desde el Rickenbacker Causeway en 2012. El edificio de Dolce & Gabbana no aparece."
+imageNote:
+  en: "Brickell in 2012. The Dolce & Gabbana building is not in this photograph."
+  es: "Brickell en 2012. El edificio de Dolce & Gabbana no está en esta fotografía."
+credit:
+  author: B137
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Brickell_skyline_2012_from_Rickenbacker.jpg
 order: 2
 ---

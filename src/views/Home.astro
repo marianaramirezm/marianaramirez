@@ -1,6 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
+import { site } from '../data/site';
 import hero from '../assets/photos/mariana-balcony.jpg';
+import skyline from '../assets/guides/downtown-skyline.jpg';
 import intro from '../assets/photos/mariana-kitchen.jpg';
 import contactPhoto from '../assets/photos/mariana-bar.jpg';
 import ContactForm from '../components/ContactForm.astro';
@@ -17,7 +19,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const listings = await getListings();
 const neighborhoods = await getNeighborhoods();
 const residences = await getResidences();
@@ -44,7 +46,7 @@ const stats = [
   alternatePath={alternate}
   current="home"
   overlay
-  jsonLd={graph(agentNode(site, locale), faqNode(locale), breadcrumbNode(site, crumbs))}
+  jsonLd={graph(agentNode(origin, locale), faqNode(locale), breadcrumbNode(origin, crumbs))}
 >
   <section class="hero">
     <div class="hero-media">
@@ -100,6 +102,26 @@ const stats = [
     </div>
   </section>
 
+  <figure class="skyline" data-reveal>
+    <Picture
+      src={skyline}
+      alt={locale === 'es'
+        ? 'El skyline del centro de Miami, con One Thousand Museum en el centro.'
+        : 'Downtown Miami skyline, with One Thousand Museum at the center.'}
+      formats={['avif', 'webp']}
+      widths={[640, 1100, 1600, 2000]}
+      sizes="100vw"
+      quality={70}
+    />
+    <figcaption class="credit wrap">
+      <span>
+        {t(locale, 'guides.photoCredit')} Phillip Pessar,{' '}
+        <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>, {t(locale, 'guides.photoVia')}{' '}
+        <a href="https://commons.wikimedia.org/wiki/File:One_Thousand_Museum_Tower_Downtown_Miami_-_Tower.jpg">Wikimedia Commons</a>
+      </span>
+    </figcaption>
+  </figure>
+
   <section class="section" data-reveal>
     <div class="wrap">
       <div class="section-head">
@@ -107,7 +129,10 @@ const stats = [
           <p class="eyebrow">{t(locale, 'home.listingsEyebrow')}</p>
           <h2 class="display">{t(locale, 'home.listingsTitle')}</h2>
         </div>
-        <a class="link" href={pathFor('listings', locale)}>{t(locale, 'home.listingsAll')}</a>
+        <p class="stack-links">
+          <a class="link" href={pathFor('listings', locale)}>{t(locale, 'home.listingsAll')}</a>
+          <a class="link" href={site.profiles[0].href} rel="noopener noreferrer">{t(locale, 'home.liveListings')}</a>
+        </p>
       </div>
       <p class="note">{t(locale, 'home.listingsNote')}</p>
       <div class="cards">

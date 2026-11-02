@@ -18,6 +18,14 @@ regionLabel:
   es: Residencia de marca
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/residence-museum.jpg
+image: ../../assets/guides/one-thousand-museum.jpg
+imageAlt:
+  en: "One Thousand Museum in downtown Miami, seen from below."
+  es: "One Thousand Museum en el centro de Miami, visto desde abajo."
+credit:
+  author: Rob Olivera
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:One_Thousand_Museum_(50741507697).jpg
 order: 6
 ---

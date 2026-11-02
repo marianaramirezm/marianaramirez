@@ -1,6 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
 import contactPhoto from '../assets/photos/mariana-bar.jpg';
+import ProfileLinks from '../components/ProfileLinks.astro';
+import { site } from '../data/site';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Base from '../layouts/Base.astro';
@@ -15,7 +17,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const neighborhoods = await getNeighborhoods();
 const path = pathFor('contact', locale);
 const alternate = pathFor('contact', locale === 'en' ? 'es' : 'en');
@@ -32,7 +34,7 @@ const crumbs = [
   path={path}
   alternatePath={alternate}
   current="contact"
-  jsonLd={graph(breadcrumbNode(site, crumbs))}
+  jsonLd={graph(breadcrumbNode(origin, crumbs))}
 >
   <div class="wrap page-intro">
     <Breadcrumbs locale={locale} items={crumbs} />
@@ -53,6 +55,11 @@ const crumbs = [
         <p class="eyebrow">{t(locale, 'contact.eyebrow')}</p>
         <h1>{t(locale, 'contact.title')}</h1>
         <p class="lead">{t(locale, 'contact.lead')}</p>
+        <p>
+          <a href={`tel:${site.publicPhone.replace(/[^\d+]/g, '')}`}>{site.publicPhone}</a><br />
+          <a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a>
+        </p>
+        <ProfileLinks locale={locale} />
       </div>
       <ContactForm locale={locale} neighborhoods={neighborhoods} />
     </div>

@@ -23,6 +23,14 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/coral-gables.jpg
+image: ../../assets/guides/coral-gables.jpg
+imageAlt:
+  en: "The Biltmore Hotel in Coral Gables."
+  es: "El Biltmore Hotel en Coral Gables."
+credit:
+  author: Ebyabe
+  license: CC BY-SA 3.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Coral_Gables_FL_Biltmore01.jpg
 order: 5
 ---

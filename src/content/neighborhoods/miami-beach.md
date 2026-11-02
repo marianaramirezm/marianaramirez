@@ -23,6 +23,14 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/miami-beach.jpg
+image: ../../assets/guides/miami-beach.jpg
+imageAlt:
+  en: "Ocean Drive in Miami Beach, 2023."
+  es: "Ocean Drive en Miami Beach, 2023."
+credit:
+  author: P. Hughes
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Miami_Beach_-_Ocean_Drive_(2023).jpg
 order: 3
 ---

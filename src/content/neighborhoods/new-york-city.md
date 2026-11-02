@@ -23,6 +23,14 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/new-york-city.jpg
+image: ../../assets/guides/new-york.jpg
+imageAlt:
+  en: "Lower Manhattan skyline from Jersey City, September 2020."
+  es: "El skyline del Bajo Manhattan desde Jersey City, septiembre de 2020."
+credit:
+  author: King of Hearts
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lower_Manhattan_from_Jersey_City_September_2020_panorama.jpg
 order: 7
 ---

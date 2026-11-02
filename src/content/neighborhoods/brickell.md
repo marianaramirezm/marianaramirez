@@ -23,6 +23,14 @@ place:
   country: US
 officialUrl: ""
 facts: []
-image: ../../assets/placeholders/brickell.jpg
+image: ../../assets/guides/brickell.jpg
+imageAlt:
+  en: "Brickell skyline along the Miami River, August 2023."
+  es: "El skyline de Brickell junto al río Miami, agosto de 2023."
+credit:
+  author: Phillip Pessar
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Brickell_Miami_Florida_Skyline_31_August_2023.jpg
 order: 1
 ---
