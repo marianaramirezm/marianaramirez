@@ -83,7 +83,7 @@ facts:
 
 `src/data/site.ts` is the only file for:
 
-- Instagram, LinkedIn, YouTube, and TikTok (`social[].href`). An empty `href` renders the name with a TODO and does not link anywhere.
+- SERHANT. profile, Instagram, and TikTok live in `profiles` in `src/data/site.ts`. Phone, email, and the Florida license line are filled from her public SERHANT. profile. `officeAddress` is still empty.
 - `publicPhone` and `publicEmail`, if they should appear on the page. These are not the form recipient.
 - `brokerageName` and `licenseLine`, after a compliance review.
 - `equalHousingLogo`, a path in `public/` such as `/equal-housing.svg`, after a compliance review. Until then the footer shows an “EHO” text slot.
