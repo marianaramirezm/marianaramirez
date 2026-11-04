@@ -82,4 +82,54 @@ const residences = defineCollection({
   schema: guideSchema,
 });
 
-export const collections = { listings, neighborhoods, residences };
+const teamCredit = 'Listed by Nile Lundgren Team at SERHANT.';
+
+const teamListings = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/team-listings' }),
+  schema: ({ image }: SchemaContext) =>
+    z.object({
+      name: text,
+      address: text,
+      area: text,
+      status: z.enum(['active', 'sold', 'leased']),
+      price: text,
+      beds: text,
+      baths: text,
+      sqft: text,
+      description: text,
+      photos: z.array(image()).default([]),
+      officialUrl: z.url(),
+      credit: z.literal(teamCredit).default(teamCredit),
+      order: z.number().default(0),
+    }),
+});
+
+const blogSource = z.object({
+  title: z.string().min(1),
+  url: z.url(),
+});
+
+const blog = defineCollection({
+  loader: glob({ pattern: '{en,es}/*.md', base: './src/content/blog' }),
+  schema: z
+    .object({
+      title: z.string().min(1),
+      description: z.string().min(1),
+      pubDate: z.coerce.date(),
+      category: z.enum(['real-estate', 'economy', 'policy', 'culture', 'business']),
+      draft: z.boolean().default(false),
+      sources: z.array(blogSource).default([]),
+    })
+    .superRefine((data, ctx) => {
+      if (!data.draft && data.sources.length === 0) {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'sources must include at least one entry when draft is false',
+          path: ['sources'],
+          input: data.sources,
+        });
+      }
+    }),
+});
+
+export const collections = { listings, neighborhoods, residences, teamListings, blog };

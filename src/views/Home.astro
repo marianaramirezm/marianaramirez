@@ -7,8 +7,9 @@ import intro from '../assets/photos/mariana-kitchen.jpg';
 import contactPhoto from '../assets/photos/mariana-bar.jpg';
 import ContactForm from '../components/ContactForm.astro';
 import ListingCard from '../components/ListingCard.astro';
+import TeamListingCard from '../components/TeamListingCard.astro';
 import Base from '../layouts/Base.astro';
-import { getListings, getNeighborhoods, getResidences } from '../lib/content';
+import { getListings, getNeighborhoods, getResidences, getTeamListings } from '../lib/content';
 import type { Locale, UiKey } from '../i18n/ui';
 import { t } from '../i18n/utils';
 import { neighborhoodPath, pathFor, residencePath } from '../lib/routes';
@@ -21,6 +22,7 @@ interface Props {
 const { locale } = Astro.props;
 const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const listings = await getListings();
+const teamListings = await getTeamListings();
 const neighborhoods = await getNeighborhoods();
 const residences = await getResidences();
 const featured = listings.slice(0, 2);
@@ -136,6 +138,11 @@ const stats = [
       </div>
       <p class="note">{t(locale, 'home.listingsNote')}</p>
       <div class="cards">
+        {
+          teamListings.map((listing) => (
+            <TeamListingCard locale={locale} listing={listing} variant="address" />
+          ))
+        }
         {
           featured.map((listing) => (
             <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} variant="address" />

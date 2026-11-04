@@ -1,21 +1,39 @@
 ---
 import ListingDetail from '../../views/ListingDetail.astro';
-import { getListings } from '../../lib/content';
-import type { ListingEntry } from '../../lib/types';
+import TeamListingDetail from '../../views/TeamListingDetail.astro';
+import { getListings, getTeamListings } from '../../lib/content';
+import type { ListingEntry, TeamListingEntry } from '../../lib/types';
 
 export async function getStaticPaths() {
   const listings = await getListings();
-  return listings.map((listing) => ({
-    params: { slug: listing.id },
-    props: { listing },
-  }));
+  const team = await getTeamListings();
+  const ids = new Set<string>();
+  for (const listing of [...listings, ...team]) {
+    if (ids.has(listing.id)) throw new Error(`Duplicate listing slug: ${listing.id}`);
+    ids.add(listing.id);
+  }
+  return [
+    ...listings.map((listing) => ({
+      params: { slug: listing.id },
+      props: { kind: 'profile' as const, listing },
+    })),
+    ...team.map((listing) => ({
+      params: { slug: listing.id },
+      props: { kind: 'team' as const, listing },
+    })),
+  ];
 }
 
 interface Props {
-  listing: ListingEntry;
+  kind: 'profile' | 'team';
+  listing: ListingEntry | TeamListingEntry;
 }
 
-const { listing } = Astro.props;
+const { kind, listing } = Astro.props;
 ---
 
-<ListingDetail locale="en" listing={listing} />
+{kind === 'team' ? (
+  <TeamListingDetail locale="en" listing={listing as TeamListingEntry} />
+) : (
+  <ListingDetail locale="en" listing={listing as ListingEntry} />
+)}

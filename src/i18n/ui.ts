@@ -4,6 +4,7 @@ const en = {
   'nav.neighborhoods': 'Neighborhoods',
   'nav.residences': 'Residences',
   'nav.contact': 'Contact',
+  'nav.blog': 'Blog',
   'link.serhant': 'SERHANT. profile',
   'link.instagram': 'Instagram',
   'link.tiktok': 'TikTok',
@@ -22,13 +23,13 @@ const en = {
   'home.heroAlt':
     'Mariana Ramírez on a high-rise balcony in Brickell, with the Miami skyline and Biscayne Bay behind her.',
   'home.markets':
-    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · West Palm Beach · New York',
+    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · Coconut Grove · New York',
   'home.cta': 'Start a conversation',
   'home.introEyebrow': 'The practice',
   'home.introAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'home.introBody':
-    'I’m a luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. I represent people buying, selling, renting, and investing across Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach, and New York. I’m Colombian, from Barranquilla, and I work in English and Spanish.',
+    'I’m a luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. I represent people buying, selling, renting, and investing across Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. I’m Colombian, from Barranquilla, and I work in English and Spanish.',
   'home.statSaleValue': '$2.4M',
   'home.statSaleLabel': 'Record sale',
   'home.statRookieValue': 'Nominee',
@@ -61,7 +62,7 @@ const en = {
     'A luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. She is Colombian, from Barranquilla.',
   'faq.q2': 'Where does she work?',
   'faq.a2':
-    'Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach, and New York.',
+    'Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York.',
   'faq.q3': 'What languages does she work in?',
   'faq.a3': 'English, Spanish, and German, as listed on her SERHANT. profile.',
   'faq.q4': 'What is on her record so far?',
@@ -75,14 +76,13 @@ const en = {
 
   'about.eyebrow': 'About',
   'about.title': 'Mariana Ramírez',
-  'about.lead': 'A young Colombian advisor from Barranquilla, based in Miami.',
+  'about.lead': 'A young Colombian luxury real estate advisor from Barranquilla, at SERHANT. in Miami.',
   'about.p1':
-    'I’m a luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. I was born in Barranquilla, Colombia, and I work in a city I chose — international buyers, branded towers, and established neighborhoods a short drive apart.',
+    'I am on Nile Lundgren’s team. I work in English and Spanish.',
   'about.p2':
-    'I work with people who want a clear process: a defined search or a sale plan, a price said plainly, and someone who stays close to the transaction.',
-  'about.p3': 'In this first chapter I recorded a sale of $2.4 million and was nominated for Rookie of the Year.',
-  'about.profileNote':
-    'My SERHANT. profile lists me as a Licensed Real Estate Salesperson in Florida, license SL3625059, and notes that I also work in German.',
+    'I cover Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York.',
+  'about.p3': 'My record sale is $2.4 million, and I was nominated for Rookie of the Year.',
+  'about.profileNote': 'The public record is on my SERHANT. profile.',
   'about.photoAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'about.factsTitle': 'On the record',
@@ -207,7 +207,7 @@ const en = {
 
   'meta.home.title': 'Mariana Ramírez | Luxury Real Estate Advisor, Miami',
   'meta.home.description':
-    'Mariana Ramírez advises on residential property in Miami, Palm Beach, and New York with SERHANT., on Nile Lundgren’s team.',
+    'Mariana Ramírez advises on residential property in Miami and New York, including Coconut Grove, with SERHANT., on Nile Lundgren’s team.',
   'meta.about.title': 'About Mariana Ramírez | Miami Real Estate Advisor',
   'meta.about.description':
     'Colombian advisor from Barranquilla, based in Miami with SERHANT. on Nile Lundgren’s team. Record sale of $2.4 million and a Rookie of the Year nomination.',
@@ -216,19 +216,37 @@ const en = {
     'Current listings and past sales from Mariana Ramírez. Sample entries are labeled until live inventory replaces them.',
   'meta.neighborhoods.title': 'Neighborhood Guides | Mariana Ramírez',
   'meta.neighborhoods.description':
-    'Neighborhood guides for Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach, and New York City.',
+    'Neighborhood guides for Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York City.',
   'meta.residences.title': 'Branded Residences | Mariana Ramírez',
   'meta.residences.description':
     'Introductions to branded residences Mariana Ramírez advises on. Verified facts are added only from official sources.',
   'meta.contact.title': 'Contact Mariana Ramírez | Miami Real Estate',
   'meta.contact.description':
-    'Contact Mariana Ramírez about buying, selling, renting, or investing in Miami, Palm Beach, or New York.',
+    'Contact Mariana Ramírez about buying, selling, renting, or investing in Miami, including Coconut Grove, or in New York.',
   'meta.thanks.title': 'Thank you | Mariana Ramírez',
   'meta.thanks.description': 'Your inquiry to Mariana Ramírez.',
   'meta.notFound.title': 'Page not found | Mariana Ramírez',
   'meta.notFound.description': 'This page is not on Mariana Ramírez’s site.',
   'meta.ogAlt':
     'Mariana Ramírez on a Brickell balcony, with the Miami skyline and the bay behind her.',
+
+  'meta.blog.title': 'Blog | Mariana Ramírez',
+  'meta.blog.description':
+    'Notes on real estate, the economy, policy, culture, and business. Each piece is reviewed before it is published.',
+  'blog.eyebrow': 'Blog',
+  'blog.title': 'Blog',
+  'blog.lead':
+    'Real estate, the economy, policy, culture, and business. A piece goes up after it has been reviewed.',
+  'blog.empty': 'No published articles yet.',
+  'blog.draft': 'Draft',
+  'blog.sources': 'Sources',
+  'blog.back': 'All posts',
+  'blog.rss': 'RSS',
+  'blog.cat.real-estate': 'Real estate',
+  'blog.cat.economy': 'Economy',
+  'blog.cat.policy': 'Policy',
+  'blog.cat.culture': 'Culture',
+  'blog.cat.business': 'Business',
 
   'schema.jobTitle': 'Luxury Real Estate Advisor',
 
@@ -243,6 +261,7 @@ const es: typeof en = {
   'nav.neighborhoods': 'Barrios',
   'nav.residences': 'Residencias',
   'nav.contact': 'Contacto',
+  'nav.blog': 'Blog',
   'link.serhant': 'Perfil en SERHANT.',
   'link.instagram': 'Instagram',
   'link.tiktok': 'TikTok',
@@ -261,13 +280,13 @@ const es: typeof en = {
   'home.heroAlt':
     'Mariana Ramírez en un balcón alto de Brickell, con el skyline de Miami y Biscayne Bay detrás.',
   'home.markets':
-    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · West Palm Beach · Nueva York',
+    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · Coconut Grove · Nueva York',
   'home.cta': 'Empezar una conversación',
   'home.introEyebrow': 'La práctica',
   'home.introAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'home.introBody':
-    'Soy asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Represento a quien compra, vende, alquila o invierte en Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach y Nueva York. Soy colombiana, de Barranquilla, y trabajo en español y en inglés.',
+    'Soy asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Represento a quien compra, vende, alquila o invierte en Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York. Soy colombiana, de Barranquilla, y trabajo en español y en inglés.',
   'home.statSaleValue': '2,4 M',
   'home.statSaleLabel': 'Venta récord',
   'home.statRookieValue': 'Nominada',
@@ -300,7 +319,7 @@ const es: typeof en = {
     'Asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Es colombiana, de Barranquilla.',
   'faq.q2': '¿Dónde trabaja?',
   'faq.a2':
-    'En Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach y Nueva York.',
+    'En Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York.',
   'faq.q3': '¿En qué idiomas trabaja?',
   'faq.a3': 'En inglés, español y alemán, según su perfil en SERHANT.',
   'faq.q4': '¿Qué hay en su registro hasta ahora?',
@@ -314,15 +333,12 @@ const es: typeof en = {
 
   'about.eyebrow': 'Sobre mí',
   'about.title': 'Mariana Ramírez',
-  'about.lead': 'Asesora colombiana, joven, de Barranquilla y establecida en Miami.',
-  'about.p1':
-    'Soy asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Nací en Barranquilla, Colombia, y trabajo en una ciudad que elegí: compradores internacionales, torres de marca y barrios consolidados quedan a pocos minutos.',
+  'about.lead': 'Asesora joven de bienes raíces de lujo, colombiana, de Barranquilla, en SERHANT. en Miami.',
+  'about.p1': 'Trabajo en el equipo de Nile Lundgren. Atiendo en español y en inglés.',
   'about.p2':
-    'Trabajo con quien quiere un proceso claro: una búsqueda definida o un plan de venta, un precio dicho con franqueza y alguien que se queda cerca de la transacción.',
-  'about.p3':
-    'En esta primera etapa registré una venta de 2,4 millones de dólares y fui nominada a Rookie of the Year.',
-  'about.profileNote':
-    'Mi perfil en SERHANT. me registra como Licensed Real Estate Salesperson en Florida, licencia SL3625059, y señala que también trabajo en alemán.',
+    'Cubro Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York.',
+  'about.p3': 'Mi venta récord es de 2,4 millones de dólares, y fui nominada a Rookie of the Year.',
+  'about.profileNote': 'El registro público está en mi perfil de SERHANT.',
   'about.photoAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'about.factsTitle': 'En el registro',
@@ -448,7 +464,7 @@ const es: typeof en = {
 
   'meta.home.title': 'Mariana Ramírez | Asesora de bienes raíces de lujo en Miami',
   'meta.home.description':
-    'Mariana Ramírez asesora en propiedad residencial en Miami, Palm Beach y Nueva York, con SERHANT., en el equipo de Nile Lundgren.',
+    'Mariana Ramírez asesora en propiedad residencial en Miami y Nueva York, incluido Coconut Grove, con SERHANT., en el equipo de Nile Lundgren.',
   'meta.about.title': 'Sobre Mariana Ramírez | Asesora inmobiliaria en Miami',
   'meta.about.description':
     'Asesora colombiana de Barranquilla, establecida en Miami con SERHANT. en el equipo de Nile Lundgren. Venta récord de 2,4 millones de dólares y nominación a Rookie of the Year.',
@@ -457,19 +473,37 @@ const es: typeof en = {
     'Propiedades actuales y ventas anteriores de Mariana Ramírez. Los ejemplos están marcados hasta que los reemplace el inventario real.',
   'meta.neighborhoods.title': 'Guías de barrios | Mariana Ramírez',
   'meta.neighborhoods.description':
-    'Guías de Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, West Palm Beach y Nueva York.',
+    'Guías de Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York.',
   'meta.residences.title': 'Residencias de marca | Mariana Ramírez',
   'meta.residences.description':
     'Introducción a las residencias de marca sobre las que asesora Mariana Ramírez. Los datos verificados se agregan solo desde fuentes oficiales.',
   'meta.contact.title': 'Contacto | Mariana Ramírez',
   'meta.contact.description':
-    'Contacta a Mariana Ramírez para comprar, vender, alquilar o invertir en Miami, Palm Beach o Nueva York.',
+    'Contacta a Mariana Ramírez para comprar, vender, alquilar o invertir en Miami, incluido Coconut Grove, o en Nueva York.',
   'meta.thanks.title': 'Gracias | Mariana Ramírez',
   'meta.thanks.description': 'Tu consulta para Mariana Ramírez.',
   'meta.notFound.title': 'Página no encontrada | Mariana Ramírez',
   'meta.notFound.description': 'Esta página no está en el sitio de Mariana Ramírez.',
   'meta.ogAlt':
     'Mariana Ramírez en un balcón de Brickell, con el skyline de Miami y la bahía detrás.',
+
+  'meta.blog.title': 'Blog | Mariana Ramírez',
+  'meta.blog.description':
+    'Notas sobre bienes raíces, economía, política, cultura y negocios. Cada texto se revisa antes de publicarse.',
+  'blog.eyebrow': 'Blog',
+  'blog.title': 'Blog',
+  'blog.lead':
+    'Bienes raíces, economía, política, cultura y negocios. Un texto se publica después de revisarse.',
+  'blog.empty': 'Todavía no hay artículos publicados.',
+  'blog.draft': 'Borrador',
+  'blog.sources': 'Fuentes',
+  'blog.back': 'Todos los artículos',
+  'blog.rss': 'RSS',
+  'blog.cat.real-estate': 'Bienes raíces',
+  'blog.cat.economy': 'Economía',
+  'blog.cat.policy': 'Política',
+  'blog.cat.culture': 'Cultura',
+  'blog.cat.business': 'Negocios',
 
   'schema.jobTitle': 'Asesora de bienes raíces de lujo',
 

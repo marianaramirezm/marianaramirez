@@ -56,6 +56,47 @@ The two files there are samples. They are labeled “Example listing – replace
 
 Sample URLs that contain `/example-` are left out of the sitemap. Rename the file when the listing is real.
 
+### Team listings
+
+Real team listings are separate from the sample files above. Add one Markdown file per listing in `src/content/team-listings/`. No sample entries are included. Each text field has `en` and `es`.
+
+```yaml
+---
+name:
+  en: Residence name
+  es: Nombre de la residencia
+address:
+  en: Street address
+  es: Dirección
+area:
+  en: Coconut Grove
+  es: Coconut Grove
+status: active
+price:
+  en: Price as published
+  es: Precio publicado
+beds:
+  en: "2"
+  es: "2"
+baths:
+  en: "2"
+  es: "2"
+sqft:
+  en: Area as published
+  es: Superficie publicada
+description:
+  en: Description from the official source.
+  es: Descripción tomada de la fuente oficial.
+photos:
+  - ../../assets/guides/coconut-grove.jpg
+officialUrl: https://example.com/official-listing
+credit: "Listed by Nile Lundgren Team at SERHANT."
+order: 1
+---
+```
+
+`status` is `active`, `sold`, or `leased`. `officialUrl` is the official source URL. `credit` must be exactly `Listed by Nile Lundgren Team at SERHANT.` `photos` may be omitted until images are ready. Do not invent an address or a figure.
+
 ## Edit guides
 
 Neighborhoods: `src/content/neighborhoods/*.md`.
@@ -78,6 +119,46 @@ facts:
 ```
 
 `place` is optional. Use it only for a city you are willing to state. It feeds the Place schema. It is not a substitute for a sourced fact in the body.
+
+`/neighborhoods/coconut-grove/` and `/es/neighborhoods/coconut-grove/` are the guide URLs. `public/_redirects` sends the previous slugs there.
+
+## Blog
+
+Posts are written by a human-reviewed assistant and approved by Mariana, then added as Markdown by hand. There is no generator and no API key.
+
+Add an English and Spanish pair. The date and slug must match:
+
+- `src/content/blog/en/YYYY-MM-DD-slug.md`
+- `src/content/blog/es/YYYY-MM-DD-slug.md`
+
+`slug` is lowercase words separated by hyphens. `pubDate` must be that same `YYYY-MM-DD`. Copy `src/content/blog/_template.md`.
+
+```yaml
+---
+title: "How does the Fed rate affect prices in Brickell?"
+description: "One or two sentences for the listing page, the meta description, and Open Graph."
+pubDate: 2026-11-04
+category: real-estate
+draft: true
+sources: []
+---
+```
+
+The Spanish file uses the same `pubDate`, `category`, and `draft`, with its own `title`, `description`, body, and `sources`.
+
+`category` is one of `real-estate`, `economy`, `policy`, `culture`, `business`.
+
+`sources` is a list of `{ title, url }`. A post with `draft: false` and an empty `sources` list fails the build. Drafts may leave `sources` empty.
+
+```yaml
+sources:
+  - title: Name of the document or page
+    url: https://example.com/official-page
+```
+
+The body is Markdown after the frontmatter, in the language of the folder. The public URL is `/blog/slug/` or `/es/blog/slug/` (the date is not in the URL).
+
+`draft: true` posts are built for `astro dev` and for Cloudflare Pages preview branches. A production build of `main` leaves them out of the pages, the sitemap, and the RSS feeds (`/rss.xml`, `/es/rss.xml`).
 
 ## Edit social links, phone, and compliance lines
 

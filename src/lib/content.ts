@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import type { GuideData, GuideEntry, ListingData, ListingEntry } from './types';
+import type { GuideData, GuideEntry, ListingData, ListingEntry, TeamListingData, TeamListingEntry } from './types';
 
 export async function getListings(): Promise<ListingEntry[]> {
   const all = await getCollection('listings');
@@ -20,4 +20,11 @@ export async function getResidences(): Promise<GuideEntry[]> {
   return all
     .map((entry) => ({ id: entry.id, data: entry.data as GuideData }))
     .sort((a, b) => a.data.order - b.data.order);
+}
+
+export async function getTeamListings(): Promise<TeamListingEntry[]> {
+  const all = await getCollection('teamListings');
+  return all
+    .map((entry) => ({ id: entry.id, data: entry.data as TeamListingData }))
+    .sort((a, b) => a.data.order - b.data.order || a.id.localeCompare(b.id));
 }

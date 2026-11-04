@@ -56,3 +56,34 @@ export type GuideData = {
 
 export type ListingEntry = { id: string; data: ListingData };
 export type GuideEntry = { id: string; data: GuideData };
+
+export type TeamListingData = {
+  name: Localized;
+  address: Localized;
+  area: Localized;
+  status: 'active' | 'sold' | 'leased';
+  price: Localized;
+  beds: Localized;
+  baths: Localized;
+  sqft: Localized;
+  description: Localized;
+  photos: ImageMetadata[];
+  officialUrl: string;
+  credit: 'Listed by Nile Lundgren Team at SERHANT.';
+  order: number;
+};
+
+export type TeamListingEntry = { id: string; data: TeamListingData };
+
+export type BlogCategory = 'real-estate' | 'economy' | 'policy' | 'culture' | 'business';
+
+export type BlogSource = { title: string; url: string };
+
+export type BlogData = {
+  title: string;
+  description: string;
+  pubDate: Date;
+  category: BlogCategory;
+  draft: boolean;
+  sources: BlogSource[];
+};

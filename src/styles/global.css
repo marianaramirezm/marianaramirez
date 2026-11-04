@@ -429,6 +429,49 @@ button.button:disabled {
   margin: 0 0 1.1rem;
 }
 
+.prose h2,
+.prose h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  max-width: var(--measure);
+}
+
+.prose h2 {
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  margin: 2.2rem 0 0.75rem;
+}
+
+.prose h3 {
+  font-size: 1.35rem;
+  margin: 1.6rem 0 0.5rem;
+}
+
+.prose ul,
+.prose ol {
+  max-width: var(--measure);
+  margin: 0 0 1.1rem;
+  padding-left: 1.15rem;
+}
+
+.prose li + li {
+  margin-top: 0.4rem;
+}
+
+.prose a {
+  color: var(--blue);
+  text-underline-offset: 0.18em;
+}
+
+.prose blockquote {
+  margin: 0 0 1.1rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--line);
+  max-width: var(--measure);
+  color: var(--muted);
+}
+
 .lead {
   margin: 0;
   font-size: 1.2rem;
@@ -553,6 +596,21 @@ button.button:disabled {
   font-size: clamp(1.85rem, 4vw, 2.7rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
+}
+
+.name-grid .n.question {
+  font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+  line-height: 1.18;
+  text-wrap: balance;
+  max-width: 20em;
+}
+
+.blog-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .name-grid .where {
@@ -710,6 +768,14 @@ button.button:disabled {
   line-height: 0.94;
   letter-spacing: -0.035em;
   margin: 0.3rem 0 1rem;
+}
+
+.page-intro h1.question {
+  font-size: clamp(2.15rem, 5vw, 3.65rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 16em;
 }
 
 .crumbs ol {
@@ -1037,7 +1103,7 @@ textarea {
   .desk-nav {
     display: flex;
     align-items: center;
-    gap: 1.35rem;
+    gap: 0.85rem;
     margin-left: auto;
   }
 

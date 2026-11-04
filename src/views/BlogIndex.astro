@@ -1,0 +1,83 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Base from '../layouts/Base.astro';
+import { formatBlogDate, type BlogPost } from '../lib/blog';
+import type { Locale, UiKey } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { blogPath, pathFor } from '../lib/routes';
+import { blogNode, breadcrumbNode, graph } from '../lib/schema';
+import type { BlogCategory } from '../lib/types';
+
+interface Props {
+  locale: Locale;
+  posts: BlogPost[];
+}
+
+const { locale, posts } = Astro.props;
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const path = pathFor('blog', locale);
+const alternate = pathFor('blog', locale === 'en' ? 'es' : 'en');
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, 'nav.blog'), path },
+];
+
+function categoryKey(category: BlogCategory): UiKey {
+  return `blog.cat.${category}` as UiKey;
+}
+---
+
+<Base
+  locale={locale}
+  title={t(locale, 'meta.blog.title')}
+  description={t(locale, 'meta.blog.description')}
+  path={path}
+  alternatePath={alternate}
+  current="blog"
+  jsonLd={graph(
+    blogNode({
+      site,
+      path,
+      name: t(locale, 'meta.blog.title'),
+      description: t(locale, 'meta.blog.description'),
+      locale,
+    }),
+    breadcrumbNode(site, crumbs),
+  )}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{t(locale, 'blog.eyebrow')}</p>
+    <h1>{t(locale, 'blog.title')}</h1>
+    <p class="lead">{t(locale, 'blog.lead')}</p>
+  </div>
+  <div class="wrap page-body">
+    {
+      posts.length === 0 ? (
+        <p class="note">{t(locale, 'blog.empty')}</p>
+      ) : (
+        <ul class="name-grid">
+          {posts.map((post) => (
+            <li>
+              <a class="with-summary" href={blogPath(post.slug, locale)}>
+                <span class="n question">{post.data.title}</span>
+                <span class="blog-kicker">
+                  {post.data.draft && (
+                    <>
+                      {t(locale, 'blog.draft')}
+                      <span aria-hidden="true"> · </span>
+                    </>
+                  )}
+                  {t(locale, categoryKey(post.data.category))}
+                  <span aria-hidden="true"> · </span>
+                  <time datetime={post.dateKey}>{formatBlogDate(post.data.pubDate, locale)}</time>
+                </span>
+                <span class="where">{post.data.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</Base>

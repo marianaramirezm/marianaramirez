@@ -3,7 +3,7 @@ import ProfileLinks from './ProfileLinks.astro';
 import { site } from '../data/site';
 import type { Locale } from '../i18n/ui';
 import { t } from '../i18n/utils';
-import { mainNav, pathFor, type NavKey } from '../lib/routes';
+import { mainNav, pathFor, rssPath, type NavKey } from '../lib/routes';
 
 interface Props {
   locale: Locale;
@@ -16,6 +16,7 @@ const labelKey = {
   listings: 'nav.listings',
   neighborhoods: 'nav.neighborhoods',
   residences: 'nav.residences',
+  blog: 'nav.blog',
   contact: 'nav.contact',
   home: 'nav.home',
 } as const;
@@ -43,6 +44,9 @@ const footerNav: NavKey[] = ['home', ...mainNav];
               </li>
             ))
           }
+          <li>
+            <a href={rssPath(locale)}>{t(locale, 'blog.rss')}</a>
+          </li>
         </ul>
       </nav>
       <div>

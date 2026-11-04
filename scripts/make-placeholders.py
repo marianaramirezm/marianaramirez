@@ -247,7 +247,7 @@ def main() -> None:
             50,
         ),
         (
-            "west-palm-beach.jpg",
+            "coconut-grove.jpg",
             1600,
             1000,
             [
