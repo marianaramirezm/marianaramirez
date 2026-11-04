@@ -133,22 +133,20 @@ facts:
 
 ## Blog
 
-English posts are `/blog/` and `/blog/<translationKey>/`. Spanish posts are `/es/blog/` and `/es/blog/<translationKey>/`. The listing is newest first, six posts per page. Later pages are `/blog/page/2/` and `/es/blog/page/2/`. Feeds are `/rss.xml` and `/es/rss.xml`.
-
-Add a pair by copying `src/content/blog/_template.md`:
+Posts are written by Mariana’s assistant, approved by Mariana, and added by hand as Markdown. Copy `src/content/blog/_template.md` into a matching pair:
 
 - `src/content/blog/en/YYYY-MM-DD-slug.md`
 - `src/content/blog/es/YYYY-MM-DD-slug.md`
 
-The filename slug, `translationKey`, and `date` match. `lang` is `en` or `es` and must match the folder.
+`slug` is lowercase words separated by hyphens. The filename slug, `translationKey`, and `date` (`YYYY-MM-DD`) must match in both files. `lang` is `en` in the English file and `es` in the Spanish file.
 
 ```yaml
 ---
-title: "What question should this post ask?"
+title: "How does the Fed rate affect prices in Brickell?"
 description: "One or two sentences for the listing page, the meta description, and Open Graph."
 date: 2026-11-04
 lang: en
-translationKey: layout-placeholder
+translationKey: fed-rate-brickell
 category: real-estate
 heroImage: ../../../assets/guides/downtown-skyline.jpg
 heroAlt: "Downtown Miami skyline, with One Thousand Museum at the center."
@@ -161,25 +159,15 @@ draft: false
 ---
 ```
 
-`category` is `economy`, `real-estate`, `business`, `culture`, or `policy`. `sources` entries are `title`, `url`, and `publisher`. A post with `draft: false` and an empty `sources` list fails the build. The body is Markdown after the frontmatter.
+The Spanish file uses the same `date`, `translationKey`, `category`, and `draft`, with its own question title, description, body, hero alt, and sources. Example title: `¿Cómo afecta la tasa de la Fed a los precios en Brickell?`
 
-`draft: true` posts are omitted from production builds, including a build of `main`. They are included only when `CF_PAGES_BRANCH` is set to something other than `main` (a Cloudflare Pages preview). To preview drafts locally: `CF_PAGES_BRANCH=preview npm run build`.
+`category` is `real-estate` (the core category), `economy`, `policy`, `culture`, or `business`.
 
-### Daily draft
+`sources` is a list of `title`, `url`, and `publisher`. A post with `draft: false` and an empty `sources` list fails the build. Drafts may leave `sources` empty. The body is Markdown after the frontmatter, in the language of the folder.
 
-`.github/workflows/blog-draft.yml` runs at about 7:00 AM America/New_York and from Actions → Blog draft → Run workflow. It reads the feeds in `scripts/blog-feeds.json` (Federal Reserve press releases, Bureau of Labor Statistics, Census economic indicators, The Real Deal Miami, plus Miami Herald, Associated Press, and Reuters when those feeds respond). It asks an LLM for one bilingual draft, checks that every cited URL and every number came from those items, and opens a pull request titled `Blog draft: YYYY-MM-DD`. The posts are `draft: true`. The workflow pushes that review branch only. It does not push to `main` and it does not merge.
+Public URLs are `/blog/slug/` and `/es/blog/slug/` (the date is not in the URL). The listing is newest first, six posts per page (`/blog/page/2/` and `/es/blog/page/2/`). Feeds are `/rss.xml` and `/es/rss.xml`.
 
-GitHub runs a scheduled workflow only after the workflow file is on the default branch. Until this pull request is merged, the schedule does not run.
-
-Secrets, in the repository settings:
-
-| Secret | Required | Purpose |
-| --- | --- | --- |
-| `OPENAI_API_KEY` | One of these two | Drafts the post. Default model `gpt-5.4-mini`. |
-| `ANTHROPIC_API_KEY` | One of these two | Used when `OPENAI_API_KEY` is not set. Default model `claude-sonnet-4-5`. |
-| `UNSPLASH_ACCESS_KEY` | No | Hero photo with Unsplash attribution. Without it, the draft uses the existing downtown Miami skyline photo and its license line. |
-
-If neither model key is set, the job logs that and exits without opening a pull request. Optional repository variables `OPENAI_MODEL` and `ANTHROPIC_MODEL` override the model ids.
+`draft: true` posts are omitted from a production build, including `main`. They are included only when `CF_PAGES_BRANCH` is set to a branch other than `main`. To preview them locally: `CF_PAGES_BRANCH=preview npm run build`.
 
 ## Edit social links, phone, and compliance lines
 

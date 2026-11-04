@@ -1,6 +1,6 @@
 ---
-title: "¿Qué pregunta debería hacer este artículo?"
-description: "Borrador de marcador. Esto no es un artículo y no afirma datos de mercado."
+title: "¿Cómo afecta la tasa de la Fed a los precios en Brickell?"
+description: "Borrador de marcador. La pregunta es solo el título. Esta página no afirma datos sobre tasas ni precios."
 date: 2026-11-04
 lang: es
 translationKey: layout-placeholder

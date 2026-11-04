@@ -1,6 +1,6 @@
 ---
-title: "What question should this post ask?"
-description: "Draft placeholder. This is not an article and it states no market facts."
+title: "How does the Fed rate affect prices in Brickell?"
+description: "Draft placeholder. The question is only a title. This page states no facts about rates or prices."
 date: 2026-11-04
 lang: en
 translationKey: layout-placeholder
