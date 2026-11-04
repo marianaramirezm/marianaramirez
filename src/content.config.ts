@@ -15,33 +15,6 @@ const fact = z.object({
 
 const urlOrEmpty = z.union([z.literal(''), z.url()]).default('');
 
-const listings = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/listings' }),
-  schema: ({ image }: SchemaContext) =>
-    z.object({
-      title: text,
-      address: text,
-      neighborhood: z.string(),
-      status: z.enum(['active', 'sold', 'leased']),
-      price: text,
-      beds: text,
-      baths: text,
-      sqft: text,
-      photos: z.array(image()).min(1),
-      officialUrl: urlOrEmpty,
-      source: z.url(),
-      example: z.boolean(),
-      order: z.number(),
-      credit: z.object({
-        author: z.string(),
-        license: z.string(),
-        licenseUrl: z.url(),
-        source: z.url(),
-      }),
-      imageNote: text,
-    }),
-});
-
 function guideSchema({ image }: SchemaContext) {
   return z.object({
     name: text,
@@ -91,14 +64,16 @@ const teamListings = defineCollection({
       name: text,
       address: text,
       area: text,
-      status: z.enum(['sold', 'previously-listed']),
+      group: z.enum(['mariana', 'active', 'lease', 'sold', 'previously']),
+      status: z.enum(['mariana-sale', 'for-sale', 'for-lease', 'sold', 'previously-listed']),
       statusLabel: text,
       price: text,
       beds: text,
       baths: text.optional(),
-      sqft: text,
-      description: text,
-      agents: text,
+      sqft: text.optional(),
+      soldDate: text.optional(),
+      description: text.optional(),
+      agents: text.optional(),
       photos: z
         .array(
           z.object({
@@ -106,10 +81,13 @@ const teamListings = defineCollection({
             alt: text,
           }),
         )
+        .max(4)
         .default([]),
       officialUrl: z.url(),
       credit: z.literal(teamCredit).default(teamCredit),
       order: z.number().default(0),
+      featured: z.boolean().default(false),
+      featureOrder: z.number().optional(),
     }),
 });
 
@@ -148,4 +126,4 @@ const blog = defineCollection({
       }),
 });
 
-export const collections = { listings, neighborhoods, residences, teamListings, blog };
+export const collections = { neighborhoods, residences, teamListings, blog };

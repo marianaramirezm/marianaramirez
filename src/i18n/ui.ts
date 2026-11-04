@@ -41,7 +41,7 @@ const en = {
   'home.listingsEyebrow': 'Selected',
   'home.listingsTitle': 'Listings and past sales',
   'home.listingsNote':
-    'Figures are as published on my SERHANT. profile. The photographs show the surrounding city, not the residence.',
+    'Photographs and figures are from the official SERHANT. listing pages.',
   'home.listingsAll': 'All listings',
   'home.liveListings': 'View my live listings',
   'home.neighborhoodsEyebrow': 'Guides',
@@ -97,7 +97,14 @@ const en = {
   'listings.eyebrow': 'Inventory',
   'listings.title': 'Listings and past sales',
   'listings.lead':
-    'Selected listings and past sales from my SERHANT. profile and the Nile Lundgren Team.',
+    'Selected listings and past sales from the Nile Lundgren Team at SERHANT.',
+  'listings.groupMariana': "Mariana's Sale",
+  'listings.groupActive': 'Active',
+  'listings.groupLease': 'For Lease',
+  'listings.groupSold': 'Sold',
+  'listings.groupPrevious': 'Previously Listed',
+  'listings.soldDate': 'Date',
+  'listings.area': 'Area',
   'listings.areaNote': 'Some photographs show the surrounding area, not the residence.',
   'listings.example': 'Example',
   'listings.active': 'Active',
@@ -221,7 +228,7 @@ const en = {
     'Colombian advisor from Barranquilla, based in Miami with SERHANT. on Nile Lundgren’s team. Record sale of $2.4 million and a Rookie of the Year nomination.',
   'meta.listings.title': 'Listings and Past Sales | Mariana Ramírez',
   'meta.listings.description':
-    'Current listings and past sales from Mariana Ramírez. Sample entries are labeled until live inventory replaces them.',
+    'Active listings, leases, and past sales from the Nile Lundgren Team at SERHANT.',
   'meta.neighborhoods.title': 'Neighborhood Guides | Mariana Ramírez',
   'meta.neighborhoods.description':
     'Neighborhood guides for Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York City.',
@@ -313,7 +320,7 @@ const es: typeof en = {
   'home.listingsEyebrow': 'Selección',
   'home.listingsTitle': 'Propiedades y ventas',
   'home.listingsNote':
-    'Las cifras están como aparecen en mi perfil de SERHANT. Las fotografías muestran la ciudad alrededor, no la residencia.',
+    'Las fotografías y las cifras provienen de los anuncios oficiales en SERHANT.',
   'home.listingsAll': 'Todas las propiedades',
   'home.liveListings': 'Ver mis propiedades en vivo',
   'home.neighborhoodsEyebrow': 'Guías',
@@ -369,7 +376,14 @@ const es: typeof en = {
   'listings.eyebrow': 'Inventario',
   'listings.title': 'Propiedades y ventas',
   'listings.lead':
-    'Una selección de propiedades y ventas de mi perfil en SERHANT. y del equipo de Nile Lundgren.',
+    'Una selección de propiedades y ventas del equipo de Nile Lundgren en SERHANT.',
+  'listings.groupMariana': 'Venta de Mariana',
+  'listings.groupActive': 'Activas',
+  'listings.groupLease': 'En alquiler',
+  'listings.groupSold': 'Vendidas',
+  'listings.groupPrevious': 'Publicadas antes',
+  'listings.soldDate': 'Fecha',
+  'listings.area': 'Zona',
   'listings.areaNote': 'Algunas fotografías muestran la zona, no la residencia.',
   'listings.example': 'Ejemplo',
   'listings.active': 'Activas',
@@ -494,7 +508,7 @@ const es: typeof en = {
     'Asesora colombiana de Barranquilla, establecida en Miami con SERHANT. en el equipo de Nile Lundgren. Venta récord de 2,4 millones de dólares y nominación a Rookie of the Year.',
   'meta.listings.title': 'Propiedades y ventas | Mariana Ramírez',
   'meta.listings.description':
-    'Propiedades actuales y ventas anteriores de Mariana Ramírez. Los ejemplos están marcados hasta que los reemplace el inventario real.',
+    'Propiedades activas, alquileres y ventas del equipo de Nile Lundgren en SERHANT.',
   'meta.neighborhoods.title': 'Guías de barrios | Mariana Ramírez',
   'meta.neighborhoods.description':
     'Guías de Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York.',

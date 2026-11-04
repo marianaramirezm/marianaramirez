@@ -501,6 +501,47 @@ button.button:disabled {
   gap: 2.25rem;
 }
 
+.listing-group + .listing-group {
+  margin-top: 4.75rem;
+}
+
+.listing-group h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--blue);
+}
+
+.card-copy {
+  min-width: 0;
+}
+
+.card-credit,
+.listing-credit {
+  margin: 0.95rem 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.listing-credit {
+  margin: 0 0 1.25rem;
+}
+
+.listing-gallery {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.listing-gallery .guide-figure {
+  margin: 0;
+}
+
 .card {
   display: block;
   color: inherit;
@@ -1207,6 +1248,30 @@ select option {
   .cards {
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
+  }
+
+  .listing-feature {
+    grid-column: 1 / -1;
+  }
+
+  .listing-feature .card {
+    display: grid;
+    grid-template-columns: 1.35fr 0.85fr;
+    gap: 1.5rem 2.5rem;
+    align-items: end;
+  }
+
+  .listing-feature .card-media {
+    margin-bottom: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .listing-gallery.has-many {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .listing-gallery.has-many figure:first-child {
+    grid-column: 1 / -1;
   }
 
   .about-grid,

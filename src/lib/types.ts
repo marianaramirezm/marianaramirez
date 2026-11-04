@@ -8,24 +8,6 @@ export type Fact = {
   source: string;
 };
 
-export type ListingData = {
-  title: Localized;
-  address: Localized;
-  neighborhood: string;
-  status: 'active' | 'sold' | 'leased';
-  price: Localized;
-  beds: Localized;
-  baths: Localized;
-  sqft: Localized;
-  photos: ImageMetadata[];
-  officialUrl: string;
-  source: string;
-  example: boolean;
-  order: number;
-  credit: PhotoCredit;
-  imageNote: Localized;
-};
-
 export type PhotoCredit = {
   author: string;
   license: string;
@@ -54,7 +36,6 @@ export type GuideData = {
   order: number;
 };
 
-export type ListingEntry = { id: string; data: ListingData };
 export type GuideEntry = { id: string; data: GuideData };
 
 export type TeamListingPhoto = {
@@ -62,22 +43,28 @@ export type TeamListingPhoto = {
   alt: Localized;
 };
 
+export type TeamListingGroup = 'mariana' | 'active' | 'lease' | 'sold' | 'previously';
+
 export type TeamListingData = {
   name: Localized;
   address: Localized;
   area: Localized;
-  status: 'sold' | 'previously-listed';
+  group: TeamListingGroup;
+  status: 'mariana-sale' | 'for-sale' | 'for-lease' | 'sold' | 'previously-listed';
   statusLabel: Localized;
   price: Localized;
   beds: Localized;
   baths?: Localized;
-  sqft: Localized;
-  description: Localized;
-  agents: Localized;
+  sqft?: Localized;
+  soldDate?: Localized;
+  description?: Localized;
+  agents?: Localized;
   photos: TeamListingPhoto[];
   officialUrl: string;
   credit: 'Nile Lundgren Team at SERHANT.';
   order: number;
+  featured?: boolean;
+  featureOrder?: number;
 };
 
 export type TeamListingEntry = { id: string; data: TeamListingData };

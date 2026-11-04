@@ -8,6 +8,7 @@ address:
 area:
   en: "Gables Estates, Coral Gables"
   es: "Gables Estates, Coral Gables"
+group: previously
 status: previously-listed
 statusLabel:
   en: Previously listed by the team

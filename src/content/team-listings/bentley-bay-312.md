@@ -1,20 +1,21 @@
 ---
 name:
-  en: "The Bentley Bay, Residence 312"
-  es: "The Bentley Bay, residencia 312"
+  en: "The Bentley Bay"
+  es: "The Bentley Bay"
 address:
-  en: "540 West Ave #312, Miami Beach, FL 33139"
-  es: "540 West Ave #312, Miami Beach, FL 33139"
+  en: "540 West Ave #312"
+  es: "540 West Ave #312"
 area:
-  en: Miami Beach
-  es: Miami Beach
+  en: "Miami Beach, FL 33139"
+  es: "Miami Beach, FL 33139"
+group: sold
 status: sold
 statusLabel:
-  en: Sold
-  es: Vendida
+  en: "Sold"
+  es: "Vendida"
 price:
-  en: "$686,000 (September 2025)"
-  es: "$686,000 (septiembre de 2025)"
+  en: "$686,000"
+  es: "$686,000"
 beds:
   en: "1"
   es: "1"
@@ -24,34 +25,30 @@ baths:
 sqft:
   en: "778"
   es: "778"
-description:
-  en: "Floor-to-ceiling glass. Private balcony with bay and skyline views. Minutes from the beach, and walking distance to Sunset Harbour and South of Fifth."
-  es: "Vidrio de piso a techo. Balcón privado con vistas a la bahía y al skyline. A minutos de la playa, y a poca distancia a pie de Sunset Harbour y South of Fifth."
+soldDate:
+  en: "September 5, 2025"
+  es: "5 de septiembre de 2025"
 agents:
-  en: Nile Lundgren and Scott Porter
-  es: Nile Lundgren y Scott Porter
+  en: "Scott Porter and Nile Lundgren"
+  es: "Scott Porter y Nile Lundgren"
 photos:
-  - src: ../../assets/listings/bentley-bay-312-balcony.jpg
+  - src: ../../assets/listings/bentley-bay-312-1.jpg
     alt:
-      en: "Private balcony with a glass railing, looking across the bay toward the skyline, at The Bentley Bay."
-      es: "Balcón privado con baranda de vidrio, mirando la bahía y el skyline, en The Bentley Bay."
-  - src: ../../assets/listings/bentley-bay-312-living.jpg
+      en: "Official listing photograph 1 of 540 West Ave #312."
+      es: "Fotografía 1 del anuncio oficial de 540 West Ave #312."
+  - src: ../../assets/listings/bentley-bay-312-2.jpg
     alt:
-      en: "Living room with a sofa and dark wood floors at The Bentley Bay, Residence 312."
-      es: "Sala con sofá y piso de madera oscura en The Bentley Bay, residencia 312."
-  - src: ../../assets/listings/bentley-bay-312-kitchen.jpg
+      en: "Official listing photograph 2 of 540 West Ave #312."
+      es: "Fotografía 2 del anuncio oficial de 540 West Ave #312."
+  - src: ../../assets/listings/bentley-bay-312-3.jpg
     alt:
-      en: "Kitchen with light cabinets and a stone counter at The Bentley Bay, Residence 312."
-      es: "Cocina con gabinetes claros y cubierta de piedra en The Bentley Bay, residencia 312."
-  - src: ../../assets/listings/bentley-bay-312-bath.jpg
+      en: "Official listing photograph 3 of 540 West Ave #312."
+      es: "Fotografía 3 del anuncio oficial de 540 West Ave #312."
+  - src: ../../assets/listings/bentley-bay-312-4.jpg
     alt:
-      en: "Bathroom with a dark stone vanity at The Bentley Bay, Residence 312."
-      es: "Baño con lavabo de piedra oscura en The Bentley Bay, residencia 312."
-  - src: ../../assets/listings/bentley-bay-312-fitness.jpg
-    alt:
-      en: "Fitness room with treadmills and a wall of windows at The Bentley Bay."
-      es: "Sala de ejercicio con caminadoras y una pared de ventanas en The Bentley Bay."
+      en: "Official listing photograph 4 of 540 West Ave #312."
+      es: "Fotografía 4 del anuncio oficial de 540 West Ave #312."
 officialUrl: https://serhant.com/properties/540-west-ave-312-miami-beach-fl-us-33139-d51a63fc7e9d5bcb08f56a58c408c76d
 credit: "Nile Lundgren Team at SERHANT."
-order: 1
+order: 4
 ---

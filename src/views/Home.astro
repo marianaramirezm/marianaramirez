@@ -6,9 +6,9 @@ import skyline from '../assets/guides/downtown-skyline.jpg';
 import intro from '../assets/photos/mariana-kitchen.jpg';
 import contactPhoto from '../assets/photos/mariana-bar.jpg';
 import ContactForm from '../components/ContactForm.astro';
-import ListingCard from '../components/ListingCard.astro';
+import TeamListingCard from '../components/TeamListingCard.astro';
 import Base from '../layouts/Base.astro';
-import { getListings, getNeighborhoods, getResidences } from '../lib/content';
+import { getNeighborhoods, getResidences, getTeamListings } from '../lib/content';
 import type { Locale, UiKey } from '../i18n/ui';
 import { t } from '../i18n/utils';
 import { neighborhoodPath, pathFor, residencePath } from '../lib/routes';
@@ -20,10 +20,11 @@ interface Props {
 
 const { locale } = Astro.props;
 const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
-const listings = await getListings();
 const neighborhoods = await getNeighborhoods();
 const residences = await getResidences();
-const featured = listings.slice(0, 2);
+const featured = (await getTeamListings())
+  .filter((listing) => listing.data.featured)
+  .sort((a, b) => (a.data.featureOrder ?? 0) - (b.data.featureOrder ?? 0));
 const miami = neighborhoods.filter((item) => item.data.group !== 'beyond');
 const beyond = neighborhoods.filter((item) => item.data.group === 'beyond');
 const path = pathFor('home', locale);
@@ -138,7 +139,7 @@ const stats = [
       <div class="cards">
         {
           featured.map((listing) => (
-            <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} variant="address" />
+            <TeamListingCard locale={locale} listing={listing} feature={listing.data.group === 'mariana'} />
           ))
         }
       </div>

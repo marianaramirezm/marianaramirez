@@ -8,6 +8,7 @@ address:
 area:
   en: "Miami River / Brickell"
   es: "Miami River / Brickell"
+group: previously
 status: previously-listed
 statusLabel:
   en: Previously listed by the team
@@ -30,8 +31,23 @@ description:
 agents:
   en: Nile Lundgren and Scott Porter
   es: Nile Lundgren y Scott Porter
-# Add photographs here when they are available. Each item needs src plus alt.en and alt.es.
-photos: []
+photos:
+  - src: ../../assets/listings/ivy-penthouse-14-1.jpg
+    alt:
+      en: "Official listing photograph 1 of 90 SW 3rd St PH-14."
+      es: "Fotografía 1 del anuncio oficial de 90 SW 3rd St PH-14."
+  - src: ../../assets/listings/ivy-penthouse-14-2.jpg
+    alt:
+      en: "Official listing photograph 2 of 90 SW 3rd St PH-14."
+      es: "Fotografía 2 del anuncio oficial de 90 SW 3rd St PH-14."
+  - src: ../../assets/listings/ivy-penthouse-14-3.jpg
+    alt:
+      en: "Official listing photograph 3 of 90 SW 3rd St PH-14."
+      es: "Fotografía 3 del anuncio oficial de 90 SW 3rd St PH-14."
+  - src: ../../assets/listings/ivy-penthouse-14-4.jpg
+    alt:
+      en: "Official listing photograph 4 of 90 SW 3rd St PH-14."
+      es: "Fotografía 4 del anuncio oficial de 90 SW 3rd St PH-14."
 officialUrl: https://serhant.com/properties/90-sw-3rd-st-14-unit-ph-14-miami-fl-us-33130-9a0c53bff65bce52fb3b5a79f9e59224
 credit: "Nile Lundgren Team at SERHANT."
 order: 3
