@@ -1,8 +1,17 @@
 ---
 import BlogIndex from '../../../views/BlogIndex.astro';
-import { getBlogPosts } from '../../../lib/blog';
+import { blogPageCount, getBlogPosts, postsForPage } from '../../../lib/blog';
+import { blogPagePath } from '../../../lib/routes';
 
 const posts = await getBlogPosts('es');
+const page = 1;
+const pageCount = blogPageCount(posts.length);
 ---
 
-<BlogIndex locale="es" posts={posts} />
+<BlogIndex
+  locale="es"
+  posts={postsForPage(posts, page)}
+  page={page}
+  pageCount={pageCount}
+  alternatePath={blogPagePath(1, 'en')}
+/>

@@ -124,41 +124,53 @@ facts:
 
 ## Blog
 
-Posts are written by a human-reviewed assistant and approved by Mariana, then added as Markdown by hand. There is no generator and no API key.
+English posts are `/blog/` and `/blog/<translationKey>/`. Spanish posts are `/es/blog/` and `/es/blog/<translationKey>/`. The listing is newest first, six posts per page. Later pages are `/blog/page/2/` and `/es/blog/page/2/`. Feeds are `/rss.xml` and `/es/rss.xml`.
 
-Add an English and Spanish pair. The date and slug must match:
+Add a pair by copying `src/content/blog/_template.md`:
 
 - `src/content/blog/en/YYYY-MM-DD-slug.md`
 - `src/content/blog/es/YYYY-MM-DD-slug.md`
 
-`slug` is lowercase words separated by hyphens. `pubDate` must be that same `YYYY-MM-DD`. Copy `src/content/blog/_template.md`.
+The filename slug, `translationKey`, and `date` match. `lang` is `en` or `es` and must match the folder.
 
 ```yaml
 ---
-title: "How does the Fed rate affect prices in Brickell?"
+title: "What question should this post ask?"
 description: "One or two sentences for the listing page, the meta description, and Open Graph."
-pubDate: 2026-11-04
+date: 2026-11-04
+lang: en
+translationKey: layout-placeholder
 category: real-estate
-draft: true
-sources: []
----
-```
-
-The Spanish file uses the same `pubDate`, `category`, and `draft`, with its own `title`, `description`, body, and `sources`.
-
-`category` is one of `real-estate`, `economy`, `policy`, `culture`, `business`.
-
-`sources` is a list of `{ title, url }`. A post with `draft: false` and an empty `sources` list fails the build. Drafts may leave `sources` empty.
-
-```yaml
+heroImage: ../../../assets/guides/downtown-skyline.jpg
+heroAlt: "Downtown Miami skyline, with One Thousand Museum at the center."
+imageCredit: "Photo: Phillip Pessar, CC BY 2.0, via Wikimedia Commons"
 sources:
   - title: Name of the document or page
     url: https://example.com/official-page
+    publisher: Publisher name
+draft: false
+---
 ```
 
-The body is Markdown after the frontmatter, in the language of the folder. The public URL is `/blog/slug/` or `/es/blog/slug/` (the date is not in the URL).
+`category` is `economy`, `real-estate`, `business`, `culture`, or `policy`. `sources` entries are `title`, `url`, and `publisher`. A post with `draft: false` and an empty `sources` list fails the build. The body is Markdown after the frontmatter.
 
-`draft: true` posts are built for `astro dev` and for Cloudflare Pages preview branches. A production build of `main` leaves them out of the pages, the sitemap, and the RSS feeds (`/rss.xml`, `/es/rss.xml`).
+`draft: true` posts are omitted from production builds, including a build of `main`. They are included only when `CF_PAGES_BRANCH` is set to something other than `main` (a Cloudflare Pages preview). To preview drafts locally: `CF_PAGES_BRANCH=preview npm run build`.
+
+### Daily draft
+
+`.github/workflows/blog-draft.yml` runs at about 7:00 AM America/New_York and from Actions → Blog draft → Run workflow. It reads the feeds in `scripts/blog-feeds.json` (Federal Reserve press releases, Bureau of Labor Statistics, Census economic indicators, The Real Deal Miami, plus Miami Herald, Associated Press, and Reuters when those feeds respond). It asks an LLM for one bilingual draft, checks that every cited URL and every number came from those items, and opens a pull request titled `Blog draft: YYYY-MM-DD`. The posts are `draft: true`. The workflow pushes that review branch only. It does not push to `main` and it does not merge.
+
+GitHub runs a scheduled workflow only after the workflow file is on the default branch. Until this pull request is merged, the schedule does not run.
+
+Secrets, in the repository settings:
+
+| Secret | Required | Purpose |
+| --- | --- | --- |
+| `OPENAI_API_KEY` | One of these two | Drafts the post. Default model `gpt-5.4-mini`. |
+| `ANTHROPIC_API_KEY` | One of these two | Used when `OPENAI_API_KEY` is not set. Default model `claude-sonnet-4-5`. |
+| `UNSPLASH_ACCESS_KEY` | No | Hero photo with Unsplash attribution. Without it, the draft uses the existing downtown Miami skyline photo and its license line. |
+
+If neither model key is set, the job logs that and exits without opening a pull request. Optional repository variables `OPENAI_MODEL` and `ANTHROPIC_MODEL` override the model ids.
 
 ## Edit social links, phone, and compliance lines
 

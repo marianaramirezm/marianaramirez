@@ -4,23 +4,33 @@ import Base from '../layouts/Base.astro';
 import { formatBlogDate, type BlogPost } from '../lib/blog';
 import type { Locale, UiKey } from '../i18n/ui';
 import { t } from '../i18n/utils';
-import { blogPath, pathFor } from '../lib/routes';
+import { blogPagePath, blogPath, pathFor } from '../lib/routes';
 import { blogNode, breadcrumbNode, graph } from '../lib/schema';
 import type { BlogCategory } from '../lib/types';
 
 interface Props {
   locale: Locale;
   posts: BlogPost[];
+  page: number;
+  pageCount: number;
+  alternatePath: string;
 }
 
-const { locale, posts } = Astro.props;
+const { locale, posts, page, pageCount, alternatePath } = Astro.props;
 const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
-const path = pathFor('blog', locale);
-const alternate = pathFor('blog', locale === 'en' ? 'es' : 'en');
+const path = blogPagePath(page, locale);
 const crumbs = [
   { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
-  { name: t(locale, 'nav.blog'), path },
+  { name: t(locale, 'nav.blog'), path: pathFor('blog', locale) },
 ];
+const title =
+  page > 1
+    ? t(locale, 'meta.blog.pageTitle', { page: String(page) })
+    : t(locale, 'meta.blog.title');
+const description =
+  page > 1
+    ? t(locale, 'meta.blog.pageDescription', { page: String(page) })
+    : t(locale, 'meta.blog.description');
 
 function categoryKey(category: BlogCategory): UiKey {
   return `blog.cat.${category}` as UiKey;
@@ -29,17 +39,17 @@ function categoryKey(category: BlogCategory): UiKey {
 
 <Base
   locale={locale}
-  title={t(locale, 'meta.blog.title')}
-  description={t(locale, 'meta.blog.description')}
+  title={title}
+  description={description}
   path={path}
-  alternatePath={alternate}
+  alternatePath={alternatePath}
   current="blog"
   jsonLd={graph(
     blogNode({
       site,
       path,
-      name: t(locale, 'meta.blog.title'),
-      description: t(locale, 'meta.blog.description'),
+      name: title,
+      description,
       locale,
     }),
     breadcrumbNode(site, crumbs),
@@ -70,13 +80,30 @@ function categoryKey(category: BlogCategory): UiKey {
                   )}
                   {t(locale, categoryKey(post.data.category))}
                   <span aria-hidden="true"> · </span>
-                  <time datetime={post.dateKey}>{formatBlogDate(post.data.pubDate, locale)}</time>
+                  <time datetime={post.dateKey}>{formatBlogDate(post.data.date, locale)}</time>
                 </span>
                 <span class="where">{post.data.description}</span>
               </a>
             </li>
           ))}
         </ul>
+      )
+    }
+    {
+      pageCount > 1 && (
+        <nav class="blog-pager" aria-label={t(locale, 'blog.pager')}>
+          {page > 1 ? (
+            <a class="link" href={blogPagePath(page - 1, locale)}>{t(locale, 'blog.prev')}</a>
+          ) : (
+            <span />
+          )}
+          <span class="blog-kicker">{t(locale, 'blog.pageStatus', { page: String(page), pages: String(pageCount) })}</span>
+          {page < pageCount ? (
+            <a class="link" href={blogPagePath(page + 1, locale)}>{t(locale, 'blog.next')}</a>
+          ) : (
+            <span />
+          )}
+        </nav>
       )
     }
   </div>

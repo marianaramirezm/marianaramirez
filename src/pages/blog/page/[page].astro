@@ -1,0 +1,24 @@
+---
+import BlogIndex from '../../../views/BlogIndex.astro';
+import { BLOG_PAGE_SIZE, blogPageCount, getBlogPosts, postsForPage } from '../../../lib/blog';
+import { blogPagePath } from '../../../lib/routes';
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts('en');
+  const other = await getBlogPosts('es');
+  const pageCount = Math.ceil(posts.length / BLOG_PAGE_SIZE);
+  const otherCount = Math.ceil(other.length / BLOG_PAGE_SIZE);
+  return Array.from({ length: Math.max(0, pageCount - 1) }, (_, index) => {
+    const page = index + 2;
+    return {
+      params: { page: String(page) },
+      props: { page, pageCount, alternatePath: blogPagePath(page <= otherCount ? page : 1, 'es') },
+    };
+  });
+}
+
+const { page, pageCount, alternatePath } = Astro.props;
+const posts = postsForPage(await getBlogPosts('en'), page);
+---
+
+<BlogIndex locale="en" posts={posts} page={page} pageCount={pageCount} alternatePath={alternatePath} />

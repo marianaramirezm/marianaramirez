@@ -13,16 +13,30 @@ interface Props {
   noindex?: boolean;
   ogType?: 'website' | 'article';
   publishedTime?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
-const { locale, title, description, path, alternatePath, jsonLd, noindex = false, ogType = 'website', publishedTime } =
-  Astro.props;
+const {
+  locale,
+  title,
+  description,
+  path,
+  alternatePath,
+  jsonLd,
+  noindex = false,
+  ogType = 'website',
+  publishedTime,
+  ogImage,
+  ogImageAlt,
+} = Astro.props;
 const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const canonical = absolute(site, path);
 const alternate = absolute(site, alternatePath);
 const enUrl = locale === 'en' ? canonical : alternate;
 const esUrl = locale === 'es' ? canonical : alternate;
-const image = absolute(site, '/og.jpg');
+const image = ogImage ? new URL(ogImage, site).href : absolute(site, '/og.jpg');
+const imageAlt = ogImageAlt || t(locale, 'meta.ogAlt');
 const ogLocale = locale === 'es' ? 'es_ES' : 'en_US';
 const ogAlternate = locale === 'es' ? 'en_US' : 'es_ES';
 ---
@@ -47,12 +61,12 @@ const ogAlternate = locale === 'es' ? 'en_US' : 'es_ES';
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={image} />
-<meta property="og:image:alt" content={t(locale, 'meta.ogAlt')} />
+<meta property="og:image:alt" content={imageAlt} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
-<meta name="twitter:image:alt" content={t(locale, 'meta.ogAlt')} />
+<meta name="twitter:image:alt" content={imageAlt} />
 <link
   rel="alternate"
   type="application/rss+xml"

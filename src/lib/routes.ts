@@ -35,6 +35,11 @@ export function blogPath(slug: string, locale: Locale): string {
   return `${locale === 'es' ? '/es/blog/' : '/blog/'}${slug}/`;
 }
 
+export function blogPagePath(page: number, locale: Locale): string {
+  if (page <= 1) return pathFor('blog', locale);
+  return `${locale === 'es' ? '/es/blog/page/' : '/blog/page/'}${page}/`;
+}
+
 export function rssPath(locale: Locale): string {
   return locale === 'es' ? '/es/rss.xml' : '/rss.xml';
 }

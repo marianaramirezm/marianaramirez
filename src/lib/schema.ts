@@ -141,6 +141,7 @@ export function blogPostingNode(options: {
   locale: Locale;
   published: Date;
   category: string;
+  image: string;
   sources: BlogSource[];
 }): Record<string, unknown> {
   const published = options.published.toISOString();
@@ -163,10 +164,15 @@ export function blogPostingNode(options: {
       '@type': 'Organization',
       name: 'SERHANT.',
     },
-    image: absolute(options.site, '/og.jpg'),
+    image: options.image,
   };
   if (options.sources.length > 0) {
-    node.citation = options.sources.map((source) => source.url);
+    node.citation = options.sources.map((source) => ({
+      '@type': 'CreativeWork',
+      name: source.title,
+      url: source.url,
+      publisher: { '@type': 'Organization', name: source.publisher },
+    }));
   }
   return node;
 }

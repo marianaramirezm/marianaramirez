@@ -18,6 +18,8 @@ interface Props {
   overlay?: boolean;
   ogType?: 'website' | 'article';
   publishedTime?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -32,6 +34,8 @@ const {
   overlay = false,
   ogType,
   publishedTime,
+  ogImage,
+  ogImageAlt,
 } = Astro.props;
 ---
 
@@ -51,6 +55,8 @@ const {
       noindex={noindex}
       ogType={ogType}
       publishedTime={publishedTime}
+      ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
     />
   </head>
   <body class:list={{ overlay }}>

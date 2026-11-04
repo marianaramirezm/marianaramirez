@@ -77,13 +77,18 @@ export type TeamListingEntry = { id: string; data: TeamListingData };
 
 export type BlogCategory = 'real-estate' | 'economy' | 'policy' | 'culture' | 'business';
 
-export type BlogSource = { title: string; url: string };
+export type BlogSource = { title: string; url: string; publisher: string };
 
 export type BlogData = {
   title: string;
   description: string;
-  pubDate: Date;
+  date: Date;
+  lang: 'en' | 'es';
+  translationKey: string;
   category: BlogCategory;
-  draft: boolean;
+  heroImage: ImageMetadata;
+  heroAlt: string;
+  imageCredit: string;
   sources: BlogSource[];
+  draft: boolean;
 };

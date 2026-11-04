@@ -28,7 +28,7 @@ export function rssDocument(options: {
       <title>${escapeXml(post.data.title)}</title>
       <link>${escapeXml(link)}</link>
       <guid isPermaLink="true">${escapeXml(link)}</guid>
-      <pubDate>${post.data.pubDate.toUTCString()}</pubDate>
+      <pubDate>${post.data.date.toUTCString()}</pubDate>
       <description>${escapeXml(post.data.description)}</description>
       <category>${escapeXml(post.data.category)}</category>
     </item>`;

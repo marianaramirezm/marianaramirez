@@ -613,6 +613,29 @@ button.button:disabled {
   font-weight: 500;
 }
 
+.blog-hero {
+  margin: 0 0 2.25rem;
+}
+
+.blog-hero img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--soft);
+}
+
+.blog-column {
+  max-width: var(--measure);
+}
+
+.blog-pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: baseline;
+  margin-top: 2rem;
+}
+
 .name-grid .where {
   font-size: 0.75rem;
   letter-spacing: 0.12em;

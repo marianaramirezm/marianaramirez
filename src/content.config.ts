@@ -107,29 +107,36 @@ const teamListings = defineCollection({
 const blogSource = z.object({
   title: z.string().min(1),
   url: z.url(),
+  publisher: z.string().min(1),
 });
 
 const blog = defineCollection({
   loader: glob({ pattern: '{en,es}/*.md', base: './src/content/blog' }),
-  schema: z
-    .object({
-      title: z.string().min(1),
-      description: z.string().min(1),
-      pubDate: z.coerce.date(),
-      category: z.enum(['real-estate', 'economy', 'policy', 'culture', 'business']),
-      draft: z.boolean().default(false),
-      sources: z.array(blogSource).default([]),
-    })
-    .superRefine((data, ctx) => {
-      if (!data.draft && data.sources.length === 0) {
-        ctx.addIssue({
-          code: 'custom',
-          message: 'sources must include at least one entry when draft is false',
-          path: ['sources'],
-          input: data.sources,
-        });
-      }
-    }),
+  schema: ({ image }: SchemaContext) =>
+    z
+      .object({
+        title: z.string().min(1),
+        description: z.string().min(1),
+        date: z.coerce.date(),
+        lang: z.enum(['en', 'es']),
+        translationKey: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+        category: z.enum(['economy', 'real-estate', 'business', 'culture', 'policy']),
+        heroImage: image(),
+        heroAlt: z.string().min(1),
+        imageCredit: z.string().min(1),
+        sources: z.array(blogSource).default([]),
+        draft: z.boolean().default(false),
+      })
+      .superRefine((data, ctx) => {
+        if (!data.draft && data.sources.length === 0) {
+          ctx.addIssue({
+            code: 'custom',
+            message: 'sources must include at least one entry when draft is false',
+            path: ['sources'],
+            input: data.sources,
+          });
+        }
+      }),
 });
 
 export const collections = { listings, neighborhoods, residences, teamListings, blog };

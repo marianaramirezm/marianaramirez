@@ -1,0 +1,40 @@
+{
+  "maxAgeHours": 72,
+  "feeds": [
+    {
+      "id": "federal-reserve",
+      "publisher": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/feeds/press_all.xml"
+    },
+    {
+      "id": "bls",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/feed/bls_latest.rss"
+    },
+    {
+      "id": "census-indicators",
+      "publisher": "U.S. Census Bureau",
+      "url": "https://www.census.gov/economic-indicators/indicator.xml"
+    },
+    {
+      "id": "real-deal-miami",
+      "publisher": "The Real Deal",
+      "url": "https://therealdeal.com/miami/feed/"
+    },
+    {
+      "id": "miami-herald-real-estate",
+      "publisher": "Miami Herald",
+      "url": "https://www.miamiherald.com/news/business/real-estate-news/index.rss"
+    },
+    {
+      "id": "ap-business",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/hub/business.rss"
+    },
+    {
+      "id": "reuters-business",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/arc/outboundfeeds/rss/?outputType=xml"
+    }
+  ]
+}

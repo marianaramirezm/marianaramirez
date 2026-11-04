@@ -4,6 +4,8 @@ import type { BlogData } from './types';
 
 const ID_PATTERN = /^(en|es)\/(\d{4}-\d{2}-\d{2})-([a-z0-9]+(?:-[a-z0-9]+)*)$/;
 
+export const BLOG_PAGE_SIZE = 6;
+
 export type BlogPost = {
   id: string;
   locale: Locale;
@@ -18,11 +20,10 @@ function envValue(name: string): string | undefined {
   return env?.[name];
 }
 
-/** Drafts show in `astro dev` and on Cloudflare Pages preview builds. Production (`main`) omits them. */
+/** Drafts are included only when Cloudflare Pages is building a branch other than main. */
 export function includeDrafts(): boolean {
-  if (import.meta.env.DEV) return true;
   const branch = envValue('CF_PAGES_BRANCH');
-  return envValue('CF_PAGES') === '1' && Boolean(branch) && branch !== 'main';
+  return Boolean(branch) && branch !== 'main';
 }
 
 function utcDateKey(date: Date): string {
@@ -40,9 +41,17 @@ function toPost(entry: CollectionEntry<'blog'>): BlogPost {
   const dateKey = match[2];
   const slug = match[3];
   const data = entry.data as BlogData;
-  if (utcDateKey(data.pubDate) !== dateKey) {
+  if (data.lang !== locale) {
+    throw new Error(`Blog file "${entry.id}" has lang "${data.lang}" but lives in the ${locale} folder`);
+  }
+  if (data.translationKey !== slug) {
     throw new Error(
-      `Blog file "${entry.id}" has pubDate ${utcDateKey(data.pubDate)}, which does not match ${dateKey}`,
+      `Blog file "${entry.id}" has translationKey "${data.translationKey}", which must match the filename slug "${slug}"`,
+    );
+  }
+  if (utcDateKey(data.date) !== dateKey) {
+    throw new Error(
+      `Blog file "${entry.id}" has date ${utcDateKey(data.date)}, which does not match ${dateKey}`,
     );
   }
   return { id: entry.id, locale, slug, dateKey, data, entry };
@@ -54,7 +63,16 @@ export async function getBlogPosts(locale: Locale): Promise<BlogPost[]> {
   return all
     .map(toPost)
     .filter((post) => post.locale === locale && (showDrafts || !post.data.draft))
-    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime() || a.slug.localeCompare(b.slug));
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime() || a.slug.localeCompare(b.slug));
+}
+
+export function blogPageCount(total: number): number {
+  return Math.max(1, Math.ceil(total / BLOG_PAGE_SIZE));
+}
+
+export function postsForPage(posts: BlogPost[], page: number): BlogPost[] {
+  const start = (page - 1) * BLOG_PAGE_SIZE;
+  return posts.slice(start, start + BLOG_PAGE_SIZE);
 }
 
 export function formatBlogDate(date: Date, locale: Locale): string {
