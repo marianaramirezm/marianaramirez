@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Base from '../layouts/Base.astro';
 import type { Locale } from '../i18n/ui';
@@ -18,12 +18,16 @@ const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const path = listingPath(listing.id, locale);
 const alternate = listingPath(listing.id, locale === 'en' ? 'es' : 'en');
 const title = `${listing.data.name[locale]} — ${listing.data.area[locale]} | Mariana Ramírez`;
-const status =
-  listing.data.status === 'sold'
-    ? t(locale, 'listings.statusSold')
-    : listing.data.status === 'leased'
-      ? t(locale, 'listings.leased')
-      : t(locale, 'listings.statusActive');
+const specs = [
+  [t(locale, 'listings.status'), listing.data.statusLabel[locale]],
+  [t(locale, 'listings.price'), listing.data.price[locale]],
+  [t(locale, 'listings.beds'), listing.data.beds[locale]],
+  listing.data.baths ? [t(locale, 'listings.baths'), listing.data.baths[locale]] : null,
+  [t(locale, 'listings.sqft'), listing.data.sqft[locale]],
+  [t(locale, 'listings.neighborhood'), listing.data.area[locale]],
+  [t(locale, 'listings.address'), listing.data.address[locale]],
+  [t(locale, 'listings.agents'), listing.data.agents[locale]],
+].filter((item): item is [string, string] => item !== null);
 const crumbs = [
   { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
   { name: t(locale, 'nav.listings'), path: pathFor('listings', locale) },
@@ -42,60 +46,47 @@ const crumbs = [
 >
   <div class="wrap page-intro">
     <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{listing.data.statusLabel[locale]}</p>
     <h1>{listing.data.name[locale]}</h1>
     <p class="lead">{listing.data.address[locale]}</p>
   </div>
   <div class="wrap page-body">
     {
-      listing.data.photos.map((photo, index) => (
-        <figure class="guide-figure">
-          <Image
-            src={photo}
-            alt={listing.data.name[locale]}
-            widths={[640, 1024, 1600]}
-            sizes="(min-width: 1100px) 1120px, 100vw"
-            quality={70}
-            priority={index === 0}
-          />
-        </figure>
-      ))
+      listing.data.photos.length > 0 ? (
+        listing.data.photos.map((photo, index) => (
+          <figure class="guide-figure">
+            <Picture
+              src={photo.src}
+              alt={photo.alt[locale]}
+              formats={['avif', 'webp']}
+              widths={[640, 1024, 1600]}
+              sizes="(min-width: 1100px) 1120px, 100vw"
+              quality={70}
+              priority={index === 0}
+            />
+          </figure>
+        ))
+      ) : (
+        <div class="type-card detail-placeholder">
+          <p class="type-card-kicker">{listing.data.area[locale]}</p>
+          <p class="type-card-name">{listing.data.name[locale]}</p>
+        </div>
+      )
     }
     <dl class="detail-specs">
-      <div>
-        <dt>{t(locale, 'listings.status')}</dt>
-        <dd>{status}</dd>
-      </div>
-      <div>
-        <dt>{t(locale, 'listings.price')}</dt>
-        <dd>{listing.data.price[locale]}</dd>
-      </div>
-      <div>
-        <dt>{t(locale, 'listings.beds')}</dt>
-        <dd>{listing.data.beds[locale]}</dd>
-      </div>
-      <div>
-        <dt>{t(locale, 'listings.baths')}</dt>
-        <dd>{listing.data.baths[locale]}</dd>
-      </div>
-      <div>
-        <dt>{t(locale, 'listings.sqft')}</dt>
-        <dd>{listing.data.sqft[locale]}</dd>
-      </div>
-      <div>
-        <dt>{t(locale, 'listings.neighborhood')}</dt>
-        <dd>{listing.data.area[locale]}</dd>
-      </div>
-      <div class="wide">
-        <dt>{t(locale, 'listings.address')}</dt>
-        <dd>{listing.data.address[locale]}</dd>
-      </div>
+      {specs.map(([label, value]) => (
+        <div class={label === t(locale, 'listings.address') || label === t(locale, 'listings.agents') ? 'wide' : undefined}>
+          <dt>{label}</dt>
+          <dd>{value}</dd>
+        </div>
+      ))}
     </dl>
     <div class="prose">
       {paragraphs(listing.data.description[locale]).map((paragraph) => <p>{paragraph}</p>)}
     </div>
     <p>{listing.data.credit}</p>
     <p>
-      <a class="link" href={listing.data.officialUrl} rel="noopener noreferrer">{t(locale, 'listings.official')}</a>
+      <a class="link" href={listing.data.officialUrl} rel="noopener noreferrer">{t(locale, 'listings.officialSource')}</a>
     </p>
     <p><a class="link" href={pathFor('listings', locale)}>{t(locale, 'listings.back')}</a></p>
   </div>

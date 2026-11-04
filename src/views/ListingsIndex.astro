@@ -22,9 +22,6 @@ const neighborhoods = await getNeighborhoods();
 const active = listings.filter((item) => item.data.status === 'active');
 const sold = listings.filter((item) => item.data.status === 'sold');
 const leased = listings.filter((item) => item.data.status === 'leased');
-const teamActive = team.filter((item) => item.data.status === 'active');
-const teamSold = team.filter((item) => item.data.status === 'sold');
-const teamLeased = team.filter((item) => item.data.status === 'leased');
 const path = pathFor('listings', locale);
 const alternate = pathFor('listings', locale === 'en' ? 'es' : 'en');
 const crumbs = [
@@ -53,13 +50,22 @@ const crumbs = [
   </div>
   <div class="wrap page-body">
     {
-      (active.length > 0 || teamActive.length > 0) && (
+      team.length > 0 && (
         <section>
-          <h2 class="display">{t(locale, 'listings.active')}</h2>
+          <h2 class="display">{t(locale, 'listings.team')}</h2>
           <div class="cards">
-            {teamActive.map((listing) => (
+            {team.map((listing) => (
               <TeamListingCard locale={locale} listing={listing} />
             ))}
+          </div>
+        </section>
+      )
+    }
+    {
+      active.length > 0 && (
+        <section style="margin-top: 3.5rem;">
+          <h2 class="display">{t(locale, 'listings.active')}</h2>
+          <div class="cards">
             {active.map((listing) => (
               <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />
             ))}
@@ -68,13 +74,10 @@ const crumbs = [
       )
     }
     {
-      (leased.length > 0 || teamLeased.length > 0) && (
+      leased.length > 0 && (
         <section style="margin-top: 3.5rem;">
           <h2 class="display">{t(locale, 'listings.leased')}</h2>
           <div class="cards">
-            {teamLeased.map((listing) => (
-              <TeamListingCard locale={locale} listing={listing} />
-            ))}
             {leased.map((listing) => (
               <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />
             ))}
@@ -83,13 +86,10 @@ const crumbs = [
       )
     }
     {
-      (sold.length > 0 || teamSold.length > 0) && (
+      sold.length > 0 && (
         <section style="margin-top: 3.5rem;">
           <h2 class="display">{t(locale, 'listings.sold')}</h2>
           <div class="cards">
-            {teamSold.map((listing) => (
-              <TeamListingCard locale={locale} listing={listing} />
-            ))}
             {sold.map((listing) => (
               <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />
             ))}

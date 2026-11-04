@@ -58,7 +58,7 @@ Sample URLs that contain `/example-` are left out of the sitemap. Rename the fil
 
 ### Team listings
 
-Real team listings are separate from the sample files above. Add one Markdown file per listing in `src/content/team-listings/`. No sample entries are included. Each text field has `en` and `es`.
+Real team listings are separate from the sample files above. Add one Markdown file per listing in `src/content/team-listings/`. Each text field has `en` and `es`. They appear under Team Listings, not in the sample sections.
 
 ```yaml
 ---
@@ -71,10 +71,13 @@ address:
 area:
   en: Coconut Grove
   es: Coconut Grove
-status: active
+status: previously-listed
+statusLabel:
+  en: Previously listed by the team
+  es: Publicada antes por el equipo
 price:
-  en: Price as published
-  es: Precio publicado
+  en: Offered at $1,000,000
+  es: Ofrecida en $1,000,000
 beds:
   en: "2"
   es: "2"
@@ -82,20 +85,26 @@ baths:
   en: "2"
   es: "2"
 sqft:
-  en: Area as published
-  es: Superficie publicada
+  en: "1,200"
+  es: "1,200"
 description:
   en: Description from the official source.
   es: Descripción tomada de la fuente oficial.
+agents:
+  en: Nile Lundgren and Scott Porter
+  es: Nile Lundgren y Scott Porter
 photos:
-  - ../../assets/guides/coconut-grove.jpg
+  - src: ../../assets/listings/example.jpg
+    alt:
+      en: Living room of the residence.
+      es: Sala de la residencia.
 officialUrl: https://example.com/official-listing
-credit: "Listed by Nile Lundgren Team at SERHANT."
+credit: "Nile Lundgren Team at SERHANT."
 order: 1
 ---
 ```
 
-`status` is `active`, `sold`, or `leased`. `officialUrl` is the official source URL. `credit` must be exactly `Listed by Nile Lundgren Team at SERHANT.` `photos` may be omitted until images are ready. Do not invent an address or a figure.
+`status` is `sold` or `previously-listed`. `statusLabel` is the phrase shown on the page. Omit `baths` when the count should not be published. `photos` may be an empty list; the card then stays typographic until images are added. `credit` must be exactly `Nile Lundgren Team at SERHANT.` `officialUrl` is the official source. Do not invent an address or a figure.
 
 ## Edit guides
 

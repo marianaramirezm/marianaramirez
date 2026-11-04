@@ -82,7 +82,7 @@ const residences = defineCollection({
   schema: guideSchema,
 });
 
-const teamCredit = 'Listed by Nile Lundgren Team at SERHANT.';
+const teamCredit = 'Nile Lundgren Team at SERHANT.';
 
 const teamListings = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/team-listings' }),
@@ -91,13 +91,22 @@ const teamListings = defineCollection({
       name: text,
       address: text,
       area: text,
-      status: z.enum(['active', 'sold', 'leased']),
+      status: z.enum(['sold', 'previously-listed']),
+      statusLabel: text,
       price: text,
       beds: text,
-      baths: text,
+      baths: text.optional(),
       sqft: text,
       description: text,
-      photos: z.array(image()).default([]),
+      agents: text,
+      photos: z
+        .array(
+          z.object({
+            src: image(),
+            alt: text,
+          }),
+        )
+        .default([]),
       officialUrl: z.url(),
       credit: z.literal(teamCredit).default(teamCredit),
       order: z.number().default(0),

@@ -57,19 +57,26 @@ export type GuideData = {
 export type ListingEntry = { id: string; data: ListingData };
 export type GuideEntry = { id: string; data: GuideData };
 
+export type TeamListingPhoto = {
+  src: ImageMetadata;
+  alt: Localized;
+};
+
 export type TeamListingData = {
   name: Localized;
   address: Localized;
   area: Localized;
-  status: 'active' | 'sold' | 'leased';
+  status: 'sold' | 'previously-listed';
+  statusLabel: Localized;
   price: Localized;
   beds: Localized;
-  baths: Localized;
+  baths?: Localized;
   sqft: Localized;
   description: Localized;
-  photos: ImageMetadata[];
+  agents: Localized;
+  photos: TeamListingPhoto[];
   officialUrl: string;
-  credit: 'Listed by Nile Lundgren Team at SERHANT.';
+  credit: 'Nile Lundgren Team at SERHANT.';
   order: number;
 };
 
