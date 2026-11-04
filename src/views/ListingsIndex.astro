@@ -65,6 +65,7 @@ const crumbs = [
       active.length > 0 && (
         <section style="margin-top: 3.5rem;">
           <h2 class="display">{t(locale, 'listings.active')}</h2>
+          <p class="fine-note">{t(locale, 'listings.areaNote')}</p>
           <div class="cards">
             {active.map((listing) => (
               <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />

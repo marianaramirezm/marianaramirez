@@ -403,6 +403,14 @@ button.button:disabled {
   margin: 0 0 1.75rem;
 }
 
+.fine-note {
+  max-width: var(--measure);
+  margin: -0.35rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
 .split {
   display: grid;
   gap: 1.75rem;

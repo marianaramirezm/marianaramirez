@@ -76,13 +76,12 @@ const en = {
 
   'about.eyebrow': 'About',
   'about.title': 'Mariana Ramírez',
-  'about.lead': 'A young Colombian luxury real estate advisor from Barranquilla, at SERHANT. in Miami.',
+  'about.lead':
+    'Mariana Ramírez is a luxury real estate advisor at SERHANT. in Miami, on Nile Lundgren’s team.',
   'about.p1':
-    'I am on Nile Lundgren’s team. I work in English and Spanish.',
+    'Colombian, from Barranquilla, she works in English and Spanish. She covers Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York.',
   'about.p2':
-    'I cover Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York.',
-  'about.p3': 'My record sale is $2.4 million, and I was nominated for Rookie of the Year.',
-  'about.profileNote': 'The public record is on my SERHANT. profile.',
+    'Her record sale is $2.4 million, and she was nominated for Rookie of the Year.',
   'about.photoAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'about.factsTitle': 'On the record',
@@ -93,7 +92,8 @@ const en = {
   'listings.eyebrow': 'Inventory',
   'listings.title': 'Listings and past sales',
   'listings.lead':
-    'Sample entries are taken from my SERHANT. profile. Those photographs show the surrounding city, not the residence.',
+    'Selected listings and past sales from my SERHANT. profile and the Nile Lundgren Team.',
+  'listings.areaNote': 'Some photographs show the surrounding area, not the residence.',
   'listings.example': 'Example',
   'listings.active': 'Active',
   'listings.sold': 'Past sales',
@@ -343,12 +343,12 @@ const es: typeof en = {
 
   'about.eyebrow': 'Sobre mí',
   'about.title': 'Mariana Ramírez',
-  'about.lead': 'Asesora joven de bienes raíces de lujo, colombiana, de Barranquilla, en SERHANT. en Miami.',
-  'about.p1': 'Trabajo en el equipo de Nile Lundgren. Atiendo en español y en inglés.',
+  'about.lead':
+    'Mariana Ramírez es asesora de bienes raíces de lujo en SERHANT., en Miami, en el equipo de Nile Lundgren.',
+  'about.p1':
+    'Colombiana, de Barranquilla, trabaja en español y en inglés. Cubre Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York.',
   'about.p2':
-    'Cubro Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York.',
-  'about.p3': 'Mi venta récord es de 2,4 millones de dólares, y fui nominada a Rookie of the Year.',
-  'about.profileNote': 'El registro público está en mi perfil de SERHANT.',
+    'Su venta récord es de 2,4 millones de dólares, y fue nominada a Rookie of the Year.',
   'about.photoAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'about.factsTitle': 'En el registro',
@@ -359,7 +359,8 @@ const es: typeof en = {
   'listings.eyebrow': 'Inventario',
   'listings.title': 'Propiedades y ventas',
   'listings.lead':
-    'Los ejemplos salen de mi perfil en SERHANT. Esas fotografías muestran la ciudad alrededor, no la residencia.',
+    'Una selección de propiedades y ventas de mi perfil en SERHANT. y del equipo de Nile Lundgren.',
+  'listings.areaNote': 'Algunas fotografías muestran la zona, no la residencia.',
   'listings.example': 'Ejemplo',
   'listings.active': 'Activas',
   'listings.sold': 'Ventas',
