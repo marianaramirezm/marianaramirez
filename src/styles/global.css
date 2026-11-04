@@ -4,19 +4,23 @@
 @import '@fontsource/instrument-sans/latin-500.css';
 
 :root {
-  --ink: #121212;
-  --paper: #ffffff;
-  --muted: #4a4a4a;
-  --line: #e4e4e4;
-  --blue: #001a72;
-  --blue-hover: #00248f;
-  --danger: #8c1d1d;
-  --soft: #f5f5f5;
+  --ink: #f6f1e7;
+  --paper: #080a10;
+  --navy: #10182e;
+  --muted: #9e998f;
+  --line: rgba(246, 241, 231, 0.16);
+  --blue: #9bb4ff;
+  --blue-hover: #c5d2ff;
+  --on-accent: #081018;
+  --danger: #ffb4b0;
+  --soft: #1a2340;
+  --field: #121826;
+  --field-border: #a39e96;
   --serif: 'Instrument Serif', 'Iowan Old Style', Palatino, Georgia, serif;
   --sans: 'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --measure: 38rem;
   --wrap: 1120px;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 *,
@@ -37,6 +41,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
 }
 
 img {
@@ -66,7 +71,7 @@ a {
 
 ::selection {
   background: var(--blue);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .skip {
@@ -74,8 +79,8 @@ a {
   left: 1rem;
   top: -4rem;
   z-index: 80;
-  background: #fff;
-  color: var(--ink);
+  background: var(--blue);
+  color: var(--on-accent);
   padding: 0.7rem 1rem;
   text-decoration: none;
 }
@@ -105,7 +110,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: #fff;
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
 
@@ -196,8 +201,8 @@ a {
   position: fixed;
   z-index: 40;
   inset: 4.25rem 0 auto 0;
-  background: #0c0c0c;
-  color: #fff;
+  background: var(--navy);
+  color: var(--ink);
   padding: 0.75rem 1.25rem 1.5rem;
   max-height: calc(100svh - 4.25rem);
   overflow: auto;
@@ -206,17 +211,17 @@ a {
 }
 
 .drawer-nav a {
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
   font-family: var(--serif);
   font-size: 1.85rem;
   line-height: 1.1;
   padding: 0.7rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid var(--line);
 }
 
 .drawer-nav a[aria-current='page'] {
-  color: #d5defc;
+  color: var(--blue);
 }
 
 body.overlay .site-header {
@@ -225,7 +230,7 @@ body.overlay .site-header {
   right: 0;
   background: linear-gradient(to bottom, rgba(8, 14, 28, 0.62), rgba(8, 14, 28, 0));
   border-bottom: 0;
-  color: #fff;
+  color: var(--ink);
 }
 
 body.overlay .brand,
@@ -237,7 +242,7 @@ body.overlay .drawer summary {
 }
 
 body.overlay .langs span[aria-current='true'] {
-  color: #fff;
+  color: var(--ink);
 }
 
 .hero {
@@ -245,8 +250,8 @@ body.overlay .langs span[aria-current='true'] {
   min-height: 100svh;
   display: flex;
   align-items: flex-end;
-  color: #fff;
-  background: #0c1424;
+  color: var(--ink);
+  background: var(--navy);
 }
 
 .hero-media,
@@ -330,11 +335,11 @@ body.overlay .langs span[aria-current='true'] {
 }
 
 .hero .eyebrow {
-  color: #fff;
+  color: var(--ink);
 }
 
 .hero .eyebrow::before {
-  background: #fff;
+  background: var(--blue);
 }
 
 .button {
@@ -344,7 +349,7 @@ body.overlay .langs span[aria-current='true'] {
   min-height: 48px;
   padding: 0.75rem 1.2rem;
   background: var(--blue);
-  color: #fff;
+  color: var(--on-accent);
   text-decoration: none;
   border: 1px solid var(--blue);
   font: inherit;
@@ -358,7 +363,7 @@ body.overlay .langs span[aria-current='true'] {
 .button:hover {
   background: var(--blue-hover);
   border-color: var(--blue-hover);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 button.button:disabled {
@@ -368,6 +373,11 @@ button.button:disabled {
 
 .section {
   padding: clamp(4.25rem, 8vw, 7.5rem) 0;
+}
+
+.section.alt,
+.section.contact-band {
+  background: var(--navy);
 }
 
 .display {
@@ -526,8 +536,9 @@ button.button:disabled {
   gap: 0.45rem;
   padding: 1.25rem 1.35rem;
   background:
-    linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(155, 180, 255, 0.14) 100%),
     var(--soft);
+  border-top: 1px solid var(--blue);
 }
 
 .type-card-kicker {
@@ -559,8 +570,8 @@ button.button:disabled {
 .flag,
 .example-banner {
   display: inline-block;
-  background: var(--ink);
-  color: #fff;
+  background: var(--blue);
+  color: var(--on-accent);
   padding: 0.35rem 0.5rem;
   font-size: 0.75rem;
   letter-spacing: 0.14em;
@@ -711,13 +722,13 @@ button.button:disabled {
 }
 
 .band {
-  background: #0c0c0c;
-  color: #fff;
+  background: var(--navy);
+  color: var(--ink);
   padding: clamp(4.25rem, 8vw, 7rem) 0;
 }
 
 .band .eyebrow::before {
-  background: #fff;
+  background: var(--blue);
 }
 
 .band .display {
@@ -733,7 +744,7 @@ button.button:disabled {
 .site-footer {
   border-top: 1px solid var(--line);
   padding: 3rem 0 2rem;
-  background: #fff;
+  background: var(--paper);
 }
 
 .footer-grid {
@@ -819,7 +830,7 @@ button.button:disabled {
   min-height: 3rem;
   padding: 0.35rem 0.5rem;
   color: var(--ink);
-  background: #fff;
+  background: transparent;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -834,6 +845,23 @@ button.button:disabled {
 
 .page-intro {
   padding: clamp(2.25rem, 6vw, 4.5rem) 0 0;
+}
+
+.page-body {
+  position: relative;
+  isolation: isolate;
+}
+
+.page-body::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--navy);
 }
 
 .page-intro h1,
@@ -1050,8 +1078,8 @@ textarea {
   font: inherit;
   font-size: 1rem;
   color: var(--ink);
-  background: #fff;
-  border: 1px solid #c8c8c8;
+  background: var(--field);
+  border: 1px solid var(--field-border);
   border-radius: 0;
   padding: 0.8rem 0.85rem;
   min-height: 48px;
@@ -1060,6 +1088,25 @@ textarea {
 textarea {
   min-height: 9rem;
   resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-color: var(--blue);
+}
+
+select option {
+  background: var(--field);
+  color: var(--ink);
 }
 
 .field[data-invalid='true'] input,
@@ -1199,7 +1246,7 @@ textarea {
   }
 
   body.overlay .desk-nav a[aria-current='page'] {
-    color: #fff;
+    color: var(--blue);
   }
 
   .drawer {
@@ -1403,7 +1450,7 @@ textarea {
 }
 
 .drawer .profile-links a {
-  color: #fff;
+  color: var(--ink);
   letter-spacing: 0.08em;
 }
 
