@@ -77,15 +77,15 @@ const en = {
   'about.eyebrow': 'About',
   'about.title': 'Mariana Ramírez',
   'about.lead':
-    'Mariana Ramírez is a luxury real estate advisor at SERHANT. in Miami, on Nile Lundgren’s team. Colombian, from Barranquilla, Mariana speaks English, Spanish, and German.',
+    'Mariana Ramírez is a luxury real estate advisor at SERHANT. in Miami, on Nile Lundgren\'s team. Born and raised in Barranquilla, Colombia, she works in English, Spanish, and German.',
   'about.p1':
-    'Mariana holds a bachelor’s degree in business administration with an emphasis in marketing, and comes from a business background. Living in Germany, Canada, the United States, and Colombia gives Mariana a global outlook.',
+    'Her approach is rooted in business. Mariana earned a bachelor\'s degree in business administration with an emphasis in marketing, and years of living in Germany, Canada, the United States, and Colombia shaped the global perspective she brings to her work.',
   'about.p2':
-    'The markets are Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. The record sale is $2.4 million, and Mariana was nominated for Rookie of the Year.',
+    'Mariana advises buyers and sellers in Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. Her record sale to date is $2.4 million, and she was nominated for Rookie of the Year.',
   'about.p3':
-    'Mariana also creates content. Visual presentation matters: properties are presented in an elegant, visually striking way, to reach buyers through social media.',
+    'Presentation is central to how she works. Also a content creator, Mariana presents every property with an elegant, editorial eye, designed to stand out on social media and reach buyers where they are already looking.',
   'about.p4':
-    'The listings benefit from SERHANT.’s social media reach and from the visibility of its Netflix series, Owning Manhattan.',
+    'Her listings also benefit from SERHANT.\'s social media reach and from the visibility of its Netflix series,',
   'about.photoAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'about.factsTitle': 'On the record',
@@ -349,15 +349,15 @@ const es: typeof en = {
   'about.eyebrow': 'Sobre mí',
   'about.title': 'Mariana Ramírez',
   'about.lead':
-    'Mariana Ramírez is a luxury real estate advisor at SERHANT. in Miami, on Nile Lundgren’s team. Colombian, from Barranquilla, Mariana speaks English, Spanish, and German.',
+    'Mariana Ramírez is a luxury real estate advisor at SERHANT. in Miami, on Nile Lundgren\'s team. Born and raised in Barranquilla, Colombia, she works in English, Spanish, and German.',
   'about.p1':
-    'Mariana holds a bachelor’s degree in business administration with an emphasis in marketing, and comes from a business background. Living in Germany, Canada, the United States, and Colombia gives Mariana a global outlook.',
+    'Her approach is rooted in business. Mariana earned a bachelor\'s degree in business administration with an emphasis in marketing, and years of living in Germany, Canada, the United States, and Colombia shaped the global perspective she brings to her work.',
   'about.p2':
-    'The markets are Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. The record sale is $2.4 million, and Mariana was nominated for Rookie of the Year.',
+    'Mariana advises buyers and sellers in Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. Her record sale to date is $2.4 million, and she was nominated for Rookie of the Year.',
   'about.p3':
-    'Mariana also creates content. Visual presentation matters: properties are presented in an elegant, visually striking way, to reach buyers through social media.',
+    'Presentation is central to how she works. Also a content creator, Mariana presents every property with an elegant, editorial eye, designed to stand out on social media and reach buyers where they are already looking.',
   'about.p4':
-    'The listings benefit from SERHANT.’s social media reach and from the visibility of its Netflix series, Owning Manhattan.',
+    'Her listings also benefit from SERHANT.\'s social media reach and from the visibility of its Netflix series,',
   'about.photoAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'about.factsTitle': 'En el registro',
