@@ -37,7 +37,7 @@ const crumbs = [
     <Breadcrumbs locale={locale} items={crumbs} />
     <p class="eyebrow">{t(locale, 'about.eyebrow')}</p>
     <h1>{t(locale, 'about.title')}</h1>
-    <p class="lead">{t(locale, 'about.lead')}</p>
+    <p class="lead" lang="en">{t('en', 'about.lead')}</p>
   </div>
   <div class="wrap page-body">
     <div class="about-grid">
@@ -52,8 +52,12 @@ const crumbs = [
         />
       </figure>
       <div class="prose">
-        <p>{t(locale, 'about.p1')}</p>
-        <p>{t(locale, 'about.p2')}</p>
+        <div lang="en">
+          <p>{t('en', 'about.p1')}</p>
+          <p>{t('en', 'about.p2')}</p>
+          <p>{t('en', 'about.p3')}</p>
+          <p>{t('en', 'about.p4')}</p>
+        </div>
         <p>
           <a href={`tel:${site.publicPhone.replace(/[^\d+]/g, '')}`}>{site.publicPhone}</a><br />
           <a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a>
@@ -63,10 +67,11 @@ const crumbs = [
     </div>
     <section class="facts">
       <h2>{t(locale, 'about.factsTitle')}</h2>
-      <ol>
-        <li>{t(locale, 'about.factTeam')}</li>
-        <li>{t(locale, 'about.factSale')}</li>
-        <li>{t(locale, 'about.factRookie')}</li>
+      <ol lang="en">
+        <li>{t('en', 'about.factTeam')}</li>
+        <li>{t('en', 'about.factLanguages')}</li>
+        <li>{t('en', 'about.factSale')}</li>
+        <li>{t('en', 'about.factRookie')}</li>
       </ol>
     </section>
   </div>

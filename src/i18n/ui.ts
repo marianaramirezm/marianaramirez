@@ -29,15 +29,15 @@ const en = {
   'home.introAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'home.introBody':
-    'I’m a luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. I represent people buying, selling, renting, and investing across Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. I’m Colombian, from Barranquilla, and I work in English and Spanish.',
+    'I’m a luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. I represent people buying, selling, renting, and investing across Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. I’m Colombian, from Barranquilla, and I work in English, Spanish, and German.',
   'home.statSaleValue': '$2.4M',
   'home.statSaleLabel': 'Record sale',
   'home.statRookieValue': 'Nominee',
   'home.statRookieLabel': 'Rookie of the Year',
   'home.statTeamValue': 'SERHANT.',
   'home.statTeamLabel': 'Nile Lundgren’s team',
-  'home.statLangValue': 'EN · ES',
-  'home.statLangLabel': 'Bilingual',
+  'home.statLangValue': 'EN · ES · DE',
+  'home.statLangLabel': 'Three languages',
   'home.listingsEyebrow': 'Selected',
   'home.listingsTitle': 'Listings and past sales',
   'home.listingsNote':
@@ -77,15 +77,20 @@ const en = {
   'about.eyebrow': 'About',
   'about.title': 'Mariana Ramírez',
   'about.lead':
-    'Mariana Ramírez is a luxury real estate advisor at SERHANT. in Miami, on Nile Lundgren’s team.',
+    'Mariana Ramírez is a luxury real estate advisor at SERHANT. in Miami, on Nile Lundgren’s team. Colombian, from Barranquilla, Mariana speaks English, Spanish, and German.',
   'about.p1':
-    'Colombian, from Barranquilla, she works in English and Spanish. She covers Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York.',
+    'Mariana holds a bachelor’s degree in business administration with an emphasis in marketing, and comes from a business background. Living in Germany, Canada, the United States, and Colombia gives Mariana a global outlook.',
   'about.p2':
-    'Her record sale is $2.4 million, and she was nominated for Rookie of the Year.',
+    'The markets are Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. The record sale is $2.4 million, and Mariana was nominated for Rookie of the Year.',
+  'about.p3':
+    'Mariana also creates content. Visual presentation matters: properties are presented in an elegant, visually striking way, to reach buyers through social media.',
+  'about.p4':
+    'The listings benefit from SERHANT.’s social media reach and from the visibility of its Netflix series, Owning Manhattan.',
   'about.photoAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'about.factsTitle': 'On the record',
   'about.factTeam': 'Advisor at SERHANT., on Nile Lundgren’s team in Miami.',
+  'about.factLanguages': 'Three languages: English, Spanish, German.',
   'about.factSale': 'Record sale of $2.4 million.',
   'about.factRookie': 'Nominated for Rookie of the Year.',
 
@@ -296,15 +301,15 @@ const es: typeof en = {
   'home.introAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'home.introBody':
-    'Soy asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Represento a quien compra, vende, alquila o invierte en Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York. Soy colombiana, de Barranquilla, y trabajo en español y en inglés.',
+    'Soy asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Represento a quien compra, vende, alquila o invierte en Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York. Soy colombiana, de Barranquilla, y trabajo en español, inglés y alemán.',
   'home.statSaleValue': '2,4 M',
   'home.statSaleLabel': 'Venta récord',
   'home.statRookieValue': 'Nominada',
   'home.statRookieLabel': 'Rookie of the Year',
   'home.statTeamValue': 'SERHANT.',
   'home.statTeamLabel': 'Equipo de Nile Lundgren',
-  'home.statLangValue': 'ES · EN',
-  'home.statLangLabel': 'Bilingüe',
+  'home.statLangValue': 'ES · EN · DE',
+  'home.statLangLabel': 'Tres idiomas',
   'home.listingsEyebrow': 'Selección',
   'home.listingsTitle': 'Propiedades y ventas',
   'home.listingsNote':
@@ -344,17 +349,22 @@ const es: typeof en = {
   'about.eyebrow': 'Sobre mí',
   'about.title': 'Mariana Ramírez',
   'about.lead':
-    'Mariana Ramírez es asesora de bienes raíces de lujo en SERHANT., en Miami, en el equipo de Nile Lundgren.',
+    'Mariana Ramírez is a luxury real estate advisor at SERHANT. in Miami, on Nile Lundgren’s team. Colombian, from Barranquilla, Mariana speaks English, Spanish, and German.',
   'about.p1':
-    'Colombiana, de Barranquilla, trabaja en español y en inglés. Cubre Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York.',
+    'Mariana holds a bachelor’s degree in business administration with an emphasis in marketing, and comes from a business background. Living in Germany, Canada, the United States, and Colombia gives Mariana a global outlook.',
   'about.p2':
-    'Su venta récord es de 2,4 millones de dólares, y fue nominada a Rookie of the Year.',
+    'The markets are Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. The record sale is $2.4 million, and Mariana was nominated for Rookie of the Year.',
+  'about.p3':
+    'Mariana also creates content. Visual presentation matters: properties are presented in an elegant, visually striking way, to reach buyers through social media.',
+  'about.p4':
+    'The listings benefit from SERHANT.’s social media reach and from the visibility of its Netflix series, Owning Manhattan.',
   'about.photoAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'about.factsTitle': 'En el registro',
-  'about.factTeam': 'Asesora en SERHANT., en el equipo de Nile Lundgren en Miami.',
-  'about.factSale': 'Venta récord de 2,4 millones de dólares.',
-  'about.factRookie': 'Nominada a Rookie of the Year.',
+  'about.factTeam': 'Advisor at SERHANT., on Nile Lundgren’s team in Miami.',
+  'about.factLanguages': 'Three languages: English, Spanish, German.',
+  'about.factSale': 'Record sale of $2.4 million.',
+  'about.factRookie': 'Nominated for Rookie of the Year.',
 
   'listings.eyebrow': 'Inventario',
   'listings.title': 'Propiedades y ventas',
