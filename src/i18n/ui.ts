@@ -2,6 +2,7 @@ const en = {
   'nav.about': 'About',
   'nav.listings': 'Listings',
   'nav.neighborhoods': 'Neighborhoods',
+  'nav.map': 'Map',
   'nav.residences': 'Residences',
   'nav.contact': 'Contact',
   'nav.blog': 'Blog',
@@ -270,6 +271,41 @@ const en = {
   'blog.cat.culture': 'Culture',
   'blog.cat.business': 'Business',
 
+  'home.mapEyebrow': 'Map',
+  'home.mapTitle': 'See the neighborhoods',
+  'home.mapBody':
+    'Eight Miami neighborhoods, with the active SERHANT. sale and rental listings published on serhant.com.',
+  'home.mapCta': 'Open the map',
+
+  'map.eyebrow': 'Miami',
+  'map.title': 'Miami Neighborhoods Map',
+  'map.lead': 'Eight neighborhoods, with the active SERHANT. listings published on serhant.com.',
+  'map.listLabel': 'Neighborhoods',
+  'map.choose': 'Choose a neighborhood to see its active listings.',
+  'map.all': 'All',
+  'map.forSale': 'For sale',
+  'map.forRent': 'For rent',
+  'map.bed': 'bd',
+  'map.bath': 'ba',
+  'map.sqft': 'sf',
+  'map.perMonth': '/mo',
+  'map.listedBy': 'Listed by SERHANT.',
+  'map.team': 'Lundgren Team',
+  'map.empty':
+    'No active SERHANT. listings here right now. Ask Mariana about off-market and upcoming opportunities.',
+  'map.contact': 'Contact Mariana',
+  'map.guide': 'Neighborhood guide',
+  'map.close': 'Close',
+  'map.disclaimer':
+    'These are SERHANT. brokerage listings sourced from serhant.com. Information is deemed reliable but not guaranteed, and it is subject to change. This is not a full MLS search.',
+  'map.filterEmpty': 'No listings in this filter.',
+  'map.legendSale': 'For sale',
+  'map.legendRent': 'For rent',
+
+  'meta.map.title': 'Miami Neighborhoods Map | Mariana Ramírez',
+  'meta.map.description':
+    'A map of eight Miami neighborhoods with active SERHANT. sale and rental listings from serhant.com. Not a full MLS search.',
+
   'schema.jobTitle': 'Luxury Real Estate Advisor',
 
   'notFound.title': 'Page not found',
@@ -281,6 +317,7 @@ const es: typeof en = {
   'nav.about': 'Sobre mí',
   'nav.listings': 'Propiedades',
   'nav.neighborhoods': 'Barrios',
+  'nav.map': 'Mapa',
   'nav.residences': 'Residencias',
   'nav.contact': 'Contacto',
   'nav.blog': 'Blog',
@@ -549,6 +586,41 @@ const es: typeof en = {
   'blog.cat.policy': 'Política',
   'blog.cat.culture': 'Cultura',
   'blog.cat.business': 'Negocios',
+
+  'home.mapEyebrow': 'Mapa',
+  'home.mapTitle': 'Ver los barrios',
+  'home.mapBody':
+    'Ocho barrios de Miami, con los listados activos de venta y alquiler de SERHANT. publicados en serhant.com.',
+  'home.mapCta': 'Abrir el mapa',
+
+  'map.eyebrow': 'Miami',
+  'map.title': 'Mapa de barrios de Miami',
+  'map.lead': 'Ocho barrios, con los listados activos de SERHANT. publicados en serhant.com.',
+  'map.listLabel': 'Barrios',
+  'map.choose': 'Elige un barrio para ver sus listados activos.',
+  'map.all': 'Todos',
+  'map.forSale': 'En venta',
+  'map.forRent': 'En alquiler',
+  'map.bed': 'hab.',
+  'map.bath': 'baños',
+  'map.sqft': 'ft²',
+  'map.perMonth': '/mes',
+  'map.listedBy': 'Listado por SERHANT.',
+  'map.team': 'Equipo Lundgren',
+  'map.empty':
+    'No hay listados activos de SERHANT. aquí en este momento. Pregúntale a Mariana por oportunidades fuera del mercado y próximas.',
+  'map.contact': 'Contactar a Mariana',
+  'map.guide': 'Guía del barrio',
+  'map.close': 'Cerrar',
+  'map.disclaimer':
+    'Estos son listados de la correduría SERHANT. tomados de serhant.com. La información se considera confiable, pero no está garantizada, y puede cambiar. Esto no es una búsqueda completa del MLS.',
+  'map.filterEmpty': 'No hay listados en este filtro.',
+  'map.legendSale': 'En venta',
+  'map.legendRent': 'En alquiler',
+
+  'meta.map.title': 'Mapa de barrios de Miami | Mariana Ramírez',
+  'meta.map.description':
+    'Un mapa de ocho barrios de Miami con listados activos de venta y alquiler de SERHANT., tomados de serhant.com. No es una búsqueda completa del MLS.',
 
   'schema.jobTitle': 'Asesora de bienes raíces de lujo',
 

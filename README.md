@@ -169,6 +169,14 @@ Public URLs are `/blog/slug/` and `/es/blog/slug/` (the date is not in the URL).
 
 `draft: true` posts are omitted from a production build, including `main`. They are included only when `CF_PAGES_BRANCH` is set to a branch other than `main`. To preview them locally: `CF_PAGES_BRANCH=preview npm run build`.
 
+## Refresh the Miami neighborhood map
+
+Active SERHANT. brokerage listings for the map live in `src/data/serhant-miami-active.json`. The file is a snapshot of public serhant.com data: neighborhood, address, unit, coordinates, price or monthly rent, beds, baths, square feet, listing agents, the official URL, photo URLs, and whether the listing is on Nile Lundgren’s team.
+
+To refresh it, replace that file with a new export that uses the same fields and only active sale and rental rows. Do not add estimates or edit the numbers. Neighborhood shapes are in `src/data/map-areas.ts`. Rebuild after replacing the file.
+
+The basemap is Esri’s World Dark Gray Canvas (no API key). CARTO’s public `dark_all` tiles currently return an “API key required” watermark, so they are not used.
+
 ## Edit social links, phone, and compliance lines
 
 `src/data/site.ts` is the only file for:

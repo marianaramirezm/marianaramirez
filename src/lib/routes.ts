@@ -1,19 +1,20 @@
 import type { Locale } from '../i18n/ui';
 
-export type NavKey = 'home' | 'about' | 'listings' | 'neighborhoods' | 'residences' | 'blog' | 'contact';
+export type NavKey = 'home' | 'about' | 'listings' | 'neighborhoods' | 'map' | 'residences' | 'blog' | 'contact';
 
 const pages: Record<NavKey | 'thanks', Record<Locale, string>> = {
   home: { en: '/', es: '/es/' },
   about: { en: '/about/', es: '/es/about/' },
   listings: { en: '/listings/', es: '/es/listings/' },
   neighborhoods: { en: '/neighborhoods/', es: '/es/neighborhoods/' },
+  map: { en: '/map/', es: '/es/map/' },
   residences: { en: '/residences/', es: '/es/residences/' },
   blog: { en: '/blog/', es: '/es/blog/' },
   contact: { en: '/contact/', es: '/es/contact/' },
   thanks: { en: '/thank-you/', es: '/es/thank-you/' },
 };
 
-export const mainNav = ['about', 'listings', 'neighborhoods', 'residences', 'blog', 'contact'] as const;
+export const mainNav = ['about', 'listings', 'neighborhoods', 'map', 'residences', 'blog', 'contact'] as const;
 
 export function pathFor(page: keyof typeof pages, locale: Locale): string {
   return pages[page][locale];

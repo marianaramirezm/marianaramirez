@@ -1,0 +1,181 @@
+---
+import 'leaflet/dist/leaflet.css';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Base from '../layouts/Base.astro';
+import { mapAreas } from '../data/map-areas';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { listingDomId, listingsFor, mapPins, priceLabel, specLine } from '../lib/active-listings';
+import { neighborhoodPath, pathFor } from '../lib/routes';
+import { breadcrumbNode, graph } from '../lib/schema';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const path = pathFor('map', locale);
+const alternate = pathFor('map', locale === 'en' ? 'es' : 'en');
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, 'nav.map'), path },
+];
+const specLabels = {
+  bed: t(locale, 'map.bed'),
+  bath: t(locale, 'map.bath'),
+  sqft: t(locale, 'map.sqft'),
+};
+const boot = {
+  areas: mapAreas.map((area) => ({
+    id: area.id,
+    name: area.name[locale],
+    polygon: area.polygon,
+  })),
+  pins: mapPins(),
+};
+---
+
+<Base
+  locale={locale}
+  title={t(locale, 'meta.map.title')}
+  description={t(locale, 'meta.map.description')}
+  path={path}
+  alternatePath={alternate}
+  current="map"
+  jsonLd={graph(breadcrumbNode(site, crumbs))}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{t(locale, 'map.eyebrow')}</p>
+    <h1>{t(locale, 'map.title')}</h1>
+    <p class="lead">{t(locale, 'map.lead')}</p>
+  </div>
+  <div class="wrap page-body map-page">
+    <div class="map-layout">
+      <div class="map-main">
+        <div class="map-canvas">
+          <div id="neighborhood-map" class="neighborhood-map" role="region" aria-label={t(locale, 'map.title')}></div>
+          <ul class="map-legend">
+            <li><span class="swatch sale" aria-hidden="true"></span>{t(locale, 'map.legendSale')}</li>
+            <li><span class="swatch rent" aria-hidden="true"></span>{t(locale, 'map.legendRent')}</li>
+          </ul>
+        </div>
+        <p class="map-disclaimer">{t(locale, 'map.disclaimer')}</p>
+        <h2 class="map-list-title" id="map-list-title">{t(locale, 'map.listLabel')}</h2>
+        <ul class="map-areas" aria-labelledby="map-list-title">
+          {
+            mapAreas.map((area) => {
+              const count = listingsFor(area.sourceName).length;
+              return (
+                <li>
+                  <button
+                    type="button"
+                    data-open={area.id}
+                    aria-pressed="false"
+                    aria-controls={`sheet-${area.id}`}
+                  >
+                    <span>{area.name[locale]}</span>
+                    <span class="map-count">{count}</span>
+                  </button>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+      <div class="map-dock">
+        <p class="map-choose">{t(locale, 'map.choose')}</p>
+        {
+          mapAreas.map((area) => {
+            const rows = listingsFor(area.sourceName);
+            return (
+              <section id={`sheet-${area.id}`} class="map-sheet" hidden aria-labelledby={`sheet-title-${area.id}`}>
+                <div class="map-sheet-bar">
+                  <h2 id={`sheet-title-${area.id}`} tabindex="-1">{area.name[locale]}</h2>
+                  <button type="button" class="map-close" data-close-sheet>
+                    {t(locale, 'map.close')}
+                  </button>
+                </div>
+                <p>{area.description[locale]}</p>
+                <p>
+                  <a class="link" href={neighborhoodPath(area.guide, locale)}>{t(locale, 'map.guide')}</a>
+                </p>
+                {
+                  rows.length > 0 ? (
+                    <>
+                      <div class="map-filters" role="group" aria-label={t(locale, 'map.all')}>
+                        <button type="button" data-filter="all" aria-pressed="true">{t(locale, 'map.all')}</button>
+                        <button type="button" data-filter="sale" aria-pressed="false">{t(locale, 'map.forSale')}</button>
+                        <button type="button" data-filter="rental" aria-pressed="false">{t(locale, 'map.forRent')}</button>
+                      </div>
+                      <ul class="map-cards">
+                        {
+                          rows.map((item) => {
+                            const id = listingDomId(item);
+                            const agents = item.listing_agents.filter(Boolean).join(', ');
+                            return (
+                              <li id={`listing-${id}`} data-tx={item.transaction_type} data-team={item.is_team_listing ? '1' : '0'}>
+                                <a href={item.serhant_url} target="_blank" rel="noopener noreferrer">
+                                  {
+                                    item.photo_urls[0] && (
+                                      <img
+                                        src={item.photo_urls[0]}
+                                        alt=""
+                                        loading="lazy"
+                                        decoding="async"
+                                        referrerpolicy="no-referrer"
+                                      />
+                                    )
+                                  }
+                                  <p class="map-kicker">
+                                    {item.transaction_type === 'rental' ? t(locale, 'map.forRent') : t(locale, 'map.forSale')}
+                                    {item.is_team_listing && <span class="map-team">{t(locale, 'map.team')}</span>}
+                                  </p>
+                                  <h3>{item.address}</h3>
+                                  {priceLabel(item, t(locale, 'map.perMonth')) && <p class="map-price">{priceLabel(item, t(locale, 'map.perMonth'))}</p>}
+                                  <p class="map-specs">{specLine(item, specLabels)}</p>
+                                  <p class="map-courtesy">
+                                    {t(locale, 'map.listedBy')}
+                                    {agents ? ` · ${agents}` : ''}
+                                    <span class="visually-hidden"> ({t(locale, 'a11y.newTab')})</span>
+                                  </p>
+                                </a>
+                              </li>
+                            );
+                          })
+                        }
+                      </ul>
+                      <p class="map-none" hidden>{t(locale, 'map.filterEmpty')}</p>
+                    </>
+                  ) : (
+                    <div class="map-empty">
+                      <p>{t(locale, 'map.empty')}</p>
+                      <a class="button" href={pathFor('contact', locale)}>{t(locale, 'map.contact')}</a>
+                    </div>
+                  )
+                }
+              </section>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+  <script type="application/json" id="map-config" set:html={JSON.stringify(boot)} />
+  <button type="button" class="map-backdrop" data-close-sheet hidden>{t(locale, 'map.close')}</button>
+</Base>
+
+<script>
+  import type { MapBoot } from '../scripts/neighborhood-map';
+
+  const start = () => {
+    const node = document.getElementById('map-config');
+    if (!node?.textContent) return;
+    const config = JSON.parse(node.textContent) as MapBoot;
+    void import('../scripts/neighborhood-map').then((mod) => mod.mount(config));
+  };
+
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
+</script>
