@@ -139,6 +139,26 @@ a {
   flex: 0 0 auto;
 }
 
+.header-ig {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-ig .social-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.header-ig:hover {
+  color: var(--blue);
+}
+
 .langs {
   display: flex;
   align-items: center;
@@ -237,7 +257,8 @@ body.overlay .brand,
 body.overlay .desk-nav a,
 body.overlay .langs a,
 body.overlay .langs span,
-body.overlay .drawer summary {
+body.overlay .drawer summary,
+body.overlay .header-ig {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }
 
@@ -1325,6 +1346,17 @@ select option {
   }
 }
 
+@media (max-width: 349px) {
+  .header-bar {
+    gap: 0.35rem;
+  }
+
+  .brand {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+}
+
 .markets {
   margin: 0 0 1.6rem;
   max-width: 36rem;
@@ -1489,16 +1521,32 @@ select option {
   padding-bottom: 0.2rem;
 }
 
+.social-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  display: block;
+  flex: 0 0 auto;
+}
+
 .profile-links {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 1.1rem;
-  margin: 0.8rem 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin: 1rem 0 0;
   padding: 0;
 }
 
+.profile-links li + li {
+  margin-top: 0;
+}
+
 .profile-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
   text-decoration: none;
   font-size: 0.75rem;
   font-weight: 500;
@@ -1510,13 +1558,64 @@ select option {
   color: var(--blue);
 }
 
-.drawer .profile-links {
-  padding: 0.8rem 1.25rem 1.2rem;
+.profile-links .ig-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.25;
 }
 
-.drawer .profile-links a {
+.profile-links .ig-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.profile-links .handle {
+  font-size: 0.98rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.site-footer .profile-links {
+  margin-top: 0;
+}
+
+.site-footer .profile-links a.is-instagram .social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.prose .profile-links {
+  margin: 0.35rem 0 1.25rem;
+  padding: 0;
+  max-width: none;
+}
+
+.drawer-nav .profile-links {
+  width: 100%;
+  margin: 0.85rem 0 0;
+  padding: 0.85rem 0 0;
+  border-top: 1px solid var(--line);
+  gap: 0.1rem;
+}
+
+.drawer-nav .profile-links a {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.2rem 0;
+  border-bottom: 0;
   color: var(--ink);
-  letter-spacing: 0.08em;
 }
 
 .contact-photo img {
