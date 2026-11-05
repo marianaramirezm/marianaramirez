@@ -10,6 +10,8 @@ export type MapAreaId =
   | 'venetian-islands'
   | 'sunset-harbour'
   | 'miami-beach'
+  | 'fisher-island'
+  | 'key-biscayne'
   | 'coconut-grove'
   | 'coral-gables'
   | 'brickell'
@@ -119,6 +121,57 @@ export const mapAreas: MapArea[] = [
     tagline: { en: 'Oceanfront living', es: 'Frente al mar' },
     labelAt: [25.828, -80.128],
     labelTransform: 'translate(-50%, -50%)',
+  },
+  {
+    id: 'fisher-island',
+    sourceName: 'Fisher Island',
+    guide: 'fisher-island',
+    name: { en: 'Fisher Island', es: 'Fisher Island' },
+    description: {
+      en: 'Fisher Island is a private island in Biscayne Bay, south of the tip of Miami Beach and north of Virginia Key. It is reached by ferry from the MacArthur Causeway.',
+      es: 'Fisher Island es una isla privada en Biscayne Bay, al sur de la punta de Miami Beach y al norte de Virginia Key. Se llega en ferry desde la MacArthur Causeway.',
+    },
+    polygon: [
+      [25.7628, -80.1462],
+      [25.7632, -80.1375],
+      [25.7612, -80.1322],
+      [25.7576, -80.1338],
+      [25.7566, -80.1405],
+      [25.7584, -80.1474],
+      [25.761, -80.1482],
+    ],
+    color: '#f4f1ff',
+    tagline: { en: 'Private island', es: 'Isla privada' },
+    labelAt: [25.7596, -80.1395],
+    labelTransform: 'translate(-50%, -50%)',
+    detailLabel: true,
+  },
+  {
+    id: 'key-biscayne',
+    sourceName: 'Key Biscayne',
+    guide: 'key-biscayne',
+    name: { en: 'Key Biscayne', es: 'Key Biscayne' },
+    description: {
+      en: 'Key Biscayne is the barrier island south of Miami Beach, across the Rickenbacker Causeway. Biscayne Bay is on its west side and the Atlantic is on its east.',
+      es: 'Key Biscayne es la isla barrera al sur de Miami Beach, cruzando la Rickenbacker Causeway. Biscayne Bay queda al oeste y el Atlántico al este.',
+    },
+    polygon: [
+      [25.7065, -80.1635],
+      [25.7048, -80.1562],
+      [25.692, -80.1548],
+      [25.678, -80.1555],
+      [25.6665, -80.1588],
+      [25.6658, -80.1665],
+      [25.676, -80.1715],
+      [25.69, -80.1732],
+      [25.7005, -80.1688],
+      [25.7062, -80.166],
+    ],
+    color: '#d6ff4a',
+    tagline: { en: 'Bay and ocean', es: 'Bahía y océano' },
+    labelAt: [25.688, -80.163],
+    labelTransform: 'translate(-50%, -50%)',
+    detailLabel: true,
   },
   {
     id: 'coconut-grove',

@@ -3123,5 +3123,191 @@
   "synced_at": "2026-11-04T16:52:53.000Z",
   "flags": [],
   "url_http_status": 200
+ },
+ {
+  "neighborhood": "Key Biscayne",
+  "address": "251 Crandon Blvd # 806",
+  "unit": "806",
+  "city": "Key Biscayne",
+  "zip": "33149",
+  "lat": 25.6977231,
+  "lng": -80.15820180000001,
+  "geocoded": false,
+  "status": "FOR_SALE",
+  "transaction_type": "sale",
+  "list_price": 2900000,
+  "monthly_rent": null,
+  "beds": 2,
+  "baths": 3,
+  "interior_sqft": "2220.0",
+  "property_type": "condo/unit (inferred: address has unit)",
+  "listing_agents": [
+   "Julieta Suarez Lepre"
+  ],
+  "listing_office_on_record": "Serhant",
+  "mls_id": "A12116685",
+  "serhant_url": "https://serhant.com/properties/251-crandon-blvd-806-key-biscayne-fl-33149-e521bd0425db9aeebd97ecba4418b2c5",
+  "photo_urls": [
+   "https://dlajgvw9htjpb.cloudfront.net/cms/b26ab618-2b1e-4a17-8868-498b96b52dc0/A12116685/7403517223063923554.jpg"
+  ],
+  "is_team_listing": false,
+  "synced_at": "2026-11-03T01:05:34.000Z",
+  "flags": [],
+  "url_http_status": 200
+ },
+ {
+  "neighborhood": "Key Biscayne",
+  "address": "765 Crandon Blvd # 310",
+  "unit": "310",
+  "city": "Key Biscayne",
+  "zip": "33149",
+  "lat": 25.6869336,
+  "lng": -80.1603361,
+  "geocoded": false,
+  "status": "For Lease",
+  "transaction_type": "rental",
+  "list_price": null,
+  "monthly_rent": 15500,
+  "beds": 3,
+  "baths": 3,
+  "interior_sqft": "2602.0",
+  "property_type": "condo/unit (inferred: address has unit)",
+  "listing_agents": [
+   "Mariana Niro"
+  ],
+  "listing_office_on_record": "Serhant",
+  "mls_id": "A12107884",
+  "serhant_url": "https://serhant.com/properties/765-crandon-blvd-310-key-biscayne-fl-us-33149-212d6302661c67b2d0b43228dae46f40",
+  "photo_urls": [
+   "https://dlajgvw9htjpb.cloudfront.net/cms/b26ab618-2b1e-4a17-8868-498b96b52dc0/A12107884/5042884301634396442.jpg"
+  ],
+  "is_team_listing": false,
+  "synced_at": "2026-10-18T13:01:46.000Z",
+  "flags": [],
+  "url_http_status": 200
+ },
+ {
+  "neighborhood": "Key Biscayne",
+  "address": "765 Crandon Blvd # 310",
+  "unit": "310",
+  "city": "Key Biscayne",
+  "zip": "33149",
+  "lat": 25.6869336,
+  "lng": -80.1603361,
+  "geocoded": false,
+  "status": "FOR_SALE",
+  "transaction_type": "sale",
+  "list_price": 2850000,
+  "monthly_rent": null,
+  "beds": 3,
+  "baths": 3,
+  "interior_sqft": "2602.0",
+  "property_type": "condo/unit (inferred: address has unit)",
+  "listing_agents": [
+   "Mariana Niro"
+  ],
+  "listing_office_on_record": "Serhant",
+  "mls_id": "A12103766",
+  "serhant_url": "https://serhant.com/properties/765-crandon-blvd-310-key-biscayne-fl-33149-d6bfda51c41e107db4a45c0618d6159f",
+  "photo_urls": [
+   "https://dlajgvw9htjpb.cloudfront.net/cms/b26ab618-2b1e-4a17-8868-498b96b52dc0/A12103766/-7988195724426487896.jpg"
+  ],
+  "is_team_listing": false,
+  "synced_at": "2026-10-18T13:01:46.000Z",
+  "flags": [],
+  "url_http_status": 200
+ },
+ {
+  "neighborhood": "Key Biscayne",
+  "address": "202 Sunrise Dr # 202B",
+  "unit": "202B",
+  "city": "Key Biscayne",
+  "zip": "33149",
+  "lat": 25.689827,
+  "lng": -80.161936,
+  "geocoded": false,
+  "status": "FOR_SALE",
+  "transaction_type": "sale",
+  "list_price": 1790000,
+  "monthly_rent": null,
+  "beds": 3,
+  "baths": 3,
+  "interior_sqft": "1550.0",
+  "property_type": "condo/unit (inferred: address has unit)",
+  "listing_agents": [
+   "Ale Alfonzo",
+   "Angel Nicolas"
+  ],
+  "listing_office_on_record": "Serhant",
+  "mls_id": "A12033083",
+  "serhant_url": "https://serhant.com/properties/202-sunrise-dr-202b-key-biscayne-fl-33149-a4191a67aa165ef1af2b9e7e0898862c",
+  "photo_urls": [
+   "https://dlajgvw9htjpb.cloudfront.net/cms/b26ab618-2b1e-4a17-8868-498b96b52dc0/A12033083/-3612920844217811173.jpg"
+  ],
+  "is_team_listing": false,
+  "synced_at": "2026-06-09T02:06:05.000Z",
+  "flags": [],
+  "url_http_status": 200
+ },
+ {
+  "neighborhood": "Key Biscayne",
+  "address": "204 Sunrise Dr # 204B",
+  "unit": "204B",
+  "city": "Key Biscayne",
+  "zip": "33149",
+  "lat": 25.6899203,
+  "lng": -80.161756,
+  "geocoded": false,
+  "status": "FOR_SALE",
+  "transaction_type": "sale",
+  "list_price": 1690000,
+  "monthly_rent": null,
+  "beds": 3,
+  "baths": 3,
+  "interior_sqft": "1550.0",
+  "property_type": "condo/unit (inferred: address has unit)",
+  "listing_agents": [
+   "Angel Nicolas",
+   "Ale Alfonzo"
+  ],
+  "listing_office_on_record": "Serhant",
+  "mls_id": "A12020099",
+  "serhant_url": "https://serhant.com/properties/204-sunrise-dr-204b-key-biscayne-fl-us-33149-4ced32a754ab0c8f593855d9b0eebce9",
+  "photo_urls": [
+   "https://dlajgvw9htjpb.cloudfront.net/cms/b26ab618-2b1e-4a17-8868-498b96b52dc0/A12020099/-4066423204294135454.jpg"
+  ],
+  "is_team_listing": false,
+  "synced_at": "2026-08-11T13:42:58.000Z",
+  "flags": [],
+  "url_http_status": 200
+ },
+ {
+  "neighborhood": "Key Biscayne",
+  "address": "524 Warren Ln",
+  "unit": null,
+  "city": "Key Biscayne",
+  "zip": "33149",
+  "lat": 25.691664,
+  "lng": -80.1691998,
+  "geocoded": false,
+  "status": "FOR_SALE",
+  "transaction_type": "sale",
+  "list_price": 3690000,
+  "monthly_rent": null,
+  "beds": 5,
+  "baths": 4,
+  "interior_sqft": "2700.0",
+  "property_type": "house/single-family (inferred: no unit in address)",
+  "listing_agents": [],
+  "listing_office_on_record": "Serhant",
+  "mls_id": "A11999112",
+  "serhant_url": "https://serhant.com/properties/524-warren-ln-key-biscayne-fl-us-33149-558ed67ed438ccfbf6b98a404da19134",
+  "photo_urls": [
+   "https://dlajgvw9htjpb.cloudfront.net/cms/b26ab618-2b1e-4a17-8868-498b96b52dc0/A11999112/243775478868674987.jpg"
+  ],
+  "is_team_listing": false,
+  "synced_at": "2026-11-01T17:30:38.000Z",
+  "flags": [],
+  "url_http_status": 200
  }
 ]

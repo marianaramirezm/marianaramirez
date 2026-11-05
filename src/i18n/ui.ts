@@ -274,14 +274,14 @@ const en = {
   'home.mapEyebrow': 'Map',
   'home.mapTitle': 'See the neighborhoods',
   'home.mapBody':
-    'Eight Miami neighborhoods, with the active SERHANT. sale and rental listings published on serhant.com.',
+    'Ten Miami neighborhoods, with the active SERHANT. sale and rental listings published on serhant.com.',
   'home.mapCta': 'Open the map',
 
   'map.eyebrow': 'Miami',
-  'map.nightTitle': 'Miami — 8 neighborhoods',
+  'map.nightTitle': 'Miami — 10 neighborhoods',
   'map.nightAsk': 'Which one is yours?',
   'map.title': 'Miami Neighborhoods Map',
-  'map.lead': 'Eight neighborhoods, with the active SERHANT. listings published on serhant.com.',
+  'map.lead': 'Ten neighborhoods, with the active SERHANT. listings published on serhant.com.',
   'map.listLabel': 'Neighborhoods',
   'map.choose': 'Choose a neighborhood to see its active listings.',
   'map.all': 'All',
@@ -306,7 +306,7 @@ const en = {
 
   'meta.map.title': 'Miami Neighborhoods Map | Mariana Ramírez',
   'meta.map.description':
-    'A map of eight Miami neighborhoods with active SERHANT. sale and rental listings from serhant.com. Not a full MLS search.',
+    'A map of ten Miami neighborhoods with active SERHANT. sale and rental listings from serhant.com. Not a full MLS search.',
 
   'schema.jobTitle': 'Luxury Real Estate Advisor',
 
@@ -592,14 +592,14 @@ const es: typeof en = {
   'home.mapEyebrow': 'Mapa',
   'home.mapTitle': 'Ver los barrios',
   'home.mapBody':
-    'Ocho barrios de Miami, con los listados activos de venta y alquiler de SERHANT. publicados en serhant.com.',
+    'Diez barrios de Miami, con los listados activos de venta y alquiler de SERHANT. publicados en serhant.com.',
   'home.mapCta': 'Abrir el mapa',
 
   'map.eyebrow': 'Miami',
-  'map.nightTitle': 'Miami — 8 barrios',
+  'map.nightTitle': 'Miami — 10 barrios',
   'map.nightAsk': '¿Cuál es el tuyo?',
   'map.title': 'Mapa de barrios de Miami',
-  'map.lead': 'Ocho barrios, con los listados activos de SERHANT. publicados en serhant.com.',
+  'map.lead': 'Diez barrios, con los listados activos de SERHANT. publicados en serhant.com.',
   'map.listLabel': 'Barrios',
   'map.choose': 'Elige un barrio para ver sus listados activos.',
   'map.all': 'Todos',
@@ -624,7 +624,7 @@ const es: typeof en = {
 
   'meta.map.title': 'Mapa de barrios de Miami | Mariana Ramírez',
   'meta.map.description':
-    'Un mapa de ocho barrios de Miami con listados activos de venta y alquiler de SERHANT., tomados de serhant.com. No es una búsqueda completa del MLS.',
+    'Un mapa de diez barrios de Miami con listados activos de venta y alquiler de SERHANT., tomados de serhant.com. No es una búsqueda completa del MLS.',
 
   'schema.jobTitle': 'Asesora de bienes raíces de lujo',
 

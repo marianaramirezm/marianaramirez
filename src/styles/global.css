@@ -1893,6 +1893,8 @@ html.js [data-reveal].is-in {
 .neon-miami-beach { --neon: #3ee0ff; }
 .neon-coconut-grove { --neon: #39ff7a; }
 .neon-coral-gables { --neon: #f5b942; }
+.neon-key-biscayne { --neon: #d6ff4a; }
+.neon-fisher-island { --neon: #f4f1ff; }
 
 .map-night-title {
   position: absolute;

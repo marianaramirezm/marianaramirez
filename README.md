@@ -175,6 +175,8 @@ Active SERHANT. brokerage listings for the map live in `src/data/serhant-miami-a
 
 To refresh it, replace that file with a new export that uses the same fields and only active sale and rental rows. Do not add estimates or edit the numbers. Neighborhood shapes are in `src/data/map-areas.ts`. Rebuild after replacing the file.
 
+Key Biscayne rows in the file are SERHANT. office listings with status FOR_SALE or For Lease from the public serhant.com property search. That search had no active Fisher Island or Venetian Islands rows, so those areas use the empty state.
+
 The basemap is Esri’s World Dark Gray Canvas (no API key). CARTO’s public `dark_all` tiles currently return an “API key required” watermark, so they are not used.
 
 ## Edit social links, phone, and compliance lines

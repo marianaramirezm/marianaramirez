@@ -186,8 +186,9 @@ export function mount(config: MapBoot): void {
     bounds.extend(polygon.getBounds());
   }
 
-  shapes.get('sunset-harbour')?.bringToFront();
-  shapes.get('venetian-islands')?.bringToFront();
+  for (const id of ['sunset-harbour', 'venetian-islands', 'fisher-island', 'key-biscayne']) {
+    shapes.get(id)?.bringToFront();
+  }
 
   const markers: { marker: L.CircleMarker; pin: MapPin }[] = [];
   for (const pin of config.pins) {
