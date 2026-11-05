@@ -58,7 +58,7 @@ const crumbs = [
           <p>{t('en', 'about.p3')}</p>
           <p>{t('en', 'about.p4')} <em>Owning Manhattan</em>.</p>
         </div>
-        <ProfileLinks locale={locale} ids={['instagram', 'tiktok', 'serhant']} showHandle />
+        <ProfileLinks locale={locale} ids={['instagram', 'tiktok', 'serhant']} showHandle variant="pills" />
         <p>
           <a href={`tel:${site.publicPhone.replace(/[^\d+]/g, '')}`}>{site.publicPhone}</a><br />
           <a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a>

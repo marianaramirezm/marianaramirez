@@ -14,8 +14,12 @@ interface Props {
 
 const { locale, current, alternatePath } = Astro.props;
 const home = pathFor('home', locale);
-const instagram = site.profiles.find((item) => item.id === 'instagram');
-const instagramLabel = `${t(locale, 'link.instagram')}, ${site.handle} (${t(locale, 'a11y.newTab')})`;
+const headerSocials = (['instagram', 'tiktok'] as const)
+  .map((id) => {
+    const item = site.profiles.find((profile) => profile.id === id);
+    return item ? { ...item, label: `${t(locale, id === 'instagram' ? 'link.instagram' : 'link.tiktok')}, ${site.handle} (${t(locale, 'a11y.newTab')})` } : null;
+  })
+  .filter((item) => item !== null);
 const labelKey = {
   about: 'nav.about',
   listings: 'nav.listings',
@@ -42,17 +46,20 @@ const labelKey = {
       }
       <a href={site.profiles[0].href} rel="noopener noreferrer" target="_blank">
         {t(locale, 'link.serhant')}
+        <SocialIcon name="arrow" />
         <span class="visually-hidden"> ({t(locale, 'a11y.newTab')})</span>
       </a>
     </nav>
     <div class="header-end">
-      {
-        instagram && (
-          <a class="header-ig" href={instagram.href} rel="noopener noreferrer" target="_blank" aria-label={instagramLabel}>
-            <SocialIcon name="instagram" />
-          </a>
-        )
-      }
+      <div class="header-socials">
+        {
+          headerSocials.map((item) => (
+            <a class="header-social" href={item.href} rel="noopener noreferrer" target="_blank" aria-label={item.label}>
+              <SocialIcon name={item.id} />
+            </a>
+          ))
+        }
+      </div>
       <nav class="langs" aria-label={t(locale, 'a11y.language')}>
         {
           locale === 'en' ? (
@@ -91,7 +98,7 @@ const labelKey = {
               </a>
             ))
           }
-          <ProfileLinks locale={locale} ids={['instagram', 'tiktok', 'serhant']} />
+          <ProfileLinks locale={locale} ids={['instagram', 'tiktok', 'serhant']} variant="icons" />
         </nav>
       </details>
     </div>

@@ -139,24 +139,30 @@ a {
   flex: 0 0 auto;
 }
 
-.header-ig {
+.header-socials {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.header-social {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
   flex: 0 0 auto;
-  color: inherit;
+  color: var(--blue);
   text-decoration: none;
 }
 
-.header-ig .social-icon {
-  width: 1.15rem;
-  height: 1.15rem;
+.header-social .social-icon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.header-ig:hover {
-  color: var(--blue);
+.header-social:hover {
+  color: var(--blue-hover);
 }
 
 .langs {
@@ -257,9 +263,12 @@ body.overlay .brand,
 body.overlay .desk-nav a,
 body.overlay .langs a,
 body.overlay .langs span,
-body.overlay .drawer summary,
-body.overlay .header-ig {
+body.overlay .drawer summary {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+body.overlay .header-social {
+  filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.55));
 }
 
 body.overlay .langs span[aria-current='true'] {
@@ -1327,6 +1336,13 @@ select option {
     align-items: center;
   }
 
+  .desk-nav .social-icon.is-arrow {
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-left: 0.3rem;
+    color: var(--blue);
+  }
+
   .desk-nav a[aria-current='page'] {
     color: var(--blue);
   }
@@ -1346,14 +1362,54 @@ select option {
   }
 }
 
-@media (max-width: 349px) {
+@media (max-width: 430px) {
   .header-bar {
     gap: 0.35rem;
   }
 
+  .header-social {
+    width: 2.5rem;
+  }
+
+  .brand {
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-social {
+    width: 2.35rem;
+  }
+
+  .header-social .social-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .langs a,
+  .langs span[aria-current='true'] {
+    min-width: 1.65rem;
+  }
+
   .brand {
     font-size: 1rem;
-    white-space: nowrap;
+  }
+}
+
+@media (max-width: 334px) {
+  .header-social {
+    width: 2.2rem;
+  }
+
+  .langs a,
+  .langs span[aria-current='true'] {
+    min-width: 1.35rem;
+  }
+
+  .brand {
+    font-size: 0.92rem;
+    letter-spacing: -0.03em;
   }
 }
 
@@ -1522,20 +1578,31 @@ select option {
 }
 
 .social-icon {
-  width: 1.05rem;
-  height: 1.05rem;
+  width: 1.5rem;
+  height: 1.5rem;
   display: block;
   flex: 0 0 auto;
+}
+
+.social-icon.is-arrow {
+  width: 1rem;
+  height: 1rem;
 }
 
 .profile-links {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.2rem;
-  margin: 1rem 0 0;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 1.35rem 0 0;
   padding: 0;
+}
+
+.profile-links li {
+  display: flex;
+  flex: 1 1 16rem;
+  margin: 0;
 }
 
 .profile-links li + li {
@@ -1543,79 +1610,118 @@ select option {
 }
 
 .profile-links a {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  min-height: 2.75rem;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.65rem 1rem 0.65rem 0.85rem;
+  border: 1px solid rgba(247, 243, 234, 0.55);
+  border-radius: 999px;
+  color: #fbf8f2;
+  background: rgba(255, 255, 255, 0.03);
   text-decoration: none;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  line-height: 1.2;
 }
 
-.profile-links a:hover {
+.profile-links .social-icon {
   color: var(--blue);
 }
 
-.profile-links .ig-copy {
+.profile-links a:hover {
+  color: #fff;
+  border-color: var(--blue);
+  background: rgba(155, 180, 255, 0.1);
+}
+
+.profile-links a:hover .social-icon {
+  color: var(--blue-hover);
+}
+
+.profile-links .social-copy {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.08rem;
+  gap: 0.12rem;
+  min-width: 0;
   text-transform: none;
   letter-spacing: 0;
-  line-height: 1.25;
 }
 
-.profile-links .ig-name {
-  font-size: 0.75rem;
+.profile-links .social-name {
+  font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: #f7f3ea;
 }
 
 .profile-links .handle {
-  font-size: 0.98rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 500;
   letter-spacing: 0.01em;
   text-transform: none;
+  color: #fff;
 }
 
 .site-footer .profile-links {
-  margin-top: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.7rem;
+  margin-top: 0.35rem;
 }
 
-.site-footer .profile-links a.is-instagram .social-icon {
-  width: 1.25rem;
-  height: 1.25rem;
+.site-footer .profile-links li {
+  flex-basis: auto;
 }
 
 .prose .profile-links {
-  margin: 0.35rem 0 1.25rem;
+  margin: 0.5rem 0 1.35rem;
   padding: 0;
   max-width: none;
 }
 
-.drawer-nav .profile-links {
-  width: 100%;
-  margin: 0.85rem 0 0;
-  padding: 0.85rem 0 0;
+.drawer-nav .profile-links.icons {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1rem 0 0;
+  padding: 1rem 0 0.15rem;
   border-top: 1px solid var(--line);
-  gap: 0.1rem;
 }
 
-.drawer-nav .profile-links a {
+.drawer-nav .profile-links.icons li {
+  flex: 0 0 auto;
+}
+
+.drawer-nav .profile-links.icons li:last-child {
+  flex: 1 1 auto;
+}
+
+.drawer-nav .profile-links.icons a {
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.12em;
-  line-height: 1.3;
+  line-height: 1.2;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.2rem 0;
+  padding: 0.45rem 0.85rem;
   border-bottom: 0;
-  color: var(--ink);
+  color: #fbf8f2;
+}
+
+.drawer-nav .profile-links.icons a.is-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0;
+  justify-content: center;
+  border-color: rgba(155, 180, 255, 0.7);
+}
+
+.drawer-nav .profile-links.icons a.is-serhant {
+  justify-content: space-between;
 }
 
 .contact-photo img {
