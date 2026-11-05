@@ -1837,6 +1837,10 @@ html.js [data-reveal].is-in {
   color: var(--blue);
 }
 
+.neighborhood-map.is-imagery .leaflet-tile-pane {
+  filter: brightness(0.45) saturate(1.2) contrast(1.1);
+}
+
 .leaflet-container .area-name.leaflet-div-icon {
   background: transparent;
   border: 0;
@@ -1844,20 +1848,108 @@ html.js [data-reveal].is-in {
   height: 0;
 }
 
-.area-name span {
-  display: inline-block;
+.area-name.is-detail {
+  visibility: hidden;
+}
+
+.area-label-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: max-content;
-  color: #f7f3ea;
+  max-width: 8.6rem;
+  text-align: center;
+  color: #fff;
+  font-family: var(--sans);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px #000, 0 0 8px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.area-label-name {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+
+.area-label-sub {
+  margin-top: 0.12rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: normal;
+}
+
+.leaflet-overlay-pane path.neon-area {
+  filter: drop-shadow(0 0 6px var(--neon)) drop-shadow(0 0 14px var(--neon));
+}
+
+.neon-brickell { --neon: #3d8bff; }
+.neon-downtown-miami { --neon: #c084fc; }
+.neon-edgewater { --neon: #22e0ee; }
+.neon-venetian-islands { --neon: #2ee6c7; }
+.neon-sunset-harbour { --neon: #ff4d8d; }
+.neon-miami-beach { --neon: #3ee0ff; }
+.neon-coconut-grove { --neon: #39ff7a; }
+.neon-coral-gables { --neon: #f5b942; }
+
+.map-night-title {
+  position: absolute;
+  z-index: 450;
+  top: 0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 4.5rem);
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.map-night-title .kicker {
+  margin: 0;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.map-night-title .ask {
+  margin: 0.12rem 0 0;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.map-area-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+.leaflet-tooltip.area-tip {
+  background: rgba(8, 10, 16, 0.92);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 2px;
+  box-shadow: none;
   font-family: var(--sans);
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  line-height: 1.2;
-  text-align: center;
+  font-weight: 650;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  text-shadow: 0 1px 2px #000, 0 0 10px rgba(0, 0, 0, 0.9);
-  white-space: nowrap;
-  pointer-events: none;
 }
 
 .pin-tip {
@@ -1899,13 +1991,13 @@ html.js [data-reveal].is-in {
 }
 
 .swatch.sale {
-  background: #9bb4ff;
-  border: 2px solid #f7f3ea;
+  background: #f7f3ea;
+  border: 1.5px solid #1a140c;
 }
 
 .swatch.rent {
   background: transparent;
-  border: 2px solid #e6d3a3;
+  border: 2px solid #f7f3ea;
 }
 
 .map-disclaimer {
@@ -2111,6 +2203,19 @@ html.js [data-reveal].is-in {
 }
 
 @media (max-width: 899px) {
+  .area-label-name {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  .area-label-sub {
+    font-size: 8px;
+  }
+
+  .map-night-title .ask {
+    font-size: 1.15rem;
+  }
+
   .map-sheet.is-open {
     position: fixed;
     z-index: 45;

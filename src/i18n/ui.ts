@@ -278,6 +278,8 @@ const en = {
   'home.mapCta': 'Open the map',
 
   'map.eyebrow': 'Miami',
+  'map.nightTitle': 'Miami — 8 neighborhoods',
+  'map.nightAsk': 'Which one is yours?',
   'map.title': 'Miami Neighborhoods Map',
   'map.lead': 'Eight neighborhoods, with the active SERHANT. listings published on serhant.com.',
   'map.listLabel': 'Neighborhoods',
@@ -594,6 +596,8 @@ const es: typeof en = {
   'home.mapCta': 'Abrir el mapa',
 
   'map.eyebrow': 'Miami',
+  'map.nightTitle': 'Miami — 8 barrios',
+  'map.nightAsk': '¿Cuál es el tuyo?',
   'map.title': 'Mapa de barrios de Miami',
   'map.lead': 'Ocho barrios, con los listados activos de SERHANT. publicados en serhant.com.',
   'map.listLabel': 'Barrios',
