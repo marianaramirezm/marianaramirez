@@ -62,30 +62,31 @@ const boot = {
           </ul>
         </div>
         <p class="map-disclaimer">{t(locale, 'map.disclaimer')}</p>
-        <h2 class="map-list-title" id="map-list-title">{t(locale, 'map.listLabel')}</h2>
-        <ul class="map-areas" aria-labelledby="map-list-title">
-          {
-            mapAreas.map((area) => {
-              const count = listingsFor(area.sourceName).length;
-              return (
-                <li>
-                  <button
-                    type="button"
-                    data-open={area.id}
-                    aria-pressed="false"
-                    aria-controls={`sheet-${area.id}`}
-                  >
-                    <span>{area.name[locale]}</span>
-                    <span class="map-count">{count}</span>
-                  </button>
-                </li>
-              );
-            })
-          }
-        </ul>
       </div>
       <div class="map-dock">
-        <p class="map-choose">{t(locale, 'map.choose')}</p>
+        <div class="map-picker">
+          <h2 class="map-list-title" id="map-list-title">{t(locale, 'map.listLabel')}</h2>
+          <ul class="map-areas" aria-labelledby="map-list-title">
+            {
+              mapAreas.map((area) => {
+                const count = listingsFor(area.sourceName).length;
+                return (
+                  <li>
+                    <button
+                      type="button"
+                      data-open={area.id}
+                      aria-pressed="false"
+                      aria-controls={`sheet-${area.id}`}
+                    >
+                      <span>{area.name[locale]}</span>
+                      <span class="map-count">{count}</span>
+                    </button>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </div>
         {
           mapAreas.map((area) => {
             const rows = listingsFor(area.sourceName);
