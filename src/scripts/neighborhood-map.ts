@@ -54,9 +54,12 @@ export function mount(config: MapBoot): void {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let current: string | null = null;
   let filter: Filter = 'all';
+  const narrowAtStart = window.matchMedia('(max-width: 899px)').matches;
   const map = L.map(container, {
     center: [25.78, -80.2],
     zoom: 11,
+    zoomSnap: narrowAtStart ? 0.25 : 1,
+    zoomDelta: narrowAtStart ? 0.25 : 1,
     scrollWheelZoom: false,
     zoomControl: true,
     attributionControl: true,
@@ -88,14 +91,34 @@ export function mount(config: MapBoot): void {
   imagery.on('tileload', () => {
     imageryLoaded += 1;
   });
+  function canvasUrl(src: string): string {
+    return src.replace('World_Imagery/MapServer', 'Canvas/World_Dark_Gray_Base/MapServer');
+  }
   imagery.on('tileerror', (event) => {
     const tile = event.tile as HTMLImageElement | undefined;
-    if (!tile || tile.dataset.retried === '1') return;
-    tile.dataset.retried = '1';
+    if (!tile) return;
     const src = tile.getAttribute('src');
-    if (src) window.setTimeout(() => {
+    if (!src) return;
+    if (tile.dataset.retried !== '1') {
+      tile.dataset.retried = '1';
+      window.setTimeout(() => {
+        tile.src = src;
+      }, 400);
+      return;
+    }
+    if (tile.dataset.fallback === '1') return;
+    tile.dataset.fallback = '1';
+    tile.src = canvasUrl(src);
+  });
+  canvas.on('tileerror', (event) => {
+    const tile = event.tile as HTMLImageElement | undefined;
+    if (!tile || tile.dataset.retried === '1') return;
+    const src = tile.getAttribute('src');
+    if (!src) return;
+    tile.dataset.retried = '1';
+    window.setTimeout(() => {
       tile.src = src;
-    }, 500);
+    }, 400);
   });
   window.setTimeout(() => {
     if (usingImagery && imageryLoaded < 2) useCanvas();
@@ -182,13 +205,45 @@ export function mount(config: MapBoot): void {
   const backdrop = document.querySelector<HTMLButtonElement>('.map-backdrop');
   const dock = document.querySelector<HTMLElement>('.map-dock');
 
+  function labelOverflow(): { left: number; top: number; right: number; bottom: number } | null {
+    const mapRect = container.getBoundingClientRect();
+    let left = 0;
+    let top = 0;
+    let right = 0;
+    let bottom = 0;
+    for (const el of container.querySelectorAll<HTMLElement>('.area-label-stack')) {
+      const host = el.closest('.area-name');
+      if (host instanceof HTMLElement && getComputedStyle(host).visibility === 'hidden') continue;
+      const box = el.getBoundingClientRect();
+      if (box.width < 2 || box.height < 2) continue;
+      left = Math.max(left, mapRect.left + 8 - box.left);
+      right = Math.max(right, box.right - (mapRect.right - 8));
+      top = Math.max(top, mapRect.top + 8 - box.top);
+      bottom = Math.max(bottom, box.bottom - (mapRect.bottom - 8));
+    }
+    if (left + right + top + bottom < 1) return null;
+    return { left, top, right, bottom };
+  }
+
   function frameAll(): void {
     if (!bounds.isValid()) return;
+    const narrow = container.clientWidth < 700;
+    map.options.zoomSnap = narrow ? 0.25 : 1;
+    map.options.zoomDelta = narrow ? 0.25 : 1;
     map.invalidateSize({ animate: false, pan: false });
-    map.fitBounds(bounds, { padding: [16, 16], animate: false, maxZoom: 15 });
-    map.setMaxBounds(bounds.pad(0.25));
-    const fitted = map.getBoundsZoom(bounds, false);
-    map.setMinZoom(Math.max(fitted - 1, 9));
+    map.fitBounds(bounds, { padding: [20, 20], animate: false, maxZoom: 15 });
+    syncDetailLabels();
+    const extra = labelOverflow();
+    if (extra) {
+      map.fitBounds(bounds, {
+        paddingTopLeft: [20 + extra.left, 20 + extra.top],
+        paddingBottomRight: [20 + extra.right, 20 + extra.bottom],
+        animate: false,
+        maxZoom: 15,
+      });
+    }
+    map.setMaxBounds(bounds.pad(0.4));
+    map.setMinZoom(Math.max(map.getZoom() - (narrow ? 0.75 : 1), 9));
   }
 
   function styleShapes(): void {
@@ -305,16 +360,27 @@ export function mount(config: MapBoot): void {
     if (event.key === 'Escape' && current) closeArea();
   });
 
-  window.addEventListener('resize', () => {
-    if (current) map.invalidateSize();
-    else frameAll();
-  });
+  let framing = false;
+  function scheduleFrame(): void {
+    if (framing) return;
+    framing = true;
+    window.requestAnimationFrame(() => {
+      framing = false;
+      if (current) {
+        map.invalidateSize({ animate: false, pan: false });
+        return;
+      }
+      frameAll();
+    });
+  }
+
+  window.addEventListener('resize', scheduleFrame);
+  if (typeof ResizeObserver !== 'undefined') {
+    const observer = new ResizeObserver(() => scheduleFrame());
+    observer.observe(container);
+  }
+  document.fonts?.ready.then(() => scheduleFrame()).catch(() => undefined);
   map.on('zoomend', syncDetailLabels);
   applyFilter();
-  frameAll();
-  syncDetailLabels();
-  const sized = { w: container.clientWidth, h: container.clientHeight };
-  window.requestAnimationFrame(() => {
-    if (container.clientWidth !== sized.w || container.clientHeight !== sized.h) frameAll();
-  });
+  scheduleFrame();
 }
