@@ -1,4 +1,5 @@
 ---
+import SocialIcon from './SocialIcon.astro';
 import { site, type ProfileId } from '../data/site';
 import type { Locale, UiKey } from '../i18n/ui';
 import { t } from '../i18n/utils';
@@ -6,26 +7,61 @@ import { t } from '../i18n/utils';
 interface Props {
   locale: Locale;
   ids?: ProfileId[];
+  /** Write @marianar.serhantmiami on Instagram and TikTok. */
+  showHandle?: boolean;
+  /** pills: outlined buttons. icons: icon pair for the mobile menu. */
+  variant?: 'pills' | 'icons';
+  labelledBy?: string;
 }
 
-const { locale, ids } = Astro.props;
+const { locale, ids, showHandle = false, variant = 'pills', labelledBy } = Astro.props;
 const label: Record<ProfileId, UiKey> = {
   serhant: 'link.serhant',
   instagram: 'link.instagram',
   tiktok: 'link.tiktok',
 };
-const links = ids ? site.profiles.filter((item) => ids.includes(item.id)) : site.profiles;
+const order = ids ?? site.profiles.map((item) => item.id);
+const links = order.flatMap((id) => {
+  const item = site.profiles.find((profile) => profile.id === id);
+  return item ? [item] : [];
+});
+
+function ariaLabel(id: ProfileId): string {
+  const name = t(locale, label[id]);
+  const tab = t(locale, 'a11y.newTab');
+  if (id === 'instagram' || id === 'tiktok') return `${name}, ${site.handle} (${tab})`;
+  return `${name} (${tab})`;
+}
 ---
 
-<ul class="profile-links">
+<ul class:list={['profile-links', variant]} aria-labelledby={labelledBy}>
   {
-    links.map((item) => (
-      <li>
-        <a href={item.href} rel="noopener noreferrer" target="_blank">
-          {t(locale, label[item.id])}
-          <span class="visually-hidden"> ({t(locale, 'a11y.newTab')})</span>
-        </a>
-      </li>
-    ))
+    links.map((item) => {
+      const iconOnly = variant === 'icons' && item.id !== 'serhant';
+      const withHandle = showHandle && (item.id === 'instagram' || item.id === 'tiktok');
+      return (
+        <li>
+          <a
+            class:list={{ 'is-serhant': item.id === 'serhant', 'is-icon': iconOnly }}
+            href={item.href}
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label={ariaLabel(item.id)}
+          >
+            {item.id !== 'serhant' && <SocialIcon name={item.id} />}
+            {!iconOnly &&
+              (withHandle ? (
+                <span class="social-copy">
+                  <span class="social-name">{t(locale, label[item.id])}</span>
+                  <span class="handle">{site.handle}</span>
+                </span>
+              ) : (
+                <span class="social-name">{t(locale, label[item.id])}</span>
+              ))}
+            {item.id === 'serhant' && <SocialIcon name="arrow" />}
+          </a>
+        </li>
+      );
+    })
   }
 </ul>

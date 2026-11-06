@@ -15,33 +15,6 @@ const fact = z.object({
 
 const urlOrEmpty = z.union([z.literal(''), z.url()]).default('');
 
-const listings = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/listings' }),
-  schema: ({ image }: SchemaContext) =>
-    z.object({
-      title: text,
-      address: text,
-      neighborhood: z.string(),
-      status: z.enum(['active', 'sold', 'leased']),
-      price: text,
-      beds: text,
-      baths: text,
-      sqft: text,
-      photos: z.array(image()).min(1),
-      officialUrl: urlOrEmpty,
-      source: z.url(),
-      example: z.boolean(),
-      order: z.number(),
-      credit: z.object({
-        author: z.string(),
-        license: z.string(),
-        licenseUrl: z.url(),
-        source: z.url(),
-      }),
-      imageNote: text,
-    }),
-});
-
 function guideSchema({ image }: SchemaContext) {
   return z.object({
     name: text,
@@ -82,4 +55,75 @@ const residences = defineCollection({
   schema: guideSchema,
 });
 
-export const collections = { listings, neighborhoods, residences };
+const teamCredit = 'Nile Lundgren Team at SERHANT.';
+
+const teamListings = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/team-listings' }),
+  schema: ({ image }: SchemaContext) =>
+    z.object({
+      name: text,
+      address: text,
+      area: text,
+      group: z.enum(['mariana', 'active', 'lease', 'sold', 'previously']),
+      status: z.enum(['mariana-sale', 'for-sale', 'for-lease', 'sold', 'previously-listed']),
+      statusLabel: text,
+      price: text,
+      beds: text,
+      baths: text.optional(),
+      sqft: text.optional(),
+      soldDate: text.optional(),
+      description: text.optional(),
+      agents: text.optional(),
+      photos: z
+        .array(
+          z.object({
+            src: image(),
+            alt: text,
+          }),
+        )
+        .max(4)
+        .default([]),
+      officialUrl: z.url(),
+      credit: z.literal(teamCredit).default(teamCredit),
+      order: z.number().default(0),
+      featured: z.boolean().default(false),
+      featureOrder: z.number().optional(),
+    }),
+});
+
+const blogSource = z.object({
+  title: z.string().min(1),
+  url: z.url(),
+  publisher: z.string().min(1),
+});
+
+const blog = defineCollection({
+  loader: glob({ pattern: '{en,es}/*.md', base: './src/content/blog' }),
+  schema: ({ image }: SchemaContext) =>
+    z
+      .object({
+        title: z.string().min(1),
+        description: z.string().min(1),
+        date: z.coerce.date(),
+        lang: z.enum(['en', 'es']),
+        translationKey: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+        category: z.enum(['economy', 'real-estate', 'business', 'culture', 'policy']),
+        heroImage: image(),
+        heroAlt: z.string().min(1),
+        imageCredit: z.string().min(1),
+        sources: z.array(blogSource).default([]),
+        draft: z.boolean().default(false),
+      })
+      .superRefine((data, ctx) => {
+        if (!data.draft && data.sources.length === 0) {
+          ctx.addIssue({
+            code: 'custom',
+            message: 'sources must include at least one entry when draft is false',
+            path: ['sources'],
+            input: data.sources,
+          });
+        }
+      }),
+});
+
+export const collections = { neighborhoods, residences, teamListings, blog };

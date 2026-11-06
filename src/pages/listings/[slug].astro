@@ -1,21 +1,16 @@
 ---
-import ListingDetail from '../../views/ListingDetail.astro';
-import { getListings } from '../../lib/content';
-import type { ListingEntry } from '../../lib/types';
+import TeamListingDetail from '../../views/TeamListingDetail.astro';
+import { getTeamListings } from '../../lib/content';
 
 export async function getStaticPaths() {
-  const listings = await getListings();
-  return listings.map((listing) => ({
+  const team = await getTeamListings();
+  return team.map((listing) => ({
     params: { slug: listing.id },
     props: { listing },
   }));
 }
 
-interface Props {
-  listing: ListingEntry;
-}
-
 const { listing } = Astro.props;
 ---
 
-<ListingDetail locale="en" listing={listing} />
+<TeamListingDetail locale="en" listing={listing} />

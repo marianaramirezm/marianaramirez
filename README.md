@@ -56,6 +56,56 @@ The two files there are samples. They are labeled “Example listing – replace
 
 Sample URLs that contain `/example-` are left out of the sitemap. Rename the file when the listing is real.
 
+### Team listings
+
+Real team listings are separate from the sample files above. Add one Markdown file per listing in `src/content/team-listings/`. Each text field has `en` and `es`. They appear under Team Listings, not in the sample sections.
+
+```yaml
+---
+name:
+  en: Residence name
+  es: Nombre de la residencia
+address:
+  en: Street address
+  es: Dirección
+area:
+  en: Coconut Grove
+  es: Coconut Grove
+status: previously-listed
+statusLabel:
+  en: Previously listed by the team
+  es: Publicada antes por el equipo
+price:
+  en: Offered at $1,000,000
+  es: Ofrecida en $1,000,000
+beds:
+  en: "2"
+  es: "2"
+baths:
+  en: "2"
+  es: "2"
+sqft:
+  en: "1,200"
+  es: "1,200"
+description:
+  en: Description from the official source.
+  es: Descripción tomada de la fuente oficial.
+agents:
+  en: Nile Lundgren and Scott Porter
+  es: Nile Lundgren y Scott Porter
+photos:
+  - src: ../../assets/listings/example.jpg
+    alt:
+      en: Living room of the residence.
+      es: Sala de la residencia.
+officialUrl: https://example.com/official-listing
+credit: "Nile Lundgren Team at SERHANT."
+order: 1
+---
+```
+
+`status` is `sold` or `previously-listed`. `statusLabel` is the phrase shown on the page. Omit `baths` when the count should not be published. `photos` may be an empty list; the card then stays typographic until images are added. `credit` must be exactly `Nile Lundgren Team at SERHANT.` `officialUrl` is the official source. Do not invent an address or a figure.
+
 ## Edit guides
 
 Neighborhoods: `src/content/neighborhoods/*.md`.
@@ -78,6 +128,56 @@ facts:
 ```
 
 `place` is optional. Use it only for a city you are willing to state. It feeds the Place schema. It is not a substitute for a sourced fact in the body.
+
+`/neighborhoods/coconut-grove/` and `/es/neighborhoods/coconut-grove/` are the guide URLs. `public/_redirects` sends the previous slugs there.
+
+## Blog
+
+Posts are written by Mariana’s assistant, approved by Mariana, and added by hand as Markdown. Copy `src/content/blog/_template.md` into a matching pair:
+
+- `src/content/blog/en/YYYY-MM-DD-slug.md`
+- `src/content/blog/es/YYYY-MM-DD-slug.md`
+
+`slug` is lowercase words separated by hyphens. The filename slug, `translationKey`, and `date` (`YYYY-MM-DD`) must match in both files. `lang` is `en` in the English file and `es` in the Spanish file.
+
+```yaml
+---
+title: "How does the Fed rate affect prices in Brickell?"
+description: "One or two sentences for the listing page, the meta description, and Open Graph."
+date: 2026-11-04
+lang: en
+translationKey: fed-rate-brickell
+category: real-estate
+heroImage: ../../../assets/guides/downtown-skyline.jpg
+heroAlt: "Downtown Miami skyline, with One Thousand Museum at the center."
+imageCredit: "Photo: Phillip Pessar, CC BY 2.0, via Wikimedia Commons"
+sources:
+  - title: Name of the document or page
+    url: https://example.com/official-page
+    publisher: Publisher name
+draft: false
+---
+```
+
+The Spanish file uses the same `date`, `translationKey`, `category`, and `draft`, with its own question title, description, body, hero alt, and sources. Example title: `¿Cómo afecta la tasa de la Fed a los precios en Brickell?`
+
+`category` is `real-estate` (the core category), `economy`, `policy`, `culture`, or `business`.
+
+`sources` is a list of `title`, `url`, and `publisher`. A post with `draft: false` and an empty `sources` list fails the build. Drafts may leave `sources` empty. The body is Markdown after the frontmatter, in the language of the folder.
+
+Public URLs are `/blog/slug/` and `/es/blog/slug/` (the date is not in the URL). The listing is newest first, six posts per page (`/blog/page/2/` and `/es/blog/page/2/`). Feeds are `/rss.xml` and `/es/rss.xml`.
+
+`draft: true` posts are omitted from a production build, including `main`. They are included only when `CF_PAGES_BRANCH` is set to a branch other than `main`. To preview them locally: `CF_PAGES_BRANCH=preview npm run build`.
+
+## Refresh the Miami neighborhood map
+
+Active SERHANT. brokerage listings for the map live in `src/data/serhant-miami-active.json`. The file is a snapshot of public serhant.com data: neighborhood, address, unit, coordinates, price or monthly rent, beds, baths, square feet, listing agents, the official URL, photo URLs, and whether the listing is on Nile Lundgren’s team.
+
+To refresh it, replace that file with a new export that uses the same fields and only active sale and rental rows. Do not add estimates or edit the numbers. Neighborhood shapes are in `src/data/map-areas.ts`. Rebuild after replacing the file.
+
+Key Biscayne rows in the file are SERHANT. office listings with status FOR_SALE or For Lease from the public serhant.com property search. That search had no active Fisher Island or Venetian Islands rows, so those areas use the empty state.
+
+The basemap is Esri’s World Dark Gray Canvas (no API key). CARTO’s public `dark_all` tiles currently return an “API key required” watermark, so they are not used.
 
 ## Edit social links, phone, and compliance lines
 

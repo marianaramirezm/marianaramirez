@@ -1,0 +1,117 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { render } from 'astro:content';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Base from '../layouts/Base.astro';
+import { formatBlogDate, getBlogPosts, type BlogPost } from '../lib/blog';
+import type { Locale, UiKey } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { absolute, blogPath, pathFor } from '../lib/routes';
+import { blogPostingNode, breadcrumbNode, graph } from '../lib/schema';
+import type { BlogCategory } from '../lib/types';
+
+interface Props {
+  locale: Locale;
+  post: BlogPost;
+}
+
+const { locale, post } = Astro.props;
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const other = locale === 'en' ? 'es' : 'en';
+const pair = (await getBlogPosts(other)).find((item) => item.data.translationKey === post.data.translationKey);
+const path = blogPath(post.slug, locale);
+const alternate = pair ? blogPath(pair.slug, other) : pathFor('blog', other);
+const { Content } = await render(post.entry);
+const hero = await getImage({ src: post.data.heroImage, width: 1600, height: 900, format: 'jpg' });
+const heroUrl = absolute(site, hero.src);
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, 'nav.blog'), path: pathFor('blog', locale) },
+  { name: post.data.title, path },
+];
+
+function categoryKey(category: BlogCategory): UiKey {
+  return `blog.cat.${category}` as UiKey;
+}
+
+const category = t(locale, categoryKey(post.data.category));
+const kicker = post.data.draft ? `${t(locale, 'blog.draft')} · ${category}` : category;
+---
+
+<Base
+  locale={locale}
+  title={`${post.data.title} | Mariana Ramírez`}
+  description={post.data.description}
+  path={path}
+  alternatePath={alternate}
+  current="blog"
+  noindex={post.data.draft}
+  ogType="article"
+  publishedTime={post.data.date.toISOString()}
+  ogImage={hero.src}
+  ogImageAlt={post.data.heroAlt}
+  jsonLd={graph(
+    blogPostingNode({
+      site,
+      path,
+      title: post.data.title,
+      description: post.data.description,
+      locale,
+      published: post.data.date,
+      category,
+      image: heroUrl,
+      sources: post.data.sources,
+    }),
+    breadcrumbNode(site, crumbs),
+  )}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{kicker}</p>
+    <h1 class="question">{post.data.title}</h1>
+    <p class="lead">{post.data.description}</p>
+    <p class="blog-kicker">
+      <time datetime={post.dateKey}>{formatBlogDate(post.data.date, locale)}</time>
+    </p>
+  </div>
+  <div class="wrap page-body">
+    <figure class="blog-hero">
+      <Image
+        src={post.data.heroImage}
+        alt={post.data.heroAlt}
+        widths={[640, 1100, 1600]}
+        sizes="(min-width: 1200px) 1120px, 100vw"
+        quality={70}
+        priority
+      />
+      <figcaption class="credit">{post.data.imageCredit}</figcaption>
+    </figure>
+    <div class="blog-column">
+      <div class="prose">
+        <Content />
+      </div>
+      <section class="verify">
+        <h2>{t(locale, 'blog.sources')}</h2>
+        {
+          post.data.sources.length > 0 ? (
+            <ul class="fact-list">
+              {post.data.sources.map((source) => (
+                <li>
+                  <a class="link" href={source.url} rel="noopener noreferrer">
+                    {source.title}
+                  </a>
+                  <span> — {source.publisher}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>{t(locale, 'blog.sourcesEmpty')}</p>
+          )
+        }
+      </section>
+      <p>
+        <a class="link" href={pathFor('blog', locale)}>{t(locale, 'blog.back')}</a>
+      </p>
+    </div>
+  </div>
+</Base>

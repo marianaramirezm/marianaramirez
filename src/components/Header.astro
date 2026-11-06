@@ -1,5 +1,6 @@
 ---
 import ProfileLinks from './ProfileLinks.astro';
+import SocialIcon from './SocialIcon.astro';
 import { site } from '../data/site';
 import type { Locale } from '../i18n/ui';
 import { t } from '../i18n/utils';
@@ -13,11 +14,19 @@ interface Props {
 
 const { locale, current, alternatePath } = Astro.props;
 const home = pathFor('home', locale);
+const headerSocials = (['instagram', 'tiktok'] as const)
+  .map((id) => {
+    const item = site.profiles.find((profile) => profile.id === id);
+    return item ? { ...item, label: `${t(locale, id === 'instagram' ? 'link.instagram' : 'link.tiktok')}, ${site.handle} (${t(locale, 'a11y.newTab')})` } : null;
+  })
+  .filter((item) => item !== null);
 const labelKey = {
   about: 'nav.about',
   listings: 'nav.listings',
   neighborhoods: 'nav.neighborhoods',
+  map: 'nav.map',
   residences: 'nav.residences',
+  blog: 'nav.blog',
   contact: 'nav.contact',
 } as const;
 ---
@@ -38,10 +47,20 @@ const labelKey = {
       }
       <a href={site.profiles[0].href} rel="noopener noreferrer" target="_blank">
         {t(locale, 'link.serhant')}
+        <SocialIcon name="arrow" />
         <span class="visually-hidden"> ({t(locale, 'a11y.newTab')})</span>
       </a>
     </nav>
     <div class="header-end">
+      <div class="header-socials">
+        {
+          headerSocials.map((item) => (
+            <a class="header-social" href={item.href} rel="noopener noreferrer" target="_blank" aria-label={item.label}>
+              <SocialIcon name={item.id} />
+            </a>
+          ))
+        }
+      </div>
       <nav class="langs" aria-label={t(locale, 'a11y.language')}>
         {
           locale === 'en' ? (
@@ -80,8 +99,8 @@ const labelKey = {
               </a>
             ))
           }
+          <ProfileLinks locale={locale} ids={['instagram', 'tiktok', 'serhant']} variant="icons" />
         </nav>
-        <ProfileLinks locale={locale} />
       </details>
     </div>
   </div>

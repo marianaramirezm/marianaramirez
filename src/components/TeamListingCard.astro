@@ -1,0 +1,74 @@
+---
+import { Picture } from 'astro:assets';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { listingPath } from '../lib/routes';
+import type { TeamListingEntry } from '../lib/types';
+
+interface Props {
+  locale: Locale;
+  listing: TeamListingEntry;
+  feature?: boolean;
+}
+
+const { locale, listing, feature = false } = Astro.props;
+const href = listingPath(listing.id, locale);
+const photo = listing.data.photos[0];
+const specs = [
+  [t(locale, 'listings.price'), listing.data.price[locale]],
+  [t(locale, 'listings.beds'), listing.data.beds[locale]],
+  listing.data.baths ? [t(locale, 'listings.baths'), listing.data.baths[locale]] : null,
+  listing.data.sqft ? [t(locale, 'listings.sqft'), listing.data.sqft[locale]] : null,
+  listing.data.soldDate ? [t(locale, 'listings.soldDate'), listing.data.soldDate[locale]] : null,
+].filter((item): item is [string, string] => item !== null);
+const showAddress = listing.data.name[locale] !== listing.data.address[locale];
+---
+
+<article class:list={[{ 'listing-feature': feature }]}>
+  <a class="card" href={href}>
+    {
+      photo ? (
+        <div class="card-media">
+          <Picture
+            src={photo.src}
+            alt={photo.alt[locale]}
+            formats={['avif', 'webp']}
+            widths={[480, 800, 1200]}
+            sizes={feature ? '(min-width: 800px) 60rem, 100vw' : '(min-width: 800px) 36rem, 100vw'}
+            quality={70}
+          />
+        </div>
+      ) : (
+        <div class="card-media type-card">
+          <p class="type-card-kicker">{listing.data.area[locale]}</p>
+          <p class="type-card-name">{listing.data.name[locale]}</p>
+        </div>
+      )
+    }
+    <div class="card-copy">
+      <h3>{listing.data.name[locale]}</h3>
+      <p class="where">
+        {
+          showAddress && (
+            <>
+              {listing.data.address[locale]}
+              <span aria-hidden="true"> · </span>
+            </>
+          )
+        }
+        {listing.data.area[locale]}
+        <span aria-hidden="true"> · </span>
+        {listing.data.statusLabel[locale]}
+      </p>
+      <dl class="specs">
+        {specs.map(([label, value]) => (
+          <div>
+            <dt>{label}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="card-credit">{listing.data.credit}</p>
+    </div>
+  </a>
+</article>

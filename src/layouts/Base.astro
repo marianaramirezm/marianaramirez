@@ -16,10 +16,27 @@ interface Props {
   jsonLd?: Record<string, unknown>;
   noindex?: boolean;
   overlay?: boolean;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
-const { locale, title, description, path, alternatePath, current, jsonLd, noindex, overlay = false } =
-  Astro.props;
+const {
+  locale,
+  title,
+  description,
+  path,
+  alternatePath,
+  current,
+  jsonLd,
+  noindex,
+  overlay = false,
+  ogType,
+  publishedTime,
+  ogImage,
+  ogImageAlt,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -36,6 +53,10 @@ const { locale, title, description, path, alternatePath, current, jsonLd, noinde
       alternatePath={alternatePath}
       jsonLd={jsonLd}
       noindex={noindex}
+      ogType={ogType}
+      publishedTime={publishedTime}
+      ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
     />
   </head>
   <body class:list={{ overlay }}>

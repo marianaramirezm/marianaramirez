@@ -1,13 +1,14 @@
 ---
 import { site } from '../data/site';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import ListingCard from '../components/ListingCard.astro';
+import TeamListingCard from '../components/TeamListingCard.astro';
 import Base from '../layouts/Base.astro';
-import { getListings, getNeighborhoods } from '../lib/content';
-import type { Locale } from '../i18n/ui';
+import { getTeamListings } from '../lib/content';
+import type { Locale, UiKey } from '../i18n/ui';
 import { t } from '../i18n/utils';
 import { pathFor } from '../lib/routes';
 import { breadcrumbNode, graph } from '../lib/schema';
+import type { TeamListingGroup } from '../lib/types';
 
 interface Props {
   locale: Locale;
@@ -15,16 +16,19 @@ interface Props {
 
 const { locale } = Astro.props;
 const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
-const listings = await getListings();
-const neighborhoods = await getNeighborhoods();
-const active = listings.filter((item) => item.data.status === 'active');
-const sold = listings.filter((item) => item.data.status === 'sold');
-const leased = listings.filter((item) => item.data.status === 'leased');
+const team = await getTeamListings();
 const path = pathFor('listings', locale);
 const alternate = pathFor('listings', locale === 'en' ? 'es' : 'en');
 const crumbs = [
   { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
   { name: t(locale, 'nav.listings'), path },
+];
+const groups: [TeamListingGroup, UiKey][] = [
+  ['mariana', 'listings.groupMariana'],
+  ['active', 'listings.groupActive'],
+  ['lease', 'listings.groupLease'],
+  ['sold', 'listings.groupSold'],
+  ['previously', 'listings.groupPrevious'],
 ];
 ---
 
@@ -48,40 +52,20 @@ const crumbs = [
   </div>
   <div class="wrap page-body">
     {
-      active.length > 0 && (
-        <section>
-          <h2 class="display">{t(locale, 'listings.active')}</h2>
-          <div class="cards">
-            {active.map((listing) => (
-              <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />
-            ))}
-          </div>
-        </section>
-      )
-    }
-    {
-      leased.length > 0 && (
-        <section style="margin-top: 3.5rem;">
-          <h2 class="display">{t(locale, 'listings.leased')}</h2>
-          <div class="cards">
-            {leased.map((listing) => (
-              <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />
-            ))}
-          </div>
-        </section>
-      )
-    }
-    {
-      sold.length > 0 && (
-        <section style="margin-top: 3.5rem;">
-          <h2 class="display">{t(locale, 'listings.sold')}</h2>
-          <div class="cards">
-            {sold.map((listing) => (
-              <ListingCard locale={locale} listing={listing} neighborhoods={neighborhoods} />
-            ))}
-          </div>
-        </section>
-      )
+      groups.map(([group, label]) => {
+        const items = team.filter((listing) => listing.data.group === group);
+        if (items.length === 0) return null;
+        return (
+          <section class="listing-group">
+            <h2>{t(locale, label)}</h2>
+            <div class="cards">
+              {items.map((listing) => (
+                <TeamListingCard locale={locale} listing={listing} feature={group === 'mariana'} />
+              ))}
+            </div>
+          </section>
+        );
+      })
     }
   </div>
 </Base>

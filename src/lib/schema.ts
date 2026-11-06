@@ -1,6 +1,7 @@
 import { site as siteConfig } from '../data/site';
 import { ui, type Locale, type UiKey } from '../i18n/ui';
 import { absolute, pathFor } from './routes';
+import type { BlogSource } from './types';
 
 export type Crumb = { name: string; path: string };
 
@@ -56,7 +57,7 @@ export function agentNode(site: URL, locale: Locale): Record<string, unknown> {
     identifier: 'SL3625059',
     areaServed: [
       { '@type': 'City', name: 'Miami' },
-      { '@type': 'City', name: 'West Palm Beach' },
+      { '@type': 'Place', name: 'Coconut Grove' },
       { '@type': 'City', name: 'New York' },
     ],
     image: absolute(site, '/og.jpg'),
@@ -111,6 +112,67 @@ export function placeNode(options: {
       addressRegion: options.address.region,
       addressCountry: options.address.country,
     };
+  }
+  return node;
+}
+
+export function blogNode(options: {
+  site: URL;
+  path: string;
+  name: string;
+  description: string;
+  locale: Locale;
+}): Record<string, unknown> {
+  return {
+    '@type': 'Blog',
+    name: options.name,
+    description: options.description,
+    url: absolute(options.site, options.path),
+    inLanguage: options.locale,
+    author: { '@id': `${absolute(options.site, '/')}#mariana-ramirez` },
+  };
+}
+
+export function blogPostingNode(options: {
+  site: URL;
+  path: string;
+  title: string;
+  description: string;
+  locale: Locale;
+  published: Date;
+  category: string;
+  image: string;
+  sources: BlogSource[];
+}): Record<string, unknown> {
+  const published = options.published.toISOString();
+  const node: Record<string, unknown> = {
+    '@type': 'BlogPosting',
+    headline: options.title,
+    description: options.description,
+    datePublished: published,
+    dateModified: published,
+    inLanguage: options.locale,
+    articleSection: options.category,
+    mainEntityOfPage: absolute(options.site, options.path),
+    url: absolute(options.site, options.path),
+    author: {
+      '@type': 'Person',
+      name: 'Mariana Ramírez',
+      url: absolute(options.site, pathFor('about', options.locale)),
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'SERHANT.',
+    },
+    image: options.image,
+  };
+  if (options.sources.length > 0) {
+    node.citation = options.sources.map((source) => ({
+      '@type': 'CreativeWork',
+      name: source.title,
+      url: source.url,
+      publisher: { '@type': 'Organization', name: source.publisher },
+    }));
   }
   return node;
 }

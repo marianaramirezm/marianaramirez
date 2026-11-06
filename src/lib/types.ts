@@ -8,24 +8,6 @@ export type Fact = {
   source: string;
 };
 
-export type ListingData = {
-  title: Localized;
-  address: Localized;
-  neighborhood: string;
-  status: 'active' | 'sold' | 'leased';
-  price: Localized;
-  beds: Localized;
-  baths: Localized;
-  sqft: Localized;
-  photos: ImageMetadata[];
-  officialUrl: string;
-  source: string;
-  example: boolean;
-  order: number;
-  credit: PhotoCredit;
-  imageNote: Localized;
-};
-
 export type PhotoCredit = {
   author: string;
   license: string;
@@ -54,5 +36,53 @@ export type GuideData = {
   order: number;
 };
 
-export type ListingEntry = { id: string; data: ListingData };
 export type GuideEntry = { id: string; data: GuideData };
+
+export type TeamListingPhoto = {
+  src: ImageMetadata;
+  alt: Localized;
+};
+
+export type TeamListingGroup = 'mariana' | 'active' | 'lease' | 'sold' | 'previously';
+
+export type TeamListingData = {
+  name: Localized;
+  address: Localized;
+  area: Localized;
+  group: TeamListingGroup;
+  status: 'mariana-sale' | 'for-sale' | 'for-lease' | 'sold' | 'previously-listed';
+  statusLabel: Localized;
+  price: Localized;
+  beds: Localized;
+  baths?: Localized;
+  sqft?: Localized;
+  soldDate?: Localized;
+  description?: Localized;
+  agents?: Localized;
+  photos: TeamListingPhoto[];
+  officialUrl: string;
+  credit: 'Nile Lundgren Team at SERHANT.';
+  order: number;
+  featured?: boolean;
+  featureOrder?: number;
+};
+
+export type TeamListingEntry = { id: string; data: TeamListingData };
+
+export type BlogCategory = 'real-estate' | 'economy' | 'policy' | 'culture' | 'business';
+
+export type BlogSource = { title: string; url: string; publisher: string };
+
+export type BlogData = {
+  title: string;
+  description: string;
+  date: Date;
+  lang: 'en' | 'es';
+  translationKey: string;
+  category: BlogCategory;
+  heroImage: ImageMetadata;
+  heroAlt: string;
+  imageCredit: string;
+  sources: BlogSource[];
+  draft: boolean;
+};

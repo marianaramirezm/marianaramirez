@@ -59,7 +59,7 @@ const crumbs = [
           <a href={`tel:${site.publicPhone.replace(/[^\d+]/g, '')}`}>{site.publicPhone}</a><br />
           <a href={`mailto:${site.publicEmail}`}>{site.publicEmail}</a>
         </p>
-        <ProfileLinks locale={locale} />
+        <ProfileLinks locale={locale} ids={['instagram', 'tiktok', 'serhant']} showHandle variant="pills" />
       </div>
       <ContactForm locale={locale} neighborhoods={neighborhoods} />
     </div>

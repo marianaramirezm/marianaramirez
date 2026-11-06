@@ -1,0 +1,110 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Base from '../layouts/Base.astro';
+import { formatBlogDate, type BlogPost } from '../lib/blog';
+import type { Locale, UiKey } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import { blogPagePath, blogPath, pathFor } from '../lib/routes';
+import { blogNode, breadcrumbNode, graph } from '../lib/schema';
+import type { BlogCategory } from '../lib/types';
+
+interface Props {
+  locale: Locale;
+  posts: BlogPost[];
+  page: number;
+  pageCount: number;
+  alternatePath: string;
+}
+
+const { locale, posts, page, pageCount, alternatePath } = Astro.props;
+const site = Astro.site ?? new URL('https://marianaramirezrealestate.com');
+const path = blogPagePath(page, locale);
+const crumbs = [
+  { name: t(locale, 'nav.home'), path: pathFor('home', locale) },
+  { name: t(locale, 'nav.blog'), path: pathFor('blog', locale) },
+];
+const title =
+  page > 1
+    ? t(locale, 'meta.blog.pageTitle', { page: String(page) })
+    : t(locale, 'meta.blog.title');
+const description =
+  page > 1
+    ? t(locale, 'meta.blog.pageDescription', { page: String(page) })
+    : t(locale, 'meta.blog.description');
+
+function categoryKey(category: BlogCategory): UiKey {
+  return `blog.cat.${category}` as UiKey;
+}
+---
+
+<Base
+  locale={locale}
+  title={title}
+  description={description}
+  path={path}
+  alternatePath={alternatePath}
+  current="blog"
+  jsonLd={graph(
+    blogNode({
+      site,
+      path,
+      name: title,
+      description,
+      locale,
+    }),
+    breadcrumbNode(site, crumbs),
+  )}
+>
+  <div class="wrap page-intro">
+    <Breadcrumbs locale={locale} items={crumbs} />
+    <p class="eyebrow">{t(locale, 'blog.eyebrow')}</p>
+    <h1>{t(locale, 'blog.title')}</h1>
+    <p class="lead">{t(locale, 'blog.lead')}</p>
+  </div>
+  <div class="wrap page-body">
+    {
+      posts.length === 0 ? (
+        <p class="note">{t(locale, 'blog.empty')}</p>
+      ) : (
+        <ul class="name-grid">
+          {posts.map((post) => (
+            <li>
+              <a class="with-summary" href={blogPath(post.slug, locale)}>
+                <span class="n question">{post.data.title}</span>
+                <span class="blog-kicker">
+                  {post.data.draft && (
+                    <>
+                      {t(locale, 'blog.draft')}
+                      <span aria-hidden="true"> · </span>
+                    </>
+                  )}
+                  {t(locale, categoryKey(post.data.category))}
+                  <span aria-hidden="true"> · </span>
+                  <time datetime={post.dateKey}>{formatBlogDate(post.data.date, locale)}</time>
+                </span>
+                <span class="where">{post.data.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {
+      pageCount > 1 && (
+        <nav class="blog-pager" aria-label={t(locale, 'blog.pager')}>
+          {page > 1 ? (
+            <a class="link" href={blogPagePath(page - 1, locale)}>{t(locale, 'blog.prev')}</a>
+          ) : (
+            <span />
+          )}
+          <span class="blog-kicker">{t(locale, 'blog.pageStatus', { page: String(page), pages: String(pageCount) })}</span>
+          {page < pageCount ? (
+            <a class="link" href={blogPagePath(page + 1, locale)}>{t(locale, 'blog.next')}</a>
+          ) : (
+            <span />
+          )}
+        </nav>
+      )
+    }
+  </div>
+</Base>
