@@ -30,7 +30,7 @@ const en = {
   'home.introAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'home.introBody':
-    'I’m a luxury real estate advisor at SERHANT., on Nile Lundgren’s team in Miami. I represent people buying, selling, renting, and investing across Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. I’m Colombian, from Barranquilla, and I work in English, Spanish, and German.',
+    'I advise high-profile and high-net-worth clients on buying, selling, renting, and investing in luxury real estate in Miami and New York.\n\nAs part of Nile Lundgren’s team at SERHANT., I provide white-glove service with discretion, direct communication, and close attention to every detail.\n\nMy track record includes a $2.4 million sale and a Rookie of the Year nomination.\n\nOriginally from Barranquilla, Colombia, I work in English, Spanish, and German, bringing an international perspective to every client relationship.',
   'home.statSaleValue': '$2.4M',
   'home.statSaleLabel': 'Record sale',
   'home.statRookieValue': 'Nominee',
@@ -347,7 +347,7 @@ const es: typeof en = {
   'home.introAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'home.introBody':
-    'Soy asesora de bienes raíces de lujo en SERHANT., en el equipo de Nile Lundgren en Miami. Represento a quien compra, vende, alquila o invierte en Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove y Nueva York. Soy colombiana, de Barranquilla, y trabajo en español, inglés y alemán.',
+    'I advise high-profile and high-net-worth clients on buying, selling, renting, and investing in luxury real estate in Miami and New York.\n\nAs part of Nile Lundgren’s team at SERHANT., I provide white-glove service with discretion, direct communication, and close attention to every detail.\n\nMy track record includes a $2.4 million sale and a Rookie of the Year nomination.\n\nOriginally from Barranquilla, Colombia, I work in English, Spanish, and German, bringing an international perspective to every client relationship.',
   'home.statSaleValue': '2,4 M',
   'home.statSaleLabel': 'Venta récord',
   'home.statRookieValue': 'Nominada',
