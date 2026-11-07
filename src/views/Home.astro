@@ -82,9 +82,13 @@ const stats = [
           quality={72}
         />
       </figure>
-      <div>
+      <div class="intro-copy">
         <p class="eyebrow">{t(locale, 'home.introEyebrow')}</p>
-        <p class="lead intro-lead">{t(locale, 'home.introBody')}</p>
+        {
+          t(locale, 'home.introBody')
+            .split('\n\n')
+            .map((paragraph) => <p class="lead intro-lead">{paragraph}</p>)
+        }
       </div>
     </div>
   </section>
@@ -123,6 +127,15 @@ const stats = [
       </span>
     </figcaption>
   </figure>
+
+  <section class="section map-teaser" data-reveal>
+    <div class="wrap">
+      <p class="eyebrow">{t(locale, 'home.mapEyebrow')}</p>
+      <h2 class="display">{t(locale, 'home.mapTitle')}</h2>
+      <p class="lead">{t(locale, 'home.mapBody')}</p>
+      <a class="button" href={pathFor('map', locale)}>{t(locale, 'home.mapCta')}</a>
+    </div>
+  </section>
 
   <section class="section" data-reveal>
     <div class="wrap">
@@ -193,15 +206,6 @@ const stats = [
           }
         </ul>
       </div>
-    </div>
-  </section>
-
-  <section class="section map-teaser" data-reveal>
-    <div class="wrap">
-      <p class="eyebrow">{t(locale, 'home.mapEyebrow')}</p>
-      <h2 class="display">{t(locale, 'home.mapTitle')}</h2>
-      <p class="lead">{t(locale, 'home.mapBody')}</p>
-      <a class="button" href={pathFor('map', locale)}>{t(locale, 'home.mapCta')}</a>
     </div>
   </section>
 
