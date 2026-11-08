@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import villaPool from '../assets/listings/villa-de-casuarina-pool.webp';
+import villaStair from '../assets/listings/villa-de-casuarina-stair.webp';
 import { areaGalleries, type AreaShot } from '../data/area-photography';
 import type { Locale } from '../i18n/ui';
 import { t } from '../i18n/utils';
-import { listingPath } from '../lib/routes';
 
 interface Props {
   locale: Locale;
@@ -13,9 +13,13 @@ interface Props {
 
 const { locale, guideId } = Astro.props;
 const gallery = areaGalleries[guideId];
+const images = {
+  'villa-pool': villaPool,
+  'villa-stair': villaStair,
+} as const;
 
-function shotImage(shot: AreaShot) {
-  return 'local' in shot.image ? villaPool : null;
+function source(shot: AreaShot) {
+  return images[shot.local];
 }
 ---
 
@@ -25,70 +29,25 @@ function shotImage(shot: AreaShot) {
       <p class="eyebrow">{t(locale, 'area.kicker')}</p>
       <h2>{gallery.heading[locale]}</h2>
       <p class="area-intro">{gallery.intro[locale]}</p>
-      {
-        gallery.shots.length > 0 && (
-          <div class="area-grid">
-            {gallery.shots.map((shot) => {
-              const local = shotImage(shot);
-              const previous = shot.provenance.pageStatus === 404;
-              const href = previous ? listingPath('villa-de-casuarina', locale) : shot.officialUrl;
-              return (
-                <figure class="area-card">
-                  <a href={href} {...(previous ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>
-                    {local ? (
-                      <Image
-                        src={local}
-                        alt={shot.alt[locale]}
-                        widths={[480, 800, 1200]}
-                        sizes="(min-width: 800px) 34rem, 100vw"
-                        quality={70}
-                      />
-                    ) : (
-                      !('local' in shot.image) && (
-                        <img
-                          src={shot.image.src}
-                          alt={shot.alt[locale]}
-                          width={shot.image.width}
-                          height={shot.image.height}
-                          loading="lazy"
-                          decoding="async"
-                          referrerpolicy="no-referrer"
-                        />
-                      )
-                    )}
-                  </a>
-                  <figcaption class="credit">
-                    <span class="credit-note">
-                      {shot.kind[locale]} · {shot.status[locale]} · {shot.price}
-                    </span>
-                    <span>
-                      {shot.address}. {t(locale, 'area.listedBy')} {shot.agents}.{' '}
-                      <a href={href} {...(previous ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>
-                        {t(locale, 'area.view')}
-                      </a>
-                    </span>
-                    <span class="credit-note">{previous ? t(locale, 'area.previous') : t(locale, 'area.notMariana')}</span>
-                    <span class="credit-note">{shot.creditNote[locale]}</span>
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </div>
-        )
-      }
-      {
-        gallery.gap && (
-          <p class="area-gap">
-            {gallery.gap[locale]}{' '}
-            {gallery.gap.href && gallery.gap.label && (
-              <a href={gallery.gap.href} target="_blank" rel="noopener noreferrer">
-                {gallery.gap.label[locale]}
-              </a>
-            )}
-          </p>
-        )
-      }
-      <p class="area-disclaimer">{t(locale, 'map.disclaimer')}</p>
+      <div class="area-grid">
+        {gallery.shots.map((shot) => (
+          <figure class="area-card">
+            <Image
+              src={source(shot)}
+              alt={shot.alt[locale]}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 800px) 34rem, 100vw"
+              quality={70}
+            />
+            <figcaption class="credit">
+              <span>{shot.kind[locale]}</span>
+              <span>
+                {t(locale, 'guides.photoCredit')} {shot.credit}
+              </span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
     </section>
   )
 }

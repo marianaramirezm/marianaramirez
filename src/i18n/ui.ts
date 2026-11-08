@@ -151,11 +151,7 @@ const en = {
   'guides.factsMissing':
     'Add verified facts in this guide’s content file, each with a source URL. Do not add specs, prices, unit counts, completion dates, or amenities without that source.',
   'guides.source': 'Source',
-  'area.kicker': 'Official listings',
-  'area.view': 'Official listing',
-  'area.listedBy': 'Listed by SERHANT.',
-  'area.notMariana': 'SERHANT. brokerage listing. Not Mariana’s own listing.',
-  'area.previous': 'Previously listed by the team. Not an active offering.',
+  'area.kicker': 'Photographs',
 
   'contact.eyebrow': 'Contact',
   'contact.title': 'Tell me what you want and when.',
@@ -474,11 +470,7 @@ const es: typeof en = {
   'guides.factsMissing':
     'Agrega datos verificados en el archivo de esta guía, cada uno con un URL de fuente. No añadas especificaciones, precios, número de unidades, fechas de entrega ni comodidades sin esa fuente.',
   'guides.source': 'Fuente',
-  'area.kicker': 'Anuncios oficiales',
-  'area.view': 'Anuncio oficial',
-  'area.listedBy': 'Listado por SERHANT.',
-  'area.notMariana': 'Anuncio de la correduría SERHANT. No es un listado de Mariana.',
-  'area.previous': 'Publicado antes por el equipo. No es una oferta activa.',
+  'area.kicker': 'Fotografías',
 
   'contact.eyebrow': 'Contacto',
   'contact.title': 'Dime qué quieres y para cuándo.',
