@@ -1586,6 +1586,57 @@ select option {
   padding-bottom: 0.2rem;
 }
 
+.area-photos {
+  margin: 2.75rem 0 0;
+  min-width: 0;
+}
+
+.area-photos h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.area-intro,
+.area-gap,
+.area-disclaimer {
+  max-width: 40rem;
+  color: var(--muted);
+}
+
+.area-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.area-card {
+  min-width: 0;
+  margin: 0;
+}
+
+.area-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: var(--navy);
+}
+
+.area-card .credit {
+  display: grid;
+  gap: 0.25rem;
+}
+
+@media (min-width: 800px) {
+  .area-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .social-icon {
   width: 1.5rem;
   height: 1.5rem;
