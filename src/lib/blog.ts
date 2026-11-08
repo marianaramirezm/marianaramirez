@@ -6,6 +6,9 @@ const ID_PATTERN = /^(en|es)\/(\d{4}-\d{2}-\d{2})-([a-z0-9]+(?:-[a-z0-9]+)*)$/;
 
 export const BLOG_PAGE_SIZE = 6;
 
+/** Subjects shown in the blog navigation. Business remains a valid category for older files. */
+export const blogTopics = ['real-estate', 'policy', 'economy', 'innovation', 'culture'] as const;
+
 export type BlogPost = {
   id: string;
   locale: Locale;
@@ -57,12 +60,16 @@ function toPost(entry: CollectionEntry<'blog'>): BlogPost {
   return { id: entry.id, locale, slug, dateKey, data, entry };
 }
 
-export async function getBlogPosts(locale: Locale): Promise<BlogPost[]> {
-  const showDrafts = includeDrafts();
+export async function getPublishedBlogPosts(locale: Locale): Promise<BlogPost[]> {
+  const posts = await getBlogPosts(locale, false);
+  return posts.filter((post) => !post.data.draft);
+}
+
+export async function getBlogPosts(locale: Locale, drafts = includeDrafts()): Promise<BlogPost[]> {
   const all = await getCollection('blog');
   return all
     .map(toPost)
-    .filter((post) => post.locale === locale && (showDrafts || !post.data.draft))
+    .filter((post) => post.locale === locale && (drafts || !post.data.draft))
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime() || a.slug.localeCompare(b.slug));
 }
 

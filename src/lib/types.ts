@@ -69,7 +69,8 @@ export type TeamListingData = {
 
 export type TeamListingEntry = { id: string; data: TeamListingData };
 
-export type BlogCategory = 'real-estate' | 'economy' | 'policy' | 'culture' | 'business';
+export type BlogCategory = 'real-estate' | 'economy' | 'policy' | 'culture' | 'business' | 'innovation';
+export type BlogImpact = 'global' | 'miami' | 'both';
 
 export type BlogSource = { title: string; url: string; publisher: string };
 
@@ -85,4 +86,6 @@ export type BlogData = {
   imageCredit: string;
   sources: BlogSource[];
   draft: boolean;
+  /** Whether the note is about the world, Miami, or both. Optional until a post is approved. */
+  impact?: BlogImpact;
 };

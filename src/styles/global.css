@@ -1631,6 +1631,19 @@ select option {
   gap: 0.25rem;
 }
 
+.topic-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin: 0.25rem 0 1.5rem;
+}
+
+.topic-nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
 @media (min-width: 800px) {
   .area-grid {
     grid-template-columns: 1fr 1fr;
