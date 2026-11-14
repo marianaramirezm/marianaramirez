@@ -107,10 +107,33 @@ const blog = defineCollection({
         date: z.coerce.date(),
         lang: z.enum(['en', 'es']),
         translationKey: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
-        category: z.enum(['economy', 'real-estate', 'business', 'culture', 'policy']),
+        category: z.enum(['economy', 'real-estate', 'business', 'culture', 'policy', 'innovation']),
+        impact: z.enum(['global', 'miami', 'both']).optional(),
         heroImage: image(),
         heroAlt: z.string().min(1),
         imageCredit: z.string().min(1),
+        heroCredit: z
+          .object({
+            author: z.string().min(1),
+            license: z.string().min(1),
+            licenseUrl: z.url(),
+            sourceUrl: z.url(),
+          })
+          .optional(),
+        figures: z
+          .array(
+            z.object({
+              src: image(),
+              alt: z.string().min(1),
+              credit: z.object({
+                author: z.string().min(1),
+                license: z.string().min(1),
+                licenseUrl: z.url(),
+                sourceUrl: z.url(),
+              }),
+            }),
+          )
+          .default([]),
         sources: z.array(blogSource).default([]),
         draft: z.boolean().default(false),
       })

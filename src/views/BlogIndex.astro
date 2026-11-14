@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import { formatBlogDate, type BlogPost } from '../lib/blog';
 import type { Locale, UiKey } from '../i18n/ui';
 import { t } from '../i18n/utils';
+import { blogTopics } from '../lib/blog';
 import { blogPagePath, blogPath, pathFor } from '../lib/routes';
 import { blogNode, breadcrumbNode, graph } from '../lib/schema';
 import type { BlogCategory } from '../lib/types';
@@ -60,6 +61,13 @@ function categoryKey(category: BlogCategory): UiKey {
     <p class="eyebrow">{t(locale, 'blog.eyebrow')}</p>
     <h1>{t(locale, 'blog.title')}</h1>
     <p class="lead">{t(locale, 'blog.lead')}</p>
+    <nav class="topic-nav" aria-label={t(locale, 'blog.topics')}>
+      {
+        blogTopics.map((topic) => (
+          <a id={topic} href={`${pathFor('blog', locale)}#${topic}`}>{t(locale, categoryKey(topic))}</a>
+        ))
+      }
+    </nav>
   </div>
   <div class="wrap page-body">
     {

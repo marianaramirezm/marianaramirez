@@ -12,7 +12,8 @@ import Base from '../layouts/Base.astro';
 import { getNeighborhoods, getResidences, getTeamListings } from '../lib/content';
 import type { Locale, UiKey } from '../i18n/ui';
 import { t } from '../i18n/utils';
-import { neighborhoodPath, pathFor, residencePath } from '../lib/routes';
+import { blogTopics, getPublishedBlogPosts } from '../lib/blog';
+import { blogPath, neighborhoodPath, pathFor, residencePath } from '../lib/routes';
 import { agentNode, breadcrumbNode, faqNode, graph } from '../lib/schema';
 
 interface Props {
@@ -23,9 +24,14 @@ const { locale } = Astro.props;
 const origin = Astro.site ?? new URL('https://marianaramirezrealestate.com');
 const neighborhoods = await getNeighborhoods();
 const residences = await getResidences();
-const featured = (await getTeamListings())
-  .filter((listing) => listing.data.featured)
+const team = await getTeamListings();
+const featured = team
+  .filter((listing) => listing.data.featured && listing.data.group !== 'previously')
   .sort((a, b) => (a.data.featureOrder ?? 0) - (b.data.featureOrder ?? 0));
+const previously = team
+  .filter((listing) => listing.data.group === 'previously')
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+const notes = await getPublishedBlogPosts(locale);
 const miami = neighborhoods.filter((item) => item.data.group !== 'beyond');
 const beyond = neighborhoods.filter((item) => item.data.group === 'beyond');
 const path = pathFor('home', locale);
@@ -133,7 +139,10 @@ const stats = [
       <p class="eyebrow">{t(locale, 'home.mapEyebrow')}</p>
       <h2 class="display">{t(locale, 'home.mapTitle')}</h2>
       <p class="lead">{t(locale, 'home.mapBody')}</p>
-      <a class="button" href={pathFor('map', locale)}>{t(locale, 'home.mapCta')}</a>
+      <p class="map-actions">
+        <a class="button" href={pathFor('map', locale)}>{t(locale, 'home.mapCta')}</a>
+        <a class="button" href={pathFor('blog', locale)}>{t(locale, 'home.blogCta')}</a>
+      </p>
     </div>
   </section>
 
@@ -150,6 +159,18 @@ const stats = [
         </p>
       </div>
       <p class="note">{t(locale, 'home.listingsNote')}</p>
+      {
+        previously.length > 0 && (
+          <>
+            <h3 class="group-label">{t(locale, 'listings.groupPrevious')}</h3>
+            <div class="cards">
+              {previously.map((listing) => (
+                <TeamListingCard locale={locale} listing={listing} />
+              ))}
+            </div>
+          </>
+        )
+      }
       <div class="cards">
         {
           featured.map((listing) => (
@@ -206,6 +227,40 @@ const stats = [
           }
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="journal" data-reveal>
+    <div class="wrap">
+      <p class="eyebrow">{t(locale, 'blog.eyebrow')}</p>
+      <h2 class="display">{t(locale, 'blog.title')}</h2>
+      <p class="lead">{t(locale, 'blog.lead')}</p>
+      <nav class="topic-nav" aria-label={t(locale, 'blog.topics')}>
+        {
+          blogTopics.map((topic) => (
+            <a href={`${pathFor('blog', locale)}#${topic}`}>{t(locale, `blog.cat.${topic}` as UiKey)}</a>
+          ))
+        }
+      </nav>
+      {
+        notes.length === 0 ? (
+          <p class="note">{t(locale, 'blog.empty')}</p>
+        ) : (
+          <ul class="name-grid">
+            {notes.slice(0, 3).map((post) => (
+              <li>
+                <a class="with-summary" href={blogPath(post.slug, locale)}>
+                  <span class="n question">{post.data.title}</span>
+                  <span class="where">{t(locale, `blog.cat.${post.data.category}` as UiKey)}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      <p class="stack-links">
+        <a class="link" href={pathFor('blog', locale)}>{t(locale, 'blog.back')}</a>
+      </p>
     </div>
   </section>
 

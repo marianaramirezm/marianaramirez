@@ -1,11 +1,11 @@
 import type { APIRoute } from 'astro';
-import { getBlogPosts } from '../../lib/blog';
+import { getPublishedBlogPosts } from '../../lib/blog';
 import { rssDocument } from '../../lib/rss';
 import { ui } from '../../i18n/ui';
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = site ?? new URL('https://marianaramirezrealestate.com');
-  const posts = await getBlogPosts('es');
+  const posts = await getPublishedBlogPosts('es');
   const body = rssDocument({
     site: origin,
     locale: 'es',

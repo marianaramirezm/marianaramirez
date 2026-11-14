@@ -24,13 +24,13 @@ const en = {
   'home.heroAlt':
     'Mariana Ramírez on a high-rise balcony in Brickell, with the Miami skyline and Biscayne Bay behind her.',
   'home.markets':
-    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · Coconut Grove · New York',
+    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · Coconut Grove',
   'home.cta': 'Start a conversation',
   'home.introEyebrow': 'The practice',
   'home.introAlt':
     'Mariana Ramírez smiling at a marble kitchen island, one hand under her chin.',
   'home.introBody':
-    'I advise high-profile and high-net-worth clients on buying, selling, renting, and investing in Miami’s luxury real estate market.\n\nAs part of the Lundgren Team at SERHANT., I provide white-glove service with discretion, direct communication, and close attention to every detail. For clients with real estate interests in New York, I offer a connection to my team there.\n\nMy track record includes a $2.4 million sale and a Rookie of the Year nomination.\n\nOriginally from Barranquilla, Colombia, I work in English, Spanish, and German, bringing an international perspective to every client relationship.',
+    'Mariana Ramírez advises high-profile and high-net-worth clients on buying, selling, renting, and investing in Miami’s luxury real estate market.\n\nAs part of the Lundgren Team at SERHANT., Mariana provides white-glove service with discretion, direct communication, and close attention to every detail. For real estate in New York and across the U.S., Mariana works with exceptional partners within the team and a trusted network of industry professionals.\n\nHer track record includes a $2.4 million sale and a Rookie of the Year nomination.\n\nOriginally from Barranquilla, Colombia, Mariana works in English, Spanish, and German, bringing an international perspective to every client relationship.',
   'home.statSaleValue': '$2.4M',
   'home.statSaleLabel': 'Record sale',
   'home.statRookieValue': 'Nominee',
@@ -82,7 +82,7 @@ const en = {
   'about.p1':
     'Her approach is rooted in business. Mariana earned a bachelor\'s degree in business administration with an emphasis in marketing, and years of living in Germany, Canada, the United States, and Colombia shaped the global perspective she brings to her work.',
   'about.p2':
-    'Mariana advises buyers and sellers in Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. Her record sale to date is $2.4 million, and she was nominated for Rookie of the Year.',
+    'Mariana advises buyers and sellers in Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, and Coconut Grove. For real estate in New York and across the U.S., she works with exceptional partners within the team and a trusted network of industry professionals. Her record sale to date is $2.4 million, and she was nominated for Rookie of the Year.',
   'about.p3':
     'Presentation is central to how she works. Also a content creator, Mariana presents every property with an elegant, editorial eye, designed to stand out on social media and reach buyers where they are already looking.',
   'about.p4':
@@ -151,6 +151,7 @@ const en = {
   'guides.factsMissing':
     'Add verified facts in this guide’s content file, each with a source URL. Do not add specs, prices, unit counts, completion dates, or amenities without that source.',
   'guides.source': 'Source',
+  'area.kicker': 'Photographs',
 
   'contact.eyebrow': 'Contact',
   'contact.title': 'Tell me what you want and when.',
@@ -252,8 +253,9 @@ const en = {
   'blog.eyebrow': 'Blog',
   'blog.title': 'Blog',
   'blog.lead':
-    'Real estate, the economy, policy, culture, and business. A piece goes up after it has been reviewed.',
+    'Notes on real estate, politics, the economy, innovation, technology, and culture, and what they mean for property. Miami comes first. A piece is published only after it is approved.',
   'blog.empty': 'No published articles yet.',
+  'blog.topics': 'Subjects',
   'blog.draft': 'Draft',
   'blog.sources': 'Sources',
   'blog.sourcesEmpty': 'No sources on this draft.',
@@ -267,7 +269,8 @@ const en = {
   'blog.rss': 'RSS',
   'blog.cat.real-estate': 'Real estate',
   'blog.cat.economy': 'Economy',
-  'blog.cat.policy': 'Policy',
+  'blog.cat.policy': 'Politics and policy',
+  'blog.cat.innovation': 'Innovation and technology',
   'blog.cat.culture': 'Culture',
   'blog.cat.business': 'Business',
 
@@ -276,6 +279,7 @@ const en = {
   'home.mapBody':
     'Ten Miami neighborhoods, with the active SERHANT. sale and rental listings published on serhant.com.',
   'home.mapCta': 'Open the map',
+  'home.blogCta': 'Read the blog',
 
   'map.eyebrow': 'Miami',
   'map.nightTitle': 'Miami — 10 neighborhoods',
@@ -341,13 +345,13 @@ const es: typeof en = {
   'home.heroAlt':
     'Mariana Ramírez en un balcón alto de Brickell, con el skyline de Miami y Biscayne Bay detrás.',
   'home.markets':
-    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · Coconut Grove · Nueva York',
+    'Brickell · Edgewater · Miami Beach · Sunny Isles · Coral Gables · Coconut Grove',
   'home.cta': 'Empezar una conversación',
   'home.introEyebrow': 'La práctica',
   'home.introAlt':
     'Mariana Ramírez sonriendo en una isla de cocina de mármol, con una mano bajo la barbilla.',
   'home.introBody':
-    'I advise high-profile and high-net-worth clients on buying, selling, renting, and investing in Miami’s luxury real estate market.\n\nAs part of the Lundgren Team at SERHANT., I provide white-glove service with discretion, direct communication, and close attention to every detail. For clients with real estate interests in New York, I offer a connection to my team there.\n\nMy track record includes a $2.4 million sale and a Rookie of the Year nomination.\n\nOriginally from Barranquilla, Colombia, I work in English, Spanish, and German, bringing an international perspective to every client relationship.',
+    'Mariana Ramírez advises high-profile and high-net-worth clients on buying, selling, renting, and investing in Miami’s luxury real estate market.\n\nAs part of the Lundgren Team at SERHANT., Mariana provides white-glove service with discretion, direct communication, and close attention to every detail. For real estate in New York and across the U.S., Mariana works with exceptional partners within the team and a trusted network of industry professionals.\n\nHer track record includes a $2.4 million sale and a Rookie of the Year nomination.\n\nOriginally from Barranquilla, Colombia, Mariana works in English, Spanish, and German, bringing an international perspective to every client relationship.',
   'home.statSaleValue': '2,4 M',
   'home.statSaleLabel': 'Venta récord',
   'home.statRookieValue': 'Nominada',
@@ -399,7 +403,7 @@ const es: typeof en = {
   'about.p1':
     'Her approach is rooted in business. Mariana earned a bachelor\'s degree in business administration with an emphasis in marketing, and years of living in Germany, Canada, the United States, and Colombia shaped the global perspective she brings to her work.',
   'about.p2':
-    'Mariana advises buyers and sellers in Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, Coconut Grove, and New York. Her record sale to date is $2.4 million, and she was nominated for Rookie of the Year.',
+    'Mariana advises buyers and sellers in Brickell, Edgewater, Miami Beach, Sunny Isles, Coral Gables, and Coconut Grove. For real estate in New York and across the U.S., she works with exceptional partners within the team and a trusted network of industry professionals. Her record sale to date is $2.4 million, and she was nominated for Rookie of the Year.',
   'about.p3':
     'Presentation is central to how she works. Also a content creator, Mariana presents every property with an elegant, editorial eye, designed to stand out on social media and reach buyers where they are already looking.',
   'about.p4':
@@ -469,6 +473,7 @@ const es: typeof en = {
   'guides.factsMissing':
     'Agrega datos verificados en el archivo de esta guía, cada uno con un URL de fuente. No añadas especificaciones, precios, número de unidades, fechas de entrega ni comodidades sin esa fuente.',
   'guides.source': 'Fuente',
+  'area.kicker': 'Fotografías',
 
   'contact.eyebrow': 'Contacto',
   'contact.title': 'Dime qué quieres y para cuándo.',
@@ -570,8 +575,9 @@ const es: typeof en = {
   'blog.eyebrow': 'Blog',
   'blog.title': 'Blog',
   'blog.lead':
-    'Bienes raíces, economía, política, cultura y negocios. Un texto se publica después de revisarse.',
+    'Notas sobre bienes raíces, política, economía, innovación, tecnología y cultura, y lo que significan para la propiedad. Miami va primero. Un texto se publica solo después de aprobarlo.',
   'blog.empty': 'Todavía no hay artículos publicados.',
+  'blog.topics': 'Temas',
   'blog.draft': 'Borrador',
   'blog.sources': 'Fuentes',
   'blog.sourcesEmpty': 'Este borrador no tiene fuentes.',
@@ -586,6 +592,7 @@ const es: typeof en = {
   'blog.cat.real-estate': 'Bienes raíces',
   'blog.cat.economy': 'Economía',
   'blog.cat.policy': 'Política',
+  'blog.cat.innovation': 'Innovación y tecnología',
   'blog.cat.culture': 'Cultura',
   'blog.cat.business': 'Negocios',
 
@@ -594,6 +601,7 @@ const es: typeof en = {
   'home.mapBody':
     'Diez barrios de Miami, con los listados activos de venta y alquiler de SERHANT. publicados en serhant.com.',
   'home.mapCta': 'Abrir el mapa',
+  'home.blogCta': 'Leer el blog',
 
   'map.eyebrow': 'Miami',
   'map.nightTitle': 'Miami — 10 barrios',
