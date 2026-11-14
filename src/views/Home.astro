@@ -139,7 +139,10 @@ const stats = [
       <p class="eyebrow">{t(locale, 'home.mapEyebrow')}</p>
       <h2 class="display">{t(locale, 'home.mapTitle')}</h2>
       <p class="lead">{t(locale, 'home.mapBody')}</p>
-      <a class="button" href={pathFor('map', locale)}>{t(locale, 'home.mapCta')}</a>
+      <p class="map-actions">
+        <a class="button" href={pathFor('map', locale)}>{t(locale, 'home.mapCta')}</a>
+        <a class="button" href={pathFor('blog', locale)}>{t(locale, 'home.blogCta')}</a>
+      </p>
     </div>
   </section>
 

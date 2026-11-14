@@ -754,13 +754,46 @@ button.button:disabled {
 
 .blog-hero img {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   background: var(--soft);
 }
 
 .blog-column {
   max-width: var(--measure);
+  min-width: 0;
+}
+
+.prose table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+}
+
+.prose th,
+.prose td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+  min-width: 8rem;
+}
+
+.prose th {
+  font-weight: 500;
+}
+
+.blog-figure {
+  margin: 0 0 2rem;
+}
+
+.blog-figure img {
+  width: 100%;
+  height: auto;
 }
 
 .blog-pager {
@@ -1860,8 +1893,15 @@ html.js [data-reveal].is-in {
   max-width: 36rem;
 }
 
-.map-teaser .button {
+.map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-top: 0.4rem;
+}
+
+.map-actions .button {
+  margin-top: 0;
 }
 
 .map-layout {

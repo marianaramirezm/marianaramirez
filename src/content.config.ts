@@ -112,6 +112,28 @@ const blog = defineCollection({
         heroImage: image(),
         heroAlt: z.string().min(1),
         imageCredit: z.string().min(1),
+        heroCredit: z
+          .object({
+            author: z.string().min(1),
+            license: z.string().min(1),
+            licenseUrl: z.url(),
+            sourceUrl: z.url(),
+          })
+          .optional(),
+        figures: z
+          .array(
+            z.object({
+              src: image(),
+              alt: z.string().min(1),
+              credit: z.object({
+                author: z.string().min(1),
+                license: z.string().min(1),
+                licenseUrl: z.url(),
+                sourceUrl: z.url(),
+              }),
+            }),
+          )
+          .default([]),
         sources: z.array(blogSource).default([]),
         draft: z.boolean().default(false),
       })

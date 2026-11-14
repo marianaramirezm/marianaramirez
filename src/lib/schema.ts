@@ -146,7 +146,7 @@ export function blogPostingNode(options: {
 }): Record<string, unknown> {
   const published = options.published.toISOString();
   const node: Record<string, unknown> = {
-    '@type': 'BlogPosting',
+    '@type': ['BlogPosting', 'Article'],
     headline: options.title,
     description: options.description,
     datePublished: published,

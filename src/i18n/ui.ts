@@ -279,6 +279,7 @@ const en = {
   'home.mapBody':
     'Ten Miami neighborhoods, with the active SERHANT. sale and rental listings published on serhant.com.',
   'home.mapCta': 'Open the map',
+  'home.blogCta': 'Read the blog',
 
   'map.eyebrow': 'Miami',
   'map.nightTitle': 'Miami — 10 neighborhoods',
@@ -600,6 +601,7 @@ const es: typeof en = {
   'home.mapBody':
     'Diez barrios de Miami, con los listados activos de venta y alquiler de SERHANT. publicados en serhant.com.',
   'home.mapCta': 'Abrir el mapa',
+  'home.blogCta': 'Leer el blog',
 
   'map.eyebrow': 'Miami',
   'map.nightTitle': 'Miami — 10 barrios',
