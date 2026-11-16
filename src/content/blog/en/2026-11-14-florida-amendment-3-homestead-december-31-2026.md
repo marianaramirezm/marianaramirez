@@ -14,14 +14,6 @@ heroCredit:
   license: CC BY-SA 3.0
   licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
   sourceUrl: https://commons.wikimedia.org/wiki/File:Night_Panorama_Miami_Florida_5462.jpg
-figures:
-  - src: ../../../assets/blog/coral-gables-house.webp
-    alt: "Veranda and gardens at the Coral Gables House."
-    credit:
-      author: SebasTorrente
-      license: CC BY-SA 3.0
-      licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
-      sourceUrl: https://commons.wikimedia.org/wiki/File:CoralGablesHouse.jpg
 sources:
   - title: "Property Tax Oversight Informational Bulletin PTO 26-21, “Constitutional Amendment 3,” November 5, 2026"
     url: https://floridarevenue.com/property/Documents/PTO_BUL_26-21.pdf
@@ -41,9 +33,6 @@ sources:
   - title: "Night Panorama Miami Florida 5462.jpg"
     url: https://commons.wikimedia.org/wiki/File:Night_Panorama_Miami_Florida_5462.jpg
     publisher: Dori
-  - title: "CoralGablesHouse.jpg"
-    url: https://commons.wikimedia.org/wiki/File:CoralGablesHouse.jpg
-    publisher: SebasTorrente
 draft: false
 ---
 
