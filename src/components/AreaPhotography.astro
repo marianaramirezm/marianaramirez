@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import villaPool from '../assets/listings/villa-de-casuarina-pool.webp';
+import villaStair from '../assets/listings/villa-de-casuarina-stair.webp';
+import { areaGalleries, type AreaShot } from '../data/area-photography';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  guideId: string;
+}
+
+const { locale, guideId } = Astro.props;
+const gallery = areaGalleries[guideId];
+const images = {
+  'villa-pool': villaPool,
+  'villa-stair': villaStair,
+} as const;
+
+function source(shot: AreaShot) {
+  return images[shot.local];
+}
+---
+
+{
+  gallery && (
+    <section class="area-photos">
+      <p class="eyebrow">{t(locale, 'area.kicker')}</p>
+      <h2>{gallery.heading[locale]}</h2>
+      <p class="area-intro">{gallery.intro[locale]}</p>
+      <div class="area-grid">
+        {gallery.shots.map((shot) => (
+          <figure class="area-card">
+            <Image
+              src={source(shot)}
+              alt={shot.alt[locale]}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 800px) 34rem, 100vw"
+              quality={70}
+            />
+            <figcaption class="credit">
+              <span>{shot.kind[locale]}</span>
+              <span>
+                {t(locale, 'guides.photoCredit')} {shot.credit}
+              </span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )
+}

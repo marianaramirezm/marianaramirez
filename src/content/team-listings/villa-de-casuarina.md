@@ -11,8 +11,8 @@ area:
 group: previously
 status: previously-listed
 statusLabel:
-  en: Previously listed by the team
-  es: Publicada antes por el equipo
+  en: Previously listed by the Lundgren Team at SERHANT.
+  es: Publicada antes por el equipo Lundgren en SERHANT.
 price:
   en: "Offered at $27,500,000"
   es: "Ofrecida en $27,500,000"

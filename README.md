@@ -177,6 +177,8 @@ To refresh it, replace that file with a new export that uses the same fields and
 
 Key Biscayne rows in the file are SERHANT. office listings with status FOR_SALE or For Lease from the public serhant.com property search. That search had no active Fisher Island or Venetian Islands rows, so those areas use the empty state.
 
+The Gables Estates photographs on the Coral Gables guide are the two frames already published on this site. Other-team listing photographs were not reused. The decision record is `src/data/area-photo-provenance.ts`.
+
 The basemap is Esri’s World Dark Gray Canvas (no API key). CARTO’s public `dark_all` tiles currently return an “API key required” watermark, so they are not used.
 
 ## Edit social links, phone, and compliance lines

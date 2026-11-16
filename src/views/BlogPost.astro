@@ -84,9 +84,40 @@ const kicker = post.data.draft ? `${t(locale, 'blog.draft')} · ${category}` : c
         quality={70}
         priority
       />
-      <figcaption class="credit">{post.data.imageCredit}</figcaption>
+      <figcaption class="credit">
+        {
+          post.data.heroCredit ? (
+            <>
+              {t(locale, 'guides.photoCredit')} {post.data.heroCredit.author},{' '}
+              <a href={post.data.heroCredit.licenseUrl}>{post.data.heroCredit.license}</a>,{' '}
+              {t(locale, 'guides.photoVia')}{' '}
+              <a href={post.data.heroCredit.sourceUrl}>Wikimedia Commons</a>
+            </>
+          ) : (
+            post.data.imageCredit
+          )
+        }
+      </figcaption>
     </figure>
     <div class="blog-column">
+      {
+        post.data.figures?.map((figure) => (
+          <figure class="blog-figure">
+            <Image
+              src={figure.src}
+              alt={figure.alt}
+              widths={[640, 1100, 1600]}
+              sizes="(min-width: 800px) 42rem, 100vw"
+              quality={70}
+            />
+            <figcaption class="credit">
+              {t(locale, 'guides.photoCredit')} {figure.credit.author},{' '}
+              <a href={figure.credit.licenseUrl}>{figure.credit.license}</a>,{' '}
+              {t(locale, 'guides.photoVia')} <a href={figure.credit.sourceUrl}>Wikimedia Commons</a>
+            </figcaption>
+          </figure>
+        ))
+      }
       <div class="prose">
         <Content />
       </div>
