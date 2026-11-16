@@ -6,14 +6,14 @@ lang: es
 translationKey: florida-amendment-3-homestead-december-31-2026
 category: policy
 impact: both
-heroImage: ../../../assets/blog/downtown-miami.webp
-heroAlt: "Skyline de downtown Miami de día."
-imageCredit: "Foto: ph_en, CC BY 2.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Downtown_Miami.jpg)"
+heroImage: ../../../assets/blog/miami-skyline-dusk.webp
+heroAlt: "Skyline de downtown Miami al anochecer, visto desde Biscayne Bay."
+imageCredit: "Foto: Dori, CC BY-SA 3.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Night_Panorama_Miami_Florida_5462.jpg)"
 heroCredit:
-  author: ph_en
-  license: CC BY 2.0
-  licenseUrl: https://creativecommons.org/licenses/by/2.0
-  sourceUrl: https://commons.wikimedia.org/wiki/File:Downtown_Miami.jpg
+  author: Dori
+  license: CC BY-SA 3.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/3.0
+  sourceUrl: https://commons.wikimedia.org/wiki/File:Night_Panorama_Miami_Florida_5462.jpg
 figures:
   - src: ../../../assets/blog/coral-gables-house.webp
     alt: "Veranda y jardines de Coral Gables House."
@@ -38,9 +38,9 @@ sources:
   - title: "Amendment 3 FAQ"
     url: https://vcpa.vcgov.org/info/amendment3
     publisher: Volusia County Property Appraiser
-  - title: "Downtown Miami.jpg"
-    url: https://commons.wikimedia.org/wiki/File:Downtown_Miami.jpg
-    publisher: ph_en
+  - title: "Night Panorama Miami Florida 5462.jpg"
+    url: https://commons.wikimedia.org/wiki/File:Night_Panorama_Miami_Florida_5462.jpg
+    publisher: Dori
   - title: "CoralGablesHouse.jpg"
     url: https://commons.wikimedia.org/wiki/File:CoralGablesHouse.jpg
     publisher: SebasTorrente
